@@ -1,26 +1,36 @@
-# PokéRogue Rust
+<div align="center">
+  <picture>
+    <img src="docs/logo.png" width="420" alt="PokéRogue Rust Edition">
+  </picture>
 
-**`pokerogue-rs`** é uma reimplementação experimental, offline-first, de partes do PokéRogue em Rust. O workspace separa regras e persistência do cliente Macroquad e compara recortes determinísticos com o TypeScript original.
+  <p>
+    <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-edition_2024-orange?style=flat&logo=rust&logoColor=white" alt="Rust 2024"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0--only-blue.svg" alt="AGPL-3.0-only license"></a>
+    <a href="tools/visual/README.md"><img src="https://img.shields.io/badge/Visual_scenes-9-22c55e?style=flat" alt="Nine declared visual scenes"></a>
+  </p>
+</div>
+
+PokéRogue Rust is an experimental **reimplementation in Rust** of selected gameplay and presentation slices from PokéRogue. It is an offline-first Rust workspace with a Macroquad client and a local TypeScript reference checkout.
 
 <p align="center">
-  <img src="docs/roadmap-progress.svg" alt="Progresso do checklist do roadmap e cenas visuais automatizadas" width="100%">
+  <img src="docs/roadmap-progress.svg" alt="Roadmap checklist progress" width="100%">
 </p>
 
-> **Status:** protótipo jogável em desenvolvimento. O gráfico mede itens do checklist do roadmap, não a porcentagem do jogo original portada. Os itens têm tamanhos diferentes; ainda há diferenças funcionais e visuais importantes.
+> **Progress note:** The chart counts roadmap checkboxes equally. It is not a measure of the percentage of the original game that has been ported. The work items vary in size, and substantial gameplay and visual gaps remain.
 
-## O que já existe
+## What is implemented
 
-- Workspace Rust com `pokerogue-core`, `pokerogue-data`, `pokerogue-client` e `pokerogue-tests`.
-- Batalhas offline e um mini-run de Town com combate, EXP, captura e recompensas em escopo limitado.
-- Fixtures diferenciais para RNG, regras e progressão, executadas contra métodos isolados do TypeScript fixado.
-- Captura visual local com Helium/Playwright e Macroquad, resolução 960×540 e relógio determinístico.
-- Nove cenários visuais declarados: campo, HUD, entrada, movimentos, um quadro de Tackle e o arremesso inicial de Poké Ball.
+- A Rust workspace split into battle rules, imported data, a Macroquad client, and differential tests.
+- An offline Town mini-run with bounded battle, EXP, capture, reward, and save behavior.
+- Source-backed fixtures for selected RNG, battle, and progression behavior.
+- A local visual comparison harness for Helium/Playwright, Phaser, and the Macroquad framebuffer.
+- Nine declared 960×540 visual scenes covering field layout, HUD, entry, move names, a Tackle animation frame, and the initial Poké Ball throw.
 
-O harness visual ainda não executa o `BattleScene` e o `PhaseManager` completos. Capturas, ataques e recompensas cobrem apenas os estágios explicitamente documentados. Baselines e imagens ficam locais; não são distribuídos.
+This is not a complete PokéRogue port. The visual harness does not run the full original `BattleScene` and `PhaseManager`; the attack and capture scenes cover specific animation stages only. See the [roadmap](ROADMAP.md), [porting progress](PORTING_PROGRESS.md), and [parity plan](PARITY_PLAN.md) for current scope and gaps.
 
-## Compilar e jogar
+## Build and play
 
-Requisitos: Rust stable com suporte à edition 2024. O clone recursivo inclui o código original fixado e seus submódulos locais necessários para executar e validar o port:
+Requirements: stable Rust with Rust 2024 edition support. Clone the repository and its pinned upstream source submodule:
 
 ```sh
 git clone --recurse-submodules https://github.com/pontojasko/pokerogue-rs.git
@@ -29,15 +39,11 @@ cargo build -p pokerogue-client
 cargo run --offline -p pokerogue-client
 ```
 
-Se o clone já foi feito sem submódulos:
+The first build downloads Cargo dependencies if they are not cached. After that, the game client runs without contacting PokéRogue servers. The upstream source and asset submodules are checked out separately and remain subject to their own licenses and terms.
 
-```sh
-git submodule update --init --recursive
-```
+Controls: press Enter to start, `1` or `2` to choose a move, Enter to restart after a result, and Escape to quit.
 
-O primeiro `cargo build` baixa as dependências Cargo se elas ainda não estiverem no cache. Depois disso, o cliente pode ser executado com `--offline` e não depende de servidores do jogo. Pressione Enter para começar; `1` e `2` escolhem movimentos; Enter reinicia após um resultado; Escape fecha.
-
-## Compilar e testar
+## Tests
 
 ```sh
 cargo check --workspace --offline
@@ -46,11 +52,11 @@ python3 -m unittest discover -s scripts -p test_visual_parity.py
 node tools/visual/harness.test.mjs
 ```
 
-No snapshot publicado inicialmente, `cargo check --workspace --offline` e os 13 testes do cliente passam. `cargo test --workspace --offline` ainda tem uma falha conhecida: `deterministic_twenty_wave_run_clears_bosses_and_saves` perde na wave 12. Os demais testes do workspace passam; veja [PORTING_PROGRESS.md](PORTING_PROGRESS.md) para o contexto e as lacunas conhecidas.
+In the published snapshot, workspace compilation and all 13 client tests pass. The full workspace test command currently has one known failure: `deterministic_twenty_wave_run_clears_bosses_and_saves` loses at wave 12; the other workspace tests pass. This is documented in [PORTING_PROGRESS.md](PORTING_PROGRESS.md).
 
-## Testes visuais locais
+## Visual comparison
 
-Requisitos adicionais: Node, ImageMagick (`magick`), Helium ou Chromium compatível com Playwright e Xvfb para captura sem desktop. Consulte [tools/visual/README.md](tools/visual/README.md) para instalação e limites do harness.
+The visual harness runs locally and writes captures, diffs, reports, and regression results to the ignored `visual-artifacts/` directory. It does not use official game servers. Required development tools include Node.js, ImageMagick, Helium or a Playwright-compatible Chromium, and Xvfb for headless native captures.
 
 ```sh
 npm ci --prefix tools/visual --ignore-scripts
@@ -58,29 +64,21 @@ python3 tools/visual/bootstrap.py --xvfb
 python3 scripts/visual_parity.py --scene battle-town-capture --native-backend xvfb
 ```
 
-Para preparar baselines de regressão na sua máquina, inspecione as capturas e aceite-as explicitamente:
+To establish local regression baselines, inspect the captured images first, then explicitly record them:
 
 ```sh
 python3 scripts/visual_suite.py --record-baselines --native-backend xvfb
 python3 scripts/visual_suite.py --native-backend xvfb
 ```
 
-Snapshots, imagens dos jogos, baselines, dependências baixadas e o runtime Xvfb não fazem parte deste repositório. A comparação é executada apenas com instâncias locais; ela não contata os servidores oficiais.
+Screenshots, baselines, downloaded runtimes, and game assets are not committed. See [visual tooling documentation](tools/visual/README.md) and [asset credits and restrictions](ASSET_CREDITS.md).
 
-## Estrutura
+## Contributing
 
-| Caminho | Responsabilidade |
-| --- | --- |
-| `pokerogue-core/` | Batalha, progressão, RNG e saves locais |
-| `pokerogue-data/` | Dados importados e tabelas de regras |
-| `pokerogue-client/` | Renderização Macroquad e entrada |
-| `pokerogue-tests/` | Testes diferenciais e de integração |
-| `original/` | Submódulo TypeScript fixado usado como referência |
-| `tools/visual/`, `scripts/` | Harnesses, fixtures e ferramentas de validação |
-| `ROADMAP.md`, `PORTING_PROGRESS.md`, `PARITY_PLAN.md` | Escopo, progresso e limites das comparações |
+Start with the concise [contribution guide](CONTRIBUTING.md). It covers local setup, focused validation, pull requests, and AI-assisted contributions.
 
-## Licença e assets
+## License and attribution
 
-O código deste port é licenciado sob **AGPL-3.0-only**; consulte [LICENSE](LICENSE). O código TypeScript original permanece no submódulo e conserva seus créditos/licença originais. Sprites, fontes e outros assets são obtidos do submódulo upstream separado, não copiados para este repositório. Os direitos e créditos ainda precisam ser avaliados para redistribuição: veja [ASSET_CREDITS.md](ASSET_CREDITS.md). Não publique screenshots, assets, baselines nem arquivos do runtime visual.
+This Rust workspace is licensed under **AGPL-3.0-only**; see [LICENSE](LICENSE). The TypeScript reference is a pinned upstream submodule and retains its own license and credits. Game assets are not bundled in this repository. Their redistribution rights are unresolved; review [ASSET_CREDITS.md](ASSET_CREDITS.md) before using or sharing them.
 
-Este projeto não é afiliado aos autores de PokéRogue.
+PokéRogue Rust is an unofficial fan project and is not affiliated with the original PokéRogue authors or Pokémon rights holders.
