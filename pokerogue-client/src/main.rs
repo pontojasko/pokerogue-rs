@@ -82,11 +82,26 @@ impl EncounterEntrance {
 
 fn window_conf() -> Conf {
     let visual_battle = std::env::var_os("POKEROGUE_VISUAL_BATTLE").is_some();
+    let visual_fixture = std::env::args().any(|s| s == "--visual-fixture");
+    #[cfg(target_os = "linux")]
+    let linux_backend = if visual_fixture
+        || std::env::var_os("POKEROGUE_FORCE_X11").is_some()
+        || std::env::var_os("WAYLAND_DISPLAY").is_none()
+    {
+        miniquad::conf::LinuxBackend::X11Only
+    } else {
+        miniquad::conf::LinuxBackend::WaylandOnly
+    };
     Conf {
         window_title: "PokéRogue · Rust prototype".into(),
         window_width: 960,
         window_height: 540,
         fullscreen: visual_battle && !std::env::args().any(|s| s == "--visual-fixture"),
+        #[cfg(target_os = "linux")]
+        platform: miniquad::conf::Platform {
+            linux_backend,
+            ..Default::default()
+        },
         ..Default::default()
     }
 }
@@ -835,10 +850,11 @@ impl SpriteAtlas {
     async fn load() -> Self {
         // These are read from the original assets checkout and are not copied
         // into this project because their individual redistribution status is unclear.
-        let pokemon_root = PathBuf::from(
-            std::env::var("POKEROGUE_ASSETS_DIR")
-                .unwrap_or_else(|_| "original/assets/images/pokemon".to_owned()),
-        );
+        let pokemon_root = std::env::var_os("POKEROGUE_ASSETS_DIR")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| {
+                PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../original/assets/images/pokemon")
+            });
         let images_root = pokemon_root
             .parent()
             .unwrap_or(Path::new("original/assets/images"));

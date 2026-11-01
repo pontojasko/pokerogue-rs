@@ -1,6 +1,6 @@
 <div align="center">
   <picture>
-    <img src="docs/logo.png" width="420" alt="PokéRogue Rust Edition">
+    <img src="docs/logo.png" width="560" alt="PokéRogue Rust Edition">
   </picture>
 
   <p>
@@ -41,7 +41,9 @@ cargo run --offline -p pokerogue-client
 
 The first build downloads Cargo dependencies if they are not cached. After that, the game client runs without contacting PokéRogue servers. The upstream source and asset submodules are checked out separately and remain subject to their own licenses and terms.
 
-Controls: press Enter to start, `1` or `2` to choose a move, Enter to restart after a result, and Escape to quit.
+On Linux, the client uses Wayland when `WAYLAND_DISPLAY` is set (including Hyprland) and X11 otherwise. To explicitly use X11 from a Wayland session, set `POKEROGUE_FORCE_X11=1`. The client resolves its default local asset path from the project checkout, so it can also be launched through Cargo from another working directory. If sprites or arena artwork are missing, initialize the pinned submodules with `git submodule update --init --recursive`.
+
+Controls: press Enter to start, `1`–`4` to choose a move, Enter to confirm/restart, and Escape to quit. `F5` saves supported checkpoints; see [Contributing](CONTRIBUTING.md) for focused development checks.
 
 ## Tests
 

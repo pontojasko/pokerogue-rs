@@ -2,6 +2,14 @@
 
 Milestones are functional slices. Close each only when its criteria pass and its parity limits are recorded in `PARITY_PLAN.md`. Keep the order unless evidence or a dependency justifies a change.
 
+## How to read this roadmap
+
+- A checked item means the bounded slice described by that item is implemented and has the evidence noted beside it; it does not mean the complete original-game flow is ported.
+- The README pixel chart counts checklist items equally. It is a planning aid, not a percentage of PokéRogue reimplemented in Rust.
+- Every open item should be completed in a small change: identify the pinned TypeScript behavior, add or extend a deterministic source fixture, implement the Rust slice, validate it, and record uncovered cases in `PARITY_PLAN.md` and `PORTING_PROGRESS.md`.
+- Keep runtime offline. Development tools may execute the pinned local TypeScript checkout, but the Rust game must not require Node.js, a server, or network access.
+- Preserve unresolved asset licensing boundaries. Local visual tests may read the submodule assets; do not copy restricted assets into tracked project files.
+
 ## M0 — battle foundation (complete, Stages 1–13)
 
 - [x] Workspace split into core/data/client/tests; offline Macroquad battle runs.
@@ -157,9 +165,9 @@ For each milestone: identify the pinned TypeScript implementation; implement one
 - [x] Client compiles and smoke-launches; ten/twenty-wave modes remain selected from the title screen. Run behavior is unchanged.
 
 
-## Visual automation priority — infrastructure in progress
+## M11 — paired visual coverage (in progress)
 
-User-requested prerequisite before further graphical expansion. Keep gameplay milestone gaps above open.
+The reusable local capture and comparison loop is in place. Expand it one deterministic screen or animation at a time; keep gameplay parity gaps above open until the full relevant source flow is exercised.
 
 - [x] Add shared 960x540 Town DAY fixtures, frozen presentation sampling and native PNG export mode.
 - [x] Add local-only Playwright/Helium runner, source-executed ArenaBase harness and pixel/report tools.
@@ -175,3 +183,61 @@ User-requested prerequisite before further graphical expansion. Keep gameplay mi
 - [ ] Add a deterministic paired Phaser/Macroquad capture-animation frame; current capture timing and atlas checks do not compare rendered pixels.
 
 See `tools/visual/README.md`. The bounded harness is not the full original game and is not visual parity certification. Capture failures and the known twenty-wave gameplay test failure remain visible.
+
+## M12 — battle phase and action parity (open)
+
+Goal: replace isolated method-level evidence with reproducible, source-executed battle flows for the supported Town slice. Do not describe a fixture as full battle parity unless the original phase queue, RNG calls, and state transitions that own that behavior are executed.
+
+- [ ] Build a pinned-source harness for normal `BattleScene.newBattle` construction, including `battleSeed` initialization, encounter selection, the wild double check, party/opponent construction, and the resulting initial phase queue.
+- [ ] Compare wave-entry RNG draw order and encounter state against the existing Rust fixtures for waves 1–20; preserve separate cases for ordinary and segmented boss encounters.
+- [ ] Execute player and enemy action ordering through the original phase manager for a bounded single-move battle; compare selected move, targets, accuracy/critical/damage draws, HP, faint state, and queued follow-up phases.
+- [ ] Complete enemy-first faint continuation through queued phase cancellation, forced replacement, turn-end, and next-turn selection. Keep the current isolated inactive-user guards as narrower evidence until this flow passes.
+- [ ] Exercise status-only and mixed attack/status move selection, PP exhaustion and Struggle fallback through the original battle flow; add only behavior supported by source execution.
+- [ ] Execute one end-to-end victory flow through EXP, level/move prompts, reward generation/claim, and next-wave handoff for the ten-wave endpoint.
+- [ ] Add the corresponding wave-20 boss victory and Classic continuation case; document the intentional local endpoint difference if the Rust mini-run still ends at wave 20.
+- [ ] Keep any unsupported PhaseManager callbacks, modifier interactions, and battle modes listed individually in `PARITY_PLAN.md` rather than rolling them into a broad parity claim.
+
+Exit criteria: each supported scenario has a deterministic fixture with ordered RNG evidence, matching state/event assertions, a Rust test, and a documented boundary. A complete multi-wave PhaseManager port is not required to close an individual bounded scenario.
+
+## M13 — Town content and progression coverage (open)
+
+Goal: broaden the offline reimplementation through source-backed data and player-visible gameplay slices without changing original behavior to make tests easier.
+
+- [ ] Finish encounter entry comparison for the current imported Town species slice, including all supported time buckets, rarity fallbacks, boss level rules, moves, stats, and RNG order.
+- [ ] Expand imported Town species and learnset data in deterministic batches; validate generated files with importer `--check` and retain source provenance for each field.
+- [ ] Add missing evolution-family level-move exclusions and explicitly model regional forms, fusion, challenge filters, and used-TM eligibility only when the required source state exists in Rust.
+- [ ] Complete the Town reward catalog in source-ordered tiers: candidate eligibility, generator retries, option ordering, claim effects, caps, and checkpoint persistence must each have bounded source fixtures.
+- [ ] Remove the labeled test reward fallback only after all options reachable in the supported Town run are either implemented faithfully or deliberately withheld with a visible reason.
+- [ ] Complete ordinary-capture edge cases (party replacement/box policy, dex side effects, status modifiers, and RNG) before enabling them in the run; keep boss/challenge exceptions unavailable until their state is represented.
+- [ ] Define the next biome/run slice from the pinned source and its asset requirements before implementing it; do not imply that Town-only data represents general Classic mode.
+- [ ] Requalify deterministic ten- and twenty-wave play-through scenarios after any combat RNG or reward-selection change; record losses as regressions or known gaps, never tune battle state to force a win.
+
+Exit criteria: every enabled content path has source-backed data and bounded behavior evidence; unavailable systems remain explicit in the client and documentation. Save migrations and offline operation pass for the changed state.
+
+## M14 — screen and animation parity (open)
+
+Goal: grow the current nine-scene visual suite into coverage that catches meaningful regressions across battle, capture, reward, and transition screens.
+
+- [ ] Add paired deterministic cases for complete move selection and command UI, including focus/selection states and supported move counts.
+- [ ] Add attack frames for each supported animation and target mode at named source timestamps; compare the same logical resolution, animation clock, camera, and scene state.
+- [ ] Add capture outcomes for failed shakes, successful capture, return/recall, and supported ball types; separate timing fixtures from pixel baselines.
+- [ ] Add post-battle reward selection, claim/target prompts, level-up choices, faint/replacement, and inter-wave transitions as shared fixture states.
+- [ ] Make fixture metadata declare resolution, source commit, seed/state, logical timestamp, asset references, and known renderer-specific tolerance.
+- [ ] Review each baseline diff before recording it. Keep visual regression thresholds per scene and never auto-accept changed images.
+- [ ] Publish HTML/PNG diff artifacts only as local ignored outputs; keep original assets, saves, captures, and unreviewed baselines out of Git.
+- [ ] Add a single documented command for running all available visual captures and report partial failures by scene without hiding failed scenes.
+
+Exit criteria: every scene has stable capture instructions, a reviewed local baseline, a scene-specific gate, and an explicit scope statement. Pixel-perfect parity is claimed only for scenes whose reference code and renderer behavior are actually covered.
+
+## M15 — contributor and release readiness (open)
+
+Goal: make the experimental Rust reimplementation straightforward to build, test, review, and extend without weakening its source and license boundaries.
+
+- [ ] Validate clean-checkout instructions on Linux Wayland/X11 and one additional supported desktop platform; document only combinations that have been exercised.
+- [ ] Provide clear diagnostics when the pinned reference/assets submodules are missing and distinguish that condition from a client build or window-backend failure.
+- [ ] Document controls, save location, supported run scope, current known gameplay gaps, and visual-capture prerequisites in the README and contributor guide.
+- [ ] Keep CI checks scoped to redistributable code/data and deterministic tests; do not make CI fetch or publish restricted assets.
+- [ ] Add a release checklist covering offline startup, save migration, clean build, source attribution, asset/license review, and truthful parity notes.
+- [ ] Revisit portability/performance targets only in an explicitly approved milestone; R36S remains future-only under the project constraints.
+
+Exit criteria: a contributor can clone the documented public repository, build the client, run supported checks, understand the incomplete scope, and submit an AI-assisted or manual change with reviewable evidence.

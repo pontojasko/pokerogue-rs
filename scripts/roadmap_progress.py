@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a small SVG progress chart from roadmap checkboxes and visual fixtures."""
+"""Render the pixel-art roadmap status card from checklist and visual fixtures."""
 import argparse
 import json
 from pathlib import Path
@@ -16,31 +16,36 @@ def render() -> str:
     remaining = len(states) - complete
     percent = complete * 100 / len(states) if states else 0
     visual_cases = len(json.loads((ROOT / "tools/visual/suite.json").read_text())["cases"])
-    left, right = 40, 920
-    bar_width = right - left
-    progress_width = bar_width * percent / 100
-    p = f"{percent:.1f}"
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="960" height="280" viewBox="0 0 960 280" role="img" aria-labelledby="title desc">
+    cells, cell_width, gap = 55, 14, 2
+    filled = round(cells * percent / 100)
+    tiles = "\n".join(
+        f'<rect x="{40 + i * (cell_width + gap)}" y="150" width="{cell_width}" height="24" fill="{"#65e572" if i < filled else "#29374c"}"/>'
+        for i in range(cells)
+    )
+    p = f"{percent:.1f}%"
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
 <title id="title">PokéRogue Rust porting progress</title>
 <desc id="desc">{complete} of {len(states)} roadmap checklist items complete, {remaining} remaining; {visual_cases} declared automated visual scenes.</desc>
 <defs>
-  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
-  <linearGradient id="fill" x2="1"><stop stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
-  <filter id="shadow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+  <pattern id="stars" width="32" height="32" patternUnits="userSpaceOnUse"><rect x="7" y="9" width="2" height="2" fill="#40516c"/><rect x="23" y="25" width="2" height="2" fill="#40516c"/></pattern>
 </defs>
-<rect width="960" height="280" rx="24" fill="url(#bg)"/>
-<circle cx="895" cy="42" r="120" fill="#22d3ee" opacity=".06"/>
-<text x="40" y="48" fill="#a5f3fc" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2">POKEROGUE-RS · ROADMAP PROGRESS</text>
-<text x="40" y="108" fill="#f8fafc" font-family="Inter,Arial,sans-serif" font-size="46" font-weight="750">{p}%</text>
-<text x="174" y="105" fill="#cbd5e1" font-family="Inter,Arial,sans-serif" font-size="20">of roadmap checklist complete</text>
-<rect x="{left}" y="137" width="{bar_width}" height="20" rx="10" fill="#334155"/>
-<rect x="{left}" y="137" width="{progress_width:.1f}" height="20" rx="10" fill="url(#fill)" filter="url(#shadow)" opacity=".55"/>
-<rect x="{left}" y="137" width="{progress_width:.1f}" height="20" rx="10" fill="url(#fill)"/>
-<text x="40" y="193" fill="#6ee7b7" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700">{complete} complete</text>
-<text x="880" y="193" text-anchor="end" fill="#cbd5e1" font-family="Inter,Arial,sans-serif" font-size="15">{remaining} remaining · {len(states)} tasks</text>
-<rect x="40" y="218" width="880" height="1" fill="#475569"/>
-<text x="40" y="250" fill="#e2e8f0" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="600">{visual_cases} declared visual scenes</text>
-<text x="920" y="250" text-anchor="end" fill="#94a3b8" font-family="Inter,Arial,sans-serif" font-size="12">Equal-weight checklist; not % of the original game ported or full parity.</text>
+<rect width="960" height="320" fill="#0b1020"/>
+<rect x="8" y="8" width="944" height="304" fill="#172338"/>
+<rect x="16" y="16" width="928" height="288" fill="url(#stars)"/>
+<rect x="24" y="24" width="912" height="272" fill="#111a2b"/>
+<rect x="32" y="32" width="896" height="256" fill="#18263c"/>
+<text x="48" y="66" fill="#9be7ff" font-family="monospace" font-size="15" font-weight="700" letter-spacing="2">POKEROGUE-RS // PORTING ROADMAP</text>
+<text x="48" y="126" fill="#f7f5df" font-family="monospace" font-size="42" font-weight="700">{p}</text>
+<text x="260" y="112" fill="#d5deeb" font-family="monospace" font-size="16">CHECKLIST COMPLETE</text>
+<text x="260" y="134" fill="#91a4bc" font-family="monospace" font-size="13">MILESTONE TASKS · EQUAL WEIGHT</text>
+<g>{tiles}</g>
+<text x="48" y="204" fill="#a5f3a4" font-family="monospace" font-size="14" font-weight="700">{complete} DONE</text>
+<text x="250" y="204" fill="#ffcf70" font-family="monospace" font-size="14" font-weight="700">{remaining} TO GO</text>
+<text x="910" y="204" text-anchor="end" fill="#e3e8ef" font-family="monospace" font-size="14">{len(states)} TOTAL TASKS</text>
+<rect x="48" y="224" width="864" height="2" fill="#364660"/>
+<text x="48" y="254" fill="#91a4bc" font-family="monospace" font-size="12">{visual_cases} AUTOMATED VISUAL SCENES</text>
+<text x="912" y="254" text-anchor="end" fill="#91a4bc" font-family="monospace" font-size="11">CHECKLIST SHARE ≠ GAME PORTING PERCENTAGE</text>
+<text x="48" y="278" fill="#657993" font-family="monospace" font-size="10">PIXEL-ART STATUS CARD · SEE ROADMAP.MD FOR SCOPE AND OPEN MILESTONES</text>
 </svg>
 '''
 
