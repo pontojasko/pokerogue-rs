@@ -1,0 +1,8 @@
+[package]
+name = "pokerogue-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+pokerogue-data = { path = "../pokerogue-data" }

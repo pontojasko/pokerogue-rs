@@ -1,0 +1,9 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed original initRogueModifierPool/initMasterModifierPool and helper callbacks; one reroll-free pass per context
+rogue_ids,ROGUE_BALL|RELIC_GOLD|LEFTOVERS|SHELL_BELL|BERRY_POUCH|GRIP_CLAW|SCOPE_LENS|BATON|SOUL_DEW|CATCHING_CHARM|ABILITY_CHARM|FOCUS_BAND|KINGS_ROCK|LOCK_CAPSULE|SUPER_EXP_CHARM|RARE_FORM_CHANGE_ITEM|MEGA_BRACELET|DYNAMAX_BAND|VOUCHER_PLUS
+master_ids,MASTER_BALL|SHINY_CHARM|HEALING_CHARM|MULTI_LENS|VOUCHER_PREMIUM|DNA_SPLICERS|MINI_BLACK_HOLE
+rogue,classic-wave-1,1,16|2|3|3|4|5|4|2|7|0|6|5|3|0|8|6|9|9|3
+master,classic-wave-1,1,24|14|18|18|5|24|0
+rogue,classic-wave-199,199,0|0|3|3|4|5|4|2|7|0|0|5|3|0|0|24|36|36|3
+master,classic-wave-199,199,0|14|18|18|5|0|0
+rogue,endless-wave-100,100,16|2|3|3|4|5|4|2|7|4|6|5|3|3|8|12|18|18|3
+master,endless-wave-100,100,24|14|18|18|0|24|1

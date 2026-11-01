@@ -1,0 +1,8 @@
+# Executed original sortInSpeedOrder, randSeedShuffle, Pokemon.getStatStageMultiplier, Move.getPriority and MovePhasePriorityQueue.sortPostSpeed under controlled mocks.
+# case,player_speed,enemy_speed,player_priority,enemy_priority,order,shuffle_offset,shuffle_roll
+faster-player,12,9,0,0,player|enemy,1002,1
+slower-player,7,11,0,0,enemy|player,1002,1
+priority-over-speed,7,11,1,0,player|enemy,1002,1
+speed-stages,13,7,0,0,player|enemy,1002,1
+equal-speed-priority,10,10,0,0,player|enemy,1002,1
+equal-speed-priority-reversed-tie,10,10,0,0,enemy|player,1002,0

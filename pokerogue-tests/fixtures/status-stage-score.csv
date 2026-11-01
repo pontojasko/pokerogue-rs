@@ -1,0 +1,11 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed StatStageChangeAttr.getTargetBenefitScore; enemy user targets player; status-only moveset
+# move,stat,target_stage,source_target_score,enemy_ai_score
+GROWL,ATK,-6,2,-2
+GROWL,ATK,0,-2,2
+GROWL,ATK,5,-2,2
+TAIL_WHIP,DEF,-6,0,-20
+TAIL_WHIP,DEF,0,0,-20
+TAIL_WHIP,DEF,5,0,-20
+LEER,DEF,-6,0,-20
+LEER,DEF,0,0,-20
+LEER,DEF,5,0,-20

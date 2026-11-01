@@ -1,0 +1,3 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0;scenario,initial_level,initial_exp,awarded_exp,final_level,final_exp,parent_started,queued_phase,phase_ended
+# scenario,initial_level,initial_exp,awarded_exp,final_level,final_exp,parent_started,queued_phase,phase_ended
+exp-phase-level-up,5,128,319,8,447,1,LevelUpPhase:1:5:8,1

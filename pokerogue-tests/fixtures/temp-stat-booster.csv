@@ -1,0 +1,7 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes TempStatStageBoosterModifier.apply and LapsingPersistentModifier lapse/reset
+ATK,0.2,2,2.2,true,true,false,5
+DEF,0.2,2,2.2,true,true,false,5
+SPATK,0.2,2,2.2,true,true,false,5
+SPDEF,0.2,2,2.2,true,true,false,5
+SPD,0.2,2,2.2,true,true,false,5
+ACC,1,2,3,true,true,false,5

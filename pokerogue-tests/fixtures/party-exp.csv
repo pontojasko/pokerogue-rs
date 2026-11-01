@@ -1,0 +1,7 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original BattleScene.applyPartyExp with controlled EXP Share and records friendship calls; phase queue order is captured
+# scenario,raw_exp,participant_ids,party_hp_levels,queued_phase_index_exp,friendship_member_amounts
+two-participants-one-at-cap,1001,1|2,20:10|20:5,1:500,0:3|1:3
+one-participant,1001,1,20:5|20:5,0:1001,0:3
+exp-share-one-stack,1001,1,20:5|20:5,0:1001|1:200,0:3
+exp-share-five-stacks-two-participants,1001,1|2,20:5|20:5|20:5,0:500|1:500|2:500,0:3|1:3
+no-defeat-no-friendship,1001,1,20:5,0:1001,-

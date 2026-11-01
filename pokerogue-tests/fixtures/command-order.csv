@@ -1,0 +1,5 @@
+# Executed TurnStartPhase.getCommandOrder from original/src/phases/turn-start-phase.ts.
+# case,player command,enemy command,order
+player-switch-vs-enemy-fight,POKEMON,FIGHT,player>enemy
+player-fight-vs-enemy-switch,FIGHT,POKEMON,enemy>player
+fight-vs-fight-stable-field-order,FIGHT,FIGHT,player>enemy

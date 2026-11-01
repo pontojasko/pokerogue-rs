@@ -1,0 +1,7 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original initUltraModifierPool and all callbacks with controlled party predicates
+ultra_ids,ULTRA_BALL|MAX_LURE|BIG_NUGGET|PP_MAX|MINT|RARE_EVOLUTION_ITEM|FORM_CHANGE_ITEM|AMULET_COIN|EVIOLITE|RARE_SPECIES_STAT_BOOSTER|LEEK|TOXIC_ORB|FLAME_ORB|MYSTICAL_ROCK|REVIVER_SEED|CANDY_JAR|ATTACK_TYPE_BOOSTER|TM_ULTRA|RARER_CANDY|GOLDEN_PUNCH|IV_SCANNER|EXP_CHARM|EXP_SHARE|TERA_ORB|QUICK_CLAW|WIDE_LENS
+ultra,classic-wave-1-eligible,1,15|4|12|3|4|4|6|3|10|12|12|0|0|0|4|5|9|11|4|2|4|8|10|0|3|7
+ultra,classic-wave-1-ultra-balls-capped,1,0|4|12|3|4|4|6|3|10|12|12|0|0|0|4|5|9|11|4|2|4|8|10|0|3|7
+ultra,classic-wave-199-capped,199,0|0|0|3|4|32|24|0|10|12|12|0|0|0|4|0|9|11|4|0|0|0|0|0|3|7
+ultra,endless-wave-100-locked-challenge,100,15|4|12|3|4|28|12|3|0|12|12|0|0|0|4|5|9|11|4|2|4|8|10|4|3|7
+ultra,mini-run-wave-19,19,15|4|12|3|4|8|6|3|0|12|0|0|0|0|4|5|9|11|4|2|4|8|10|0|3|7

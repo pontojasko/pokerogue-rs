@@ -1,0 +1,3 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed getNextMove fallback object; metadata parsed from move.ts declaration
+fallback,165,IGNORE_PP,targets:165
+move,STRUGGLE,50,-1,1,-1,0,1,0.25,TYPELESS

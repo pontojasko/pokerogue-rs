@@ -1,0 +1,4 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original Pokemon.addExp and LevelUpPhase.start (calls calculateStats; SKIP notifications, no modifiers, zero IV, neutral nature)
+# scenario,species,start_level,start_exp,amount,start_hp,final_level,final_exp,start_stats,final_stats,final_hp,parent_started,phase_ended,highest_level,validated_level
+single-level,BULBASAUR,5,128,75,16,6,203,19|9|9|11|11|9,21|10|10|12|12|10,18,1,1,6,6
+multi-level,CHARMANDER,5,128,319,15,8,447,18|10|9|11|10|11,24|13|11|14|13|15,21,1,1,8,8

@@ -1,0 +1,5 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original getLevelMoves/getPrevolutionMoves/filterAndSortLevelMoves; registry chain is pinned Silcoon→Wurmple
+# species,starting_level,current_level,level_move_candidates
+SILCOON,1,1,1:TACKLE:6|1:STRING_SHOT:6
+SILCOON,5,5,5:POISON_STING:6
+SILCOON,15,15,15:BUG_BITE:6

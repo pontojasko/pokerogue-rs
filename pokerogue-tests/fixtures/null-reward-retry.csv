@@ -1,0 +1,3 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes getNewModifierTypeOption; COMMON pool indexes 0 and 9 weighted equally; index 9 generator returns null for empty compatible TMs
+null-retry,NullRetrySeed0003,1024:0:407|2:0:1|2:0:0,POKEBALL,0
+stepdown,NullStepdown0003,1024:0:236,POKEBALL,100

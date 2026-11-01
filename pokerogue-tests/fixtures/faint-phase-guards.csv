@@ -1,0 +1,4 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; actual MovePhase.start inactive guard and TurnEndPhase.start executed with no active battlers or status hooks
+# scenario,parent_started,move_phase_ended,turn,turn_end_event_turn,queue_clears,ability_bar_hides,phase_ended
+inactive-move,1,1,-,-,-,-,-
+turn-end,-,-,2,2,1,1,1

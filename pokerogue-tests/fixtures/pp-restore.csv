@@ -1,0 +1,6 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed PokemonPpRestoreModifier.apply and PokemonAllMovePpRestoreModifier.apply; PP Ups excluded
+single,30,10,20
+single,0,10,0
+single,35,-1,0
+all,30|0,10,20|0
+all,30|25,-1,0|0

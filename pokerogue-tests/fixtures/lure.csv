@@ -1,0 +1,6 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes LapsingPersistentModifier.lapse/resetBattleCount; BattleEndPhase lapse point source-inspected
+lapse,10,9,1
+lapse,6,5,1
+lapse,2,1,1
+lapse,1,0,0
+refresh,6,10

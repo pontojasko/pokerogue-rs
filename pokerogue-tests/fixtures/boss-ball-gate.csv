@@ -1,0 +1,10 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes exact boss condition/rejection branch extracted from CommandPhase.handleBallCommand; no Phaser phase queue
+# scenario,segment,cursor,final_boss,challenge,daily_boss,wonder_guard,allowed,message,rng_draws
+ordinary-boss-shield,1,0,0,0,0,0,0,battle:noPokeballStrong,
+ordinary-boss-last-segment,0,0,0,0,0,0,1,-,
+ordinary-master-exception,1,4,0,0,0,0,1,-,
+final-boss-pokeball,1,0,1,0,0,0,0,battle:noPokeballForceFinalBossCatchable,
+final-boss-master-no-challenge,1,4,1,0,0,0,1,-,
+final-boss-master-challenge,1,4,1,1,0,0,0,battle:noPokeballForceFinalBossCatchable,
+daily-boss-master,1,4,0,0,1,0,0,battle:noPokeballStrong,
+wonder-guard-exception,1,0,0,0,0,1,1,-,

@@ -1,0 +1,106 @@
+<!doctype html><meta charset="utf-8"><title>Local source harness — bounded Town field</title>
+<style>html,body{margin:0;background:black;overflow:hidden}@font-face{font-family:emerald;src:url('/original/assets/fonts/pokemon-emerald-pro.ttf')}canvas{display:block;image-rendering:pixelated}</style>
+<script src="/original/node_modules/phaser/dist/phaser.js"></script>
+<script>
+(async()=>{
+try {
+ const fixture = new URLSearchParams(location.search).get('scene') || 'battle-town';
+ if(!/^[a-z0-9-]+$/.test(fixture)) throw Error('Invalid fixture name');
+ const f = await (await fetch(`/tools/visual/scenes/${fixture}.json`)).json();
+ if(!['settled','entry'].includes(f.phase)) throw Error('Unsupported phase');
+ const assets='/original/assets/images/';
+ await document.fonts.load('72px emerald');
+ class VisualScene extends Phaser.Scene {
+  preload(){
+   this.load.on('loaderror',file=>{window.visualError='Missing local asset: '+file.url;});
+   for(const key of ['bg','a','b']) this.load.image('town_'+key,assets+'arenas/town_'+key+'.png');
+   if(f.scope!=='field'){
+    for(const key of ['pbinfo_player','pbinfo_enemy_mini','pbinfo_enemy_boss','overlay_exp'])this.load.image(key,assets+'ui/'+key+'.png');
+    for(const key of ['overlay_hp','overlay_hp_boss','numbers'])this.load.multiatlas(key,assets+'ui/'+key+'.json',assets+'ui/');
+    for(const key of ['overlay_lv','overlay_hp_label','overlay_exp_label'])this.load.image(key,assets+'ui/text_images/en/battle_ui/'+key+'.png');
+    this.load.image('window_1',assets+'ui/windows/window_1.png');
+   }
+   if(f.scope==='attack') this.load.spritesheet('anim-strike','/original/assets/images/battle_anims/PRAS- Strike.png',{frameWidth:96,frameHeight:96});
+   if(f.scope==='capture') this.load.multiatlas('pb',assets+'pb.json',assets);
+   // ArenaBase constructor starts with plains placeholders; Town replaces them below.
+   this.load.image('plains_a',assets+'arenas/town_a.png');
+   this.load.image('plains_b',assets+'arenas/town_b.png');
+   this.load.multiatlas('player', assets+`pokemon/back/${f.player.species}.json`,assets+'pokemon/back/');
+   this.load.multiatlas('enemy', assets+`pokemon/${f.enemy.species}.json`,assets+'pokemon/');
+  }
+  create(){
+   this.add.image(0,0,'town_bg').setOrigin(0).setScale(3);
+   window.visualScene=this;
+   this.addFieldSprite=(x,y,key,frame)=>this.add.sprite(x,y,key,frame);
+   this.executeWithSeedOffset=fn=>fn();
+   this.currentBattle={waveIndex:1};
+   const script=document.createElement('script');script.src='/arena-source.js';
+   script.onload=async()=>{
+    try {
+     const p = f.phase==='entry' ? Math.min(1,f.time_ms/2000) : 1;
+     const arenaPlayer=new window.ArenaBase(true);arenaPlayer.setBiome(0,0);
+     const arenaEnemy=new window.ArenaBase(false);arenaEnemy.setBiome(0,0);
+     this.add.existing(arenaPlayer);this.add.existing(arenaEnemy);
+     arenaPlayer.setPosition(300*(1-p)*3,0).setScale(3);
+     arenaEnemy.setPosition((-280+300*p)*3,0).setScale(3);
+     // Pokemon source: constructors (106,148)/(236,84), origin (.5,1), 10 fps.
+     for(const [key,x,y,dx] of [['player',106,148,300*(1-p)],['enemy',236,84,-300*(1-p)]]) {
+      const frames=this.textures.get(key).getFrameNames().sort();
+      const frame=frames[Math.floor(f.time_ms/100)%frames.length];
+      this.add.sprite((x+dx)*3,y*3,key,frame).setOrigin(.5,1).setScale(3);
+     }
+     if(f.scope==='attack'){
+      await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='/anim-source.js';s.onload=resolve;s.onerror=reject;document.head.append(s);});
+      const animation=await (await fetch('/original/assets/battle-anims/tackle.json')).json();
+      const frames=window.SourceAnim.project(animation.frames);
+      const index=Math.floor(f.time_ms/f.attack.frame_ms);
+      const frame=frames[index];
+      if(frame?.visible){this.add.sprite(frame.x*3,frame.y*3,'anim-strike',frame.frame).setOrigin(.5).setScale(frame.scaleX*3,frame.scaleY*3).setAngle(frame.angle).setAlpha(frame.opacity/255);}
+     }
+     if(f.scope==='capture'){
+      await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='/capture-source.js';s.onload=resolve;s.onerror=reject;document.head.append(s);});
+      const pose=window.SourceCapture.throwPose(f.capture.time_ms);
+      this.add.image(pose.x*3,pose.y*3,'pb',pose.frame).setOrigin(pose.originX,pose.originY).setScale(3);
+     }
+     if(f.scope!=='field'){
+      this.scaledCanvas={width:320,height:180};
+      this.getMaxExpLevel=()=>100;
+      // Original extension's source formula; hidden overlay anchors do not render.
+      for(const cls of [Phaser.GameObjects.Container,Phaser.GameObjects.Sprite,Phaser.GameObjects.Image,Phaser.GameObjects.Text])cls.prototype.setPositionRelative=function(guide,x,y){return this.setPosition(guide.x-guide.width*guide.originX+x,guide.y-guide.height*guide.originY+y);};
+      await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='/ui-source.js';s.onload=resolve;s.onerror=reject;document.head.append(s);});
+      const ui=window.SourceUI;
+      for(const [key,Class,dx] of [['player',ui.PlayerBattleInfo,300*(1-p)],['enemy',ui.EnemyBattleInfo,-300*(1-p)]]){
+       const info=new Class();this.add.existing(info);
+       const state=f[key];const name=key==='player'?'Bulbasaur':'Charmander';
+       info.updateNameText({getNameToRender:()=>name,summonData:{},gender:0,isShiny:()=>false,level:state.level});
+       info.setLevelDisplay(state.level);
+       info.hpBar.setFrame(state.hp/state.max_hp>.5?'high':state.hp/state.max_hp>.25?'medium':'low').setScale(state.hp/state.max_hp,1);
+       if(key==='player')info.setHpNumbers(state.hp,state.max_hp);
+       info.setPosition((info.x+dx)*3,(180+info.y)*3).setScale(3).setVisible(true);
+      }
+      if(f.scope==='moves'){
+       const handler=Object.create(ui.FightUiHandler.prototype);
+       // Match the original scaled battle UI root and source menu window.
+       const uiRoot=this.add.container(0,540).setScale(3);
+       uiRoot.add(ui.addWindow(0,-48,243,48));
+       uiRoot.add(ui.addWindow(240,-48,80,48));
+       handler.movesContainer=this.add.container(18,-38.7);
+       uiRoot.add(handler.movesContainer);
+       const moveData={VineWhip:['Vine Whip','Grass',45,100,25],Tackle:['Tackle','Normal',40,100,35],Ember:['Ember','Fire',40,100,25],Growl:['Growl','Normal',-1,100,40]};
+       const moves=f.player_moves.map(id=>moveData[id]);
+       const pokemon={getMoveset:()=>moves.map(([name,type,power,accuracy,pp])=>({getName:()=>name,getMove:()=>({name,category:power<0?2:0,power,accuracy}),getMovePp:()=>pp,ppUsed:0})),getOpponents:()=>[]};
+       this.phaseManager={getCurrentPhase:()=>({getPokemon:()=>pokemon})};
+       handler.displayMoves();
+      }
+     }
+     // Full BattleScene/PhaseManager is not bootstrapped; these are isolated UI classes.
+     this.game.events.once('postrender',()=>{window.visualReady={fixture:f,mode:'source-harness',sourceExecuted:['ArenaBase.constructor','ArenaBase.setBiome',...(f.scope!=='field'?['BattleInfo.constructor','PlayerBattleInfo.constructor','EnemyBattleInfo.constructor','BattleInfo.updateNameText','BattleInfo.setLevelDisplay','PlayerBattleInfo.setHpNumbers',...(f.scope==='moves'?['FightUiHandler.displayMoves']:[]),...(f.scope==='attack'?['BattleAnim.getGraphicFrameData']:[]),...(f.scope==='capture'?['AttemptCapturePhase.start']:[])]:[])],limitations:['No full BattleScene/Pokemon/PhaseManager; attack uses original Tackle JSON, 50ms frame timing and original BattleAnim coordinate projector but does not execute MovePhase/MoveEffectPhase; capture executes only original AttemptCapturePhase.start with deterministic collaborators and stops before delayed callbacks or capture resolution; hidden HUD overlays and identity/type icons stubbed; no audio or official services']};});
+    }catch(e){window.visualError=e.stack;}
+   };
+   document.head.append(script);
+  }
+ }
+ new Phaser.Game({type:Phaser.WEBGL,width:960,height:540,pixelArt:true,roundPixels:true,antialias:false,backgroundColor:'#000000',audio:{noAudio:true},scene:VisualScene,banner:false});
+}catch(e){window.visualError=e.stack;}
+})();
+</script>

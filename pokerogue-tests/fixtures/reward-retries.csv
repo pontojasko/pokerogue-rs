@@ -1,0 +1,13 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed retry method, no challenges; generator mocked with controlled candidate sequence
+retry,empty,3,-,A:-:0:0,A:-:0:0,-:-:1
+retry,same_name,15,A:balls:0:0,A:other:1:2|B:heal:1:2,B:heal:1:2,-:-:1|1:2:1
+retry,same_group,15,A:heal:0:0,B:heal:2:1|C:balls:2:1,C:balls:2:1,-:-:1|2:1:1
+retry,undefined_group,15,A:-:0:0,B:-:1:0|C:heal:1:0,C:heal:1:0,-:-:1|1:0:1
+retry,retry_limit,3,A:heal:0:0,B:heal:0:0,B:heal:0:0,-:-:1|0:0:1|0:0:1
+retry,limit_one,1,A:heal:0:0,B:heal:0:0,B:heal:0:0,-:-:1
+retry,distinct,15,A:heal:0:0,B:balls:0:0,B:balls:0:0,-:-:1
+cap,-,0,0,6
+cap,2:2,0,0,0
+cap,2:2|1:2,0,0,6
+cap,2:2,1,0,6
+cap,2:2,0,1,6

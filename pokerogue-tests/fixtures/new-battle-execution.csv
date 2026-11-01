@@ -1,0 +1,9 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes BattleScene.newBattle, getNewBattleProps, resetSeed, handleNonFixedBattle, executeWithSeedOffset and shiftCharCodes; Battle/checkIsDouble/mystery/cleanup collaborators controlled
+# previous_wave,new_wave,battle_type,double,turn,wave_seed,offset_rng_seed,final_rng_state,call_trace
+0,1,WILD,0,1,NjojSvoUpxoTffe1112,Vrwr[~w]xw\nnm999:,NjojSvoUpxoTffe1112,sow:NjojSvoUpxoTffe1112|sow:Vrwr[~w]xw\nnm999:|construct:1:WILD:0|turn:1
+1,2,WILD,0,1,OkpkTwpVqypUggf2223,_{{dfewwvBBBC,OkpkTwpVqypUggf2223,sow:OkpkTwpVqypUggf2223|sow:_{{dfewwvBBBC|construct:2:WILD:0|turn:1|cleanup:100
+8,9,WILD,0,1,Vrwr[~w]xw\nnm999:,º¿º£Æ¿¥ÀÈ¿¤¶¶µ,Vrwr[~w]xw\nnm999:,sow:Vrwr[~w]xw\nnm999:|sow:º¿º£Æ¿¥ÀÈ¿¤¶¶µ|construct:9:WILD:0|turn:1|cleanup:100
+9,10,WILD,0,1,Wsxs\x^yx]oon:::;,§ÃÈÃ¬ÏÈ®ÉÑÈ­¿¿¾,Wsxs\x^yx]oon:::;,sow:Wsxs\x^yx]oon:::;|sow:§ÃÈÃ¬ÏÈ®ÉÑÈ­¿¿¾|construct:10:WILD:0|turn:1|cleanup:100
+10,11,WILD,0,1,Xtyt]y_zy^ppo;;;<,°ÌÑÌµØÑ·ÒÚÑ¶ÈÈÇ,Xtyt]y_zy^ppo;;;<,sow:Xtyt]y_zy^ppo;;;<|sow:°ÌÑÌµØÑ·ÒÚÑ¶ÈÈÇ|construct:11:WILD:0|turn:1|cleanup:100
+19,20,WILD,0,1,a}}fhgyyxDDDE,āĝĢĝĆĩĢĈģīĢćęęĘäääå,a}}fhgyyxDDDE,sow:a}}fhgyyxDDDE|sow:āĝĢĝĆĩĢĈģīĢćęęĘäääå|construct:20:WILD:0|turn:1|cleanup:100
+20,21,WILD,0,1,b~~gihzzyEEEF,ĊĦīĦďĲīđĬĴīĐĢĢġíííî,b~~gihzzyEEEF,sow:b~~gihzzyEEEF|sow:ĊĦīĦďĲīđĬĴīĐĢĢġíííî|construct:21:WILD:0|turn:1|cleanup:100

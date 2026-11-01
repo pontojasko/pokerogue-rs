@@ -1,0 +1,10 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original getMaxExpLevel and Pokemon.addExp; Classic difficulty wave mapping
+# scenario,wave,override,ignore,cap,growth,level,initial_exp,amount,final_level,final_exp
+wave-1-cap,1,0,0,10,MEDIUM_FAST,5,125,91,6,216
+wave-10-cap,10,0,0,10,MEDIUM_SLOW,5,128,75,6,203
+wave-11-cap,11,0,0,16,MEDIUM_FAST,5,125,91,6,216
+wave-20-cap,20,0,0,16,MEDIUM_SLOW,5,128,75,6,203
+override-cap,11,7,0,7,MEDIUM_FAST,5,125,91,6,216
+ignore-cap,11,0,1,9007199254740991,MEDIUM_SLOW,5,128,75,6,203
+at-cap-clips-exp,1,0,0,10,MEDIUM_FAST,5,125,1000,10,1000
+level-100-clips-exp,20,100,0,100,MEDIUM_FAST,99,970299,1000000,100,1000000

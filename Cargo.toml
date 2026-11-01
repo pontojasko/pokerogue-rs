@@ -1,0 +1,8 @@
+[workspace]
+resolver = "2"
+members = ["pokerogue-core", "pokerogue-data", "pokerogue-client", "pokerogue-tests"]
+
+[workspace.package]
+edition = "2024"
+license = "AGPL-3.0-only"
+version = "0.1.0"

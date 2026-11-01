@@ -1,0 +1,22 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes NewBattlePhase.start and BattleScene.getNewBattleProps default path
+# current_wave,next_wave,battle_type,phase_calls
+1,2,WILD,remove:NewBattlePhase|newBattle|end
+2,3,WILD,remove:NewBattlePhase|newBattle|end
+3,4,WILD,remove:NewBattlePhase|newBattle|end
+4,5,WILD,remove:NewBattlePhase|newBattle|end
+5,6,WILD,remove:NewBattlePhase|newBattle|end
+6,7,WILD,remove:NewBattlePhase|newBattle|end
+7,8,WILD,remove:NewBattlePhase|newBattle|end
+8,9,WILD,remove:NewBattlePhase|newBattle|end
+9,10,WILD,remove:NewBattlePhase|newBattle|end
+10,11,WILD,remove:NewBattlePhase|newBattle|end
+11,12,WILD,remove:NewBattlePhase|newBattle|end
+12,13,WILD,remove:NewBattlePhase|newBattle|end
+13,14,WILD,remove:NewBattlePhase|newBattle|end
+14,15,WILD,remove:NewBattlePhase|newBattle|end
+15,16,WILD,remove:NewBattlePhase|newBattle|end
+16,17,WILD,remove:NewBattlePhase|newBattle|end
+17,18,WILD,remove:NewBattlePhase|newBattle|end
+18,19,WILD,remove:NewBattlePhase|newBattle|end
+19,20,WILD,remove:NewBattlePhase|newBattle|end
+20,21,WILD,remove:NewBattlePhase|newBattle|end

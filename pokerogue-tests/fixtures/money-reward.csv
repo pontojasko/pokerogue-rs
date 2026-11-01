@@ -1,0 +1,16 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original BattleScene.getWaveMoneyAmount/addMoney and MoneyRewardModifier.apply
+# scenario,wave,multiplier,initial_money,reward_amount,final_money
+wave-1,1,1,0,180,180
+wave-10,10,1,0,270,270
+wave-11,11,1,0,290,290
+wave-20,20,1,0,380,380
+wave-19,19,1,0,370,370
+wallet-cap,1,1,9007199254740986,180,9007199254740991
+big-nugget-wave-1,1,2.5,0,460,460
+big-nugget-wave-19,19,2.5,0,930,930
+big-nugget-wave-20,20,2.5,0,960,960
+big-nugget-wallet-cap,1,2.5,9007199254740986,460,9007199254740991
+money_modifier,0,100,100
+money_modifier,1,100,120
+money_modifier,2,155,217
+money_modifier,5,100,200

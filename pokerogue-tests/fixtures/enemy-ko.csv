@@ -1,0 +1,6 @@
+# Executed extracted original AI prefilter and damage base/final formulas with controlled no-ability/no-attribute battlers.
+# scenario,seed,target_hp,damages,ko_moves,candidates,scores,rng_calls,chosen
+full-hp-none-ko,ParitySeed000000,19,ember:15|tackle:5,none,Ember|Tackle,Ember:30|Tackle:8,8:4,ember
+above-ember-boundary,ParitySeed000000,16,ember:15|tackle:5,none,Ember|Tackle,Ember:30|Tackle:8,8:4,ember
+ember-exact-ko-boundary,ParitySeed000000,15,ember:15|tackle:5,ember,Ember,Ember:30,none,ember
+both-exact-ko-boundary,ParitySeed000000,5,ember:15|tackle:5,ember|tackle,Ember|Tackle,Ember:30|Tackle:8,8:4,ember

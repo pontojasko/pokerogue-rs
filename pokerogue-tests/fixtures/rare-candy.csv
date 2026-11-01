@@ -1,0 +1,10 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed PokemonLevelIncrementModifier.apply and Pokemon.addFriendship; starter-candy/phase callbacks stubbed
+MEDIUM_SLOW,5,128,6,203,["LevelUpPhase",0,5,6]
+MEDIUM_SLOW,25,14360,26,16222,["LevelUpPhase",0,25,26]
+MEDIUM_SLOW,98,958689,99,988760,["LevelUpPhase",0,98,99]
+MEDIUM_SLOW,99,988760,100,1019454,["LevelUpPhase",0,99,100]
+friendship,50,6,1,56
+friendship,194,6,1,200
+friendship,198,6,1,200
+friendship,200,6,1,200
+friendship,254,6,1,254

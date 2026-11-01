@@ -1,0 +1,4 @@
+# Executed the extracted player-team decision branch from original FaintPhase.doFaint.
+# scenario,queued_operation,phase,switch_type,field_index,modal,do_return
+no-legal-reserve,unshift,GameOverPhase,none,none,none,none
+healthy-reserve,push,SwitchPhase,SWITCH,0,true,false

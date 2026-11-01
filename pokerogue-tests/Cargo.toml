@@ -1,0 +1,12 @@
+[package]
+name = "pokerogue-tests"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+pokerogue-core = { path = "../pokerogue-core" }
+pokerogue-data = { path = "../pokerogue-data" }
+
+[lib]
+path = "src/lib.rs"

@@ -1,0 +1,16 @@
+/target/
+/artifacts/
+/tools/visual/node_modules/
+/visual-artifacts/
+/visual-harness/node_modules/
+/visual-harness/.cache/
+/visual-harness/dist/
+
+/tools/visual/runtime/
+/scripts/__pycache__/
+__pycache__/
+*.py[cod]
+/.env
+/.env.*
+*.sav
+*.log

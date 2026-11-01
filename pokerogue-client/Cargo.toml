@@ -1,0 +1,11 @@
+[package]
+name = "pokerogue-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+macroquad = "0.4"
+pokerogue-core = { path = "../pokerogue-core" }
+pokerogue-data = { path = "../pokerogue-data" }
+serde_json = "1.0"

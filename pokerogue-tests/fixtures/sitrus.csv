@@ -1,0 +1,11 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed pinned Sitrus predicate and effect; PokemonHealPhase creation captured
+predicate,100,50,false
+predicate,100,49,true
+predicate,42,21,false
+predicate,42,20,true
+predicate,1,1,false
+predicate,1,0,true
+effect,1,PokemonHealPhase,1
+effect,4,PokemonHealPhase,1
+effect,42,PokemonHealPhase,10
+effect,43,PokemonHealPhase,10

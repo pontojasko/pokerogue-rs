@@ -1,0 +1,6 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed AddPokeballModifier.apply
+# ball,count_before,added,expected
+GREAT_BALL,0,5,5
+GREAT_BALL,97,5,99
+ULTRA_BALL,0,5,5
+ULTRA_BALL,97,5,99

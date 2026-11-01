@@ -1,0 +1,5 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes original PokemonMove.usePp; PP Ups/max overrides excluded
+use,0,1,35,1
+use,34,2,35,35
+use,24,5,25,25
+use,25,1,25,25

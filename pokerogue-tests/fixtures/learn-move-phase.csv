@@ -1,0 +1,8 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes LearnMovePhase.start and Pokemon.setMove bodies with narrow boundaries stubbed
+case,known_moves,new_move,unimplemented,phase_calls
+empty-slot,TACKLE|GROWL,VINE_WHIP,0,super|mode|learn:2
+duplicate-move,TACKLE|GROWL,GROWL,0,super|end
+full-moveset,TACKLE|GROWL|VINE_WHIP|LEECH_SEED,RAZOR_LEAF,0,super|mode|replace
+unimplemented,TACKLE,UNIMPLEMENTED_MOVE,1,super|end
+set-move,2,BEAT_UP,TACKLE|GROWL|BEAT_UP|LEECH_SEED
+set-move-none,2,NONE,TACKLE|GROWL|VINE_WHIP|LEECH_SEED

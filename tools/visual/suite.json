@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "scene": "battle-town",
+      "max_parity_ratio": 0.0005
+    },
+    {
+      "scene": "battle-town-frame-3",
+      "max_parity_ratio": 0.0005
+    },
+    {
+      "scene": "battle-town-mid-entry",
+      "max_parity_ratio": 0.0005
+    },
+    {
+      "scene": "battle-town-hud",
+      "max_parity_ratio": 0.01
+    },
+    {
+      "scene": "battle-town-hud-damaged",
+      "max_parity_ratio": 0.01
+    },
+    {
+      "scene": "battle-town-moves",
+      "max_parity_ratio": 0.02,
+      "coverage": "shared Vine Whip/Tackle fixture; actual original FightUiHandler.displayMoves and Rust move-name layout"
+    },
+    {
+      "scene": "battle-town-attack",
+      "max_parity_ratio": 0.025,
+      "coverage": "shared Town HUD and Tackle frame at 100 ms; original BattleAnim graphic projection plus source JSON and spritesheet"
+    },
+    {
+      "scene": "battle-town-capture",
+      "max_parity_ratio": 0.01,
+      "coverage": "same Poké Ball, position, 250 ms frame, and HUD; original AttemptCapturePhase.start throw tween"
+    },
+    {
+      "scene": "battle-town-ui",
+      "coverage": "diagnostic: full Rust UI; original menus still pending"
+    }
+  ]
+}

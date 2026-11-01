@@ -1,0 +1,2 @@
+[alias]
+parity = "test -p pokerogue-tests"

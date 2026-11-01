@@ -1,0 +1,3 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes ExpPhase.start, LevelUpPhase.end, PhaseManager queue methods and original PhaseTree FIFO; source applyPartyExp supplies EXP phase order
+# last_level,learnable_moves_in_source_order,phase_tree_learn_order,prevolution_message,two_member_nested_phase_order
+5,LEECH_SEED|GROWTH|POISON_POWDER|SLEEP_POWDER,LEECH_SEED|GROWTH|POISON_POWDER|SLEEP_POWDER,battle:prevoMovePrompt:Bug Bite,learn:0:POISON_POWDER|learn:0:SLEEP_POWDER|message:Silcoon:Bug Bite

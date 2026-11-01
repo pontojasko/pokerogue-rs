@@ -1,0 +1,22 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes VictoryPhase.start, original PhaseManager.pushNew/pushPhase methods and PhaseTree for Classic wild victory; constructors/dynamic scheduling stubbed
+# wave,queued_phases
+1,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+2,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+3,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+4,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+5,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+6,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+7,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+8,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+9,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+10,BattleEndPhase:true|EggLapsePhase|ModifierRewardPhase:EXP_CHARM|ModifierRewardPhase:EXP_CHARM|NewBattlePhase|END
+11,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+12,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+13,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+14,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+15,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+16,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+17,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+18,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+19,BattleEndPhase:true|EggLapsePhase|SelectModifierPhase|NewBattlePhase|END
+20,BattleEndPhase:true|EggLapsePhase|ModifierRewardPhase:SUPER_EXP_CHARM|NewBattlePhase|END

@@ -1,0 +1,10 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executed initGreatModifierPool and weight callbacks; controlled Classic contexts
+great_ids,GREAT_BALL|PP_UP|FULL_HEAL|REVIVE|MAX_REVIVE|SACRED_ASH|HYPER_POTION|MAX_POTION|FULL_RESTORE|ELIXIR|MAX_ELIXIR|DIRE_HIT|SUPER_LURE|NUGGET|SPECIES_STAT_BOOSTER|EVOLUTION_ITEM|MAP|SOOTHE_BELL|TM_GREAT|MEMORY_MUSHROOM|BASE_STAT_BOOSTER|TERA_SHARD|DNA_SPLICERS|VOUCHER
+great,fresh-wave-1,1,6|2|0|0|0|0|0|0|0|0|0|4|4|5|2|1|2|2|3|1|3|1|0|1
+great,damaged-status-faint-wave-180,180,0|2|6|9|3|1|3|1|1|3|1|4|0|5|2|8|0|3|3|4|3|1|0|1
+great,classic-last-wave,199,6|2|0|0|0|0|3|1|0|0|0|4|0|0|2|8|0|2|3|4|3|1|0|1
+great,mini-run-great-recovery-wave-19,19,6|2|0|9|3|1|3|1|0|0|0|4|4|5|2|2|2|2|3|1|3|1|0|1
+great,mini-run-great-elixir-wave-19,19,6|2|0|9|3|1|3|1|0|3|1|4|4|5|2|2|2|2|3|1|3|1|0|1
+great,mini-run-great-full-restore-wave-19,19,6|2|0|0|0|0|6|2|1|0|0|4|4|5|2|2|2|2|3|1|3|1|0|1
+great,mini-run-healthy-wave-19,19,6|2|0|0|0|0|0|0|0|0|0|4|4|5|2|2|2|2|3|0|3|0|0|1
+great,mini-run-live-amulet-wave-19,19,6|2|0|0|0|0|0|0|0|0|0|4|4|5|2|2|2|2|3|1|3|1|0|1

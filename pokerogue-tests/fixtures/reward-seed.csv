@@ -1,0 +1,5 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; executes shiftCharCodes using JS UTF-16 code units
+seed,RewardSeed,1,53|66|78|62|73|65|54|66|66|65
+seed,RewardSeed,5,57|6a|7c|66|77|69|58|6a|6a|69
+seed,MiniRunSeed0000,10,57|73|78|73|5c|7f|78|5d|6f|6f|6e|3a|3a|3a|3a
+seed,A😀Z,10,4b|d847|de0a|64

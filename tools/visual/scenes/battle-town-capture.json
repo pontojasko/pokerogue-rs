@@ -1,0 +1,10 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 250,
+  "player": { "species": 1, "level": 5, "hp": 19, "max_hp": 19 },
+  "enemy": { "species": 4, "level": 5, "hp": 18, "max_hp": 18 },
+  "phase": "settled",
+  "scope": "capture",
+  "capture": { "ball": "POKEBALL", "stage": "throw", "time_ms": 250, "caught": true }
+}

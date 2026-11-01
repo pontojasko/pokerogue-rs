@@ -1,0 +1,10 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; AttemptCapturePhase formulas, getPokeballCatchMultiplier and getCriticalCaptureChance executed with fresh dex/no status/no shiny/no modifiers
+initial_balls,7c0881255af5cd51992e513ff93c2f71adbe40e0,5
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,0,1
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,1,1.5
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,2,2
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,3,3
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,4,-1
+ball_multiplier,7c0881255af5cd51992e513ff93c2f71adbe40e0,5,1
+capture,7c0881255af5cd51992e513ff93c2f71adbe40e0,CaptureOracleSeed00000,1,45,22,44,0,1,1,1,0,30,43875,0,52576,0,I:256:0:108|I:65536:0:52576
+capture,7c0881255af5cd51992e513ff93c2f71adbe40e0,CaptureOracleSeed00004,1,45,22,44,0,1,1,1,0,30,43875,0,2731|20332|18543|34183,1,I:256:0:82|I:65536:0:2731|I:65536:0:20332|I:65536:0:18543|I:65536:0:34183

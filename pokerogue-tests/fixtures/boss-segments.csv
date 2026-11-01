@@ -1,0 +1,6 @@
+# source=7c0881255af5cd51992e513ff93c2f71adbe40e0; BattleScene.getEncounterBossSegments executed; wave10 short-circuit avoids RNG
+boss_segments,10,5,600,0,2
+boss_segments,10,100,600,0,3
+boss_segments,10,5,670,0,3
+boss_segments,20,100,670,0,4
+boss_segments,250,100,670,1,5

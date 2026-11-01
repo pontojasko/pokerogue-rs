@@ -1,0 +1,4 @@
+# Executed original getNextMove with Counter (MoveTarget.ATTACKER) and a counterfactual ordinary-target control.
+# scenario,seed,target_hp,damages,ko_moves,candidates,scores,rng_calls,chosen
+attacker-target-counter-excluded,CounterSeed00000,1,tackle:5,tackle,Tackle,Tackle:8,none,tackle
+counter-mistarget-control,CounterSeed00000,1,counter:1|tackle:5,counter|tackle,Counter|Tackle,Counter:-1|Tackle:8,8:5,counter
