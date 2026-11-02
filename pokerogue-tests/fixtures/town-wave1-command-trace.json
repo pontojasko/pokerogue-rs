@@ -1,0 +1,2321 @@
+{
+  "schema": "pokerust-source-replay/v1",
+  "provenance": {
+    "source_revision": "7c0881255af5cd51992e513ff93c2f71adbe40e0",
+    "asset_revision": "fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba",
+    "phaser_version": "4.2.1",
+    "source_hashes": {
+      "src/battle-scene.ts": "de2809a073c0108b15826727e6ff575a449046a33fe9965bdde0b8a49ce2f1d6",
+      "src/phase-manager.ts": "d6cb5ee4332551272a5de29bf019f9aa689b0fe0cd30d1adeeec18fb09a90f9c",
+      "src/phases/select-starter-phase.ts": "476722c6f99f46c0b55c28b4cba93bcdf10476bb21d752fa3828a2d4eccf5bef",
+      "src/phases/encounter-phase.ts": "c4ae95102d57a039eae46a82f7cfebeb4e20120158424f4f1e87b06dd2aa13e8",
+      "src/ui/handlers/battle-message-ui-handler.ts": "5bcb41e257b818d9acd8bf504666a8172ae5d46b71e82eef68b97da053444bc7",
+      "src/ui/handlers/command-ui-handler.ts": "b6875ca8e1ca0b7d08d9aa4d40cf86779aa2ee37743cac674618a536ecbb20da",
+      "src/ui/handlers/fight-ui-handler.ts": "6f78f2df547fd8b2a0fa9e31b40eb4e7cc7f6e9176efe67fdb88079ad5e71051"
+    }
+  },
+  "scenario": {
+    "seed": "M12TownWave1Replay6",
+    "game_mode": "CLASSIC",
+    "biome": "TOWN",
+    "time_of_day": "DAY",
+    "wave": 1,
+    "starter_input": "Bulbasaur via original starter grid and save-slot UI"
+  },
+  "controlled_collaborators": [
+    "Tutorials suppressed in the isolated browser",
+    "Persistence calls replaced with in-memory success",
+    "One save slot confirmed through original UI"
+  ],
+  "observations": [
+    {
+      "kind": "newBattle.begin",
+      "before": {
+        "seed": "M12TownWave1Replay6",
+        "wave_seed": "M12TownWave1Replay6",
+        "wave_index": 0,
+        "starter_input": [
+          {
+            "speciesId": 1,
+            "abilityIndex": 0,
+            "formIndex": 0,
+            "female": false,
+            "shiny": false,
+            "variant": 0,
+            "ivs": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "nature": 6,
+            "moveset": [
+              33,
+              45,
+              22
+            ],
+            "passive": false,
+            "pokerus": false,
+            "teraType": 11
+          }
+        ],
+        "rng_state": "!rnd,82544,0.14903539675287902,0.03862294345162809,0.5300372370984405",
+        "current_phase": "SelectStarterPhase",
+        "biome": 0,
+        "time_of_day": 1
+      }
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.07700534679185267
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 0.6160427743348214
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        7
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 8,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.23410802704637457
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 14.514697676875222
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 14
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.4068327754454948
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 25.223632077620678
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 25
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.2745452544884296
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 17.021805778282634
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 17
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9805530120063667
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 60.79428674439473
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 60
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8236194804593344
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 51.06440778847873
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 51
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8501069621709905
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 52.70663165460141
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 52
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7600136219701711
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 47.12084456215061
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 47
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.33048890254742513
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 20.490311957940357
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 20
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7947397777992296
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 49.27386622355223
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 49
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.11150214930854918
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 6.913133257130049
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 6
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9481350242262618
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 58.784371502028236
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 58
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.15048143644681344
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 9.329849059702433
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 9
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8710825114607048
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 54.007115710563696
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 54
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.15311895733533287
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 9.493375354790638
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 9
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21836618464047486
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 13.538703447709441
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 13
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.2583473476646154
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 16.017535555206155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 16
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.4402970269760337
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7453761737405157
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.39746865627231176
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7031308079470232
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5620775017468189
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.24026762350083697
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.1672587765222513
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7277113129338507
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.2637849960854418
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.14077352522540088
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8088243509166001
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.027086069005731073
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8659143425240671
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7567249020118308
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6914142044999991
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9719147542294193
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.92461946508948
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5167520710112048
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.046219888093272266
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7297755524795954
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 8,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "newBattle.end",
+      "battle": {
+        "seed": "OZR8z0vUxG6J2JNQ",
+        "wave_index": 1,
+        "battle_type": 0,
+        "double": true,
+        "turn": 1
+      },
+      "rng_state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993",
+      "current_phase": "SelectStarterPhase",
+      "queued_phases": [
+        "EncounterPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "SelectStarterPhase",
+      "queue": [
+        "EncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5636672369173819
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        512
+      ],
+      "value": 288.5976253016995
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        511
+      ],
+      "value": 288
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9993355766347639
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 23.984053839234335
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 23
+    },
+    {
+      "kind": "rng",
+      "method": "pick",
+      "args": [
+        [
+          16,
+          19,
+          21,
+          263,
+          265,
+          276,
+          399,
+          504,
+          506,
+          661,
+          831,
+          915,
+          10,
+          161,
+          165,
+          187,
+          191,
+          266,
+          396,
+          519,
+          546,
+          664,
+          734,
+          819
+        ]
+      ],
+      "value": 819
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,1178988,0.386839150916785,0.9993355765473098,0.37561317277140915"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,1178988,0.386839150916785,0.9993355765473098,0.37561317277140915"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8550589378611608
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        256
+      ],
+      "value": 218.89508809245717
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        255
+      ],
+      "value": 218
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.16156909163617106
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        4294967296
+      ],
+      "value": 693933964.6217818
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        4294967295
+      ],
+      "value": 693933964
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.12959036934494217
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05239433405705385
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        25
+      ],
+      "value": 1.3098583514263462
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 1
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.3618221951258519
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        13049
+      ],
+      "value": 4721.417824197241
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        13048
+      ],
+      "value": 4721
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "stab",
+      "species_id": 819,
+      "level": 2,
+      "candidates": [
+        [
+          33,
+          13049
+        ]
+      ],
+      "total_weight": 13049,
+      "rand": 4721,
+      "selected_id": 33
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46799676595593487
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        13049
+      ],
+      "value": 6106.889798958994
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        13048
+      ],
+      "value": 6106
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "fill",
+      "species_id": 819,
+      "level": 2,
+      "candidates": [
+        [
+          39,
+          13049
+        ]
+      ],
+      "total_weight": 13049,
+      "rand": 6106,
+      "selected_id": 39
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,756801,0.03246468282304704,0.46799676585942507,0.4145068838261068"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,756801,0.03246468282304704,0.46799676585942507,0.4145068838261068"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.3968915218225124
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        512
+      ],
+      "value": 203.20845917312636
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        511
+      ],
+      "value": 203
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7642070676167204
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 18.34096962280129
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 18
+    },
+    {
+      "kind": "rng",
+      "method": "pick",
+      "args": [
+        [
+          16,
+          19,
+          21,
+          263,
+          265,
+          276,
+          399,
+          504,
+          506,
+          661,
+          831,
+          915,
+          10,
+          161,
+          165,
+          187,
+          191,
+          266,
+          396,
+          519,
+          546,
+          664,
+          734,
+          819
+        ]
+      ],
+      "value": 396
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,830153,0.28736125212162733,0.7642070674337447,0.7858752375468612"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,830153,0.28736125212162733,0.7642070674337447,0.7858752375468612"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.002219713597199857
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        256
+      ],
+      "value": 0.5682466808831634
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        255
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.29635944632807787
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        4294967296
+      ],
+      "value": 1272854129.8397617
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        4294967295
+      ],
+      "value": 1272854129
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6764809742979003
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.38425796548568947
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        25
+      ],
+      "value": 9.606449137142237
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 9
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.03017617202053402
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.06035234404106804
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "pick",
+      "args": [
+        [
+          0,
+          2
+        ]
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.772338093644541
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        13049
+      ],
+      "value": 10078.239783967616
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        13048
+      ],
+      "value": 10078
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "stab",
+      "species_id": 396,
+      "level": 2,
+      "candidates": [
+        [
+          33,
+          13049
+        ]
+      ],
+      "total_weight": 13049,
+      "rand": 10078,
+      "selected_id": 33
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9104905944499171
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        13049
+      ],
+      "value": 11880.991766976967
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        13048
+      ],
+      "value": 11880
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "fill",
+      "species_id": 396,
+      "level": 2,
+      "candidates": [
+        [
+          45,
+          13049
+        ]
+      ],
+      "total_weight": 13049,
+      "rand": 11880,
+      "selected_id": 45
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SelectStarterPhase",
+      "current": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.4645454729061044
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        12
+      ],
+      "value": 5.574545674873253
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        11
+      ],
+      "value": 5
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8259451425234616
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        6
+      ],
+      "value": 4.95567085514077
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        5
+      ],
+      "value": 4
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7292303471062481
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.4584606942124962
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6703960515172603
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        18
+      ],
+      "value": 12.067128927310685
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        17
+      ],
+      "value": 12
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9690830461975479
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        18
+      ],
+      "value": 17.443494831555864
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        17
+      ],
+      "value": 17
+    },
+    {
+      "kind": "phase.end",
+      "phase": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "SummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "SummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "SummonPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "EncounterPhase",
+      "current": "SummonPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "SummonPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "InitEncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1003,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.005986237792959592
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        3
+      ],
+      "value": 0.017958713378878777
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.35866748309886265
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.7173349661977253
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1003,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1003,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.005986237792959592
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        3
+      ],
+      "value": 0.017958713378878777
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.35866748309886265
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.7173349661977253
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1003,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5887422926975425
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.177484585395085
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5887422926975425
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.177484585395085
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5887422926975425
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.177484585395085
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5887422926975425
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.177484585395085
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.8213984712492675,0.9564609799999744,0.6647134439554065"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnInitPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnInitPhase",
+      "queue": [
+        "CommandPhase",
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.command-boundary",
+      "player_party": [
+        {
+          "species_id": 1,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 6,
+          "ability_id": 65,
+          "stats": [
+            20,
+            10,
+            10,
+            12,
+            12,
+            10
+          ],
+          "hp": 20,
+          "max_hp": 20,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            },
+            {
+              "id": 22,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            }
+          ]
+        }
+      ],
+      "enemy_party": [
+        {
+          "species_id": 819,
+          "level": 2,
+          "ivs": [
+            20,
+            21,
+            25,
+            5,
+            28,
+            12
+          ],
+          "nature": 1,
+          "ability_id": 167,
+          "stats": [
+            15,
+            8,
+            6,
+            6,
+            6,
+            6
+          ],
+          "hp": 15,
+          "max_hp": 15,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 39,
+              "pp": 30,
+              "pp_used": 0,
+              "max_pp": 30
+            }
+          ]
+        },
+        {
+          "species_id": 396,
+          "level": 2,
+          "ivs": [
+            5,
+            29,
+            28,
+            13,
+            19,
+            17
+          ],
+          "nature": 9,
+          "ability_id": 120,
+          "stats": [
+            13,
+            7,
+            7,
+            6,
+            5,
+            7
+          ],
+          "hp": 13,
+          "max_hp": 13,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnInitPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "InitEncounterPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    }
+  ],
+  "command_boundary_state": {
+    "phase": "CommandPhase",
+    "phase_runtime": {
+      "constructor": "CommandPhase",
+      "init_battle": "undefined",
+      "own_keys": [
+        "phaseName",
+        "fieldIndex",
+        "isSwitch",
+        "__pokerustEndWrapped",
+        "end"
+      ],
+      "prototype_keys": [
+        "constructor",
+        "resetCursorIfNeeded",
+        "handleFieldIndexLogic",
+        "checkCommander",
+        "clearUnusableMoves",
+        "tryExecuteQueuedMove",
+        "start",
+        "queueFightErrorMessage",
+        "computeMoveId",
+        "handleFightCommand",
+        "queueShowText",
+        "checkCanUseBall",
+        "handleBallCommand",
+        "handleTrap",
+        "tryLeaveField",
+        "handleRunCommand",
+        "showNoEscapeText",
+        "handleCommand",
+        "cancel",
+        "getFieldIndex",
+        "getPokemon",
+        "end"
+      ]
+    },
+    "phase_manager": {
+      "keys": [
+        "phaseQueue",
+        "dynamicQueueManager",
+        "currentPhase",
+        "standbyPhase",
+        "pushNew",
+        "unshiftNew",
+        "pushPhase",
+        "unshiftPhase",
+        "startCurrentPhase",
+        "shiftPhase"
+      ],
+      "phase_queue": [
+        "EnemyCommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ],
+      "dynamic_manager": [],
+      "standby": null
+    },
+    "phase_queue": [
+      "EnemyCommandPhase",
+      "EnemyCommandPhase",
+      "TurnStartPhase"
+    ],
+    "ui_mode": 2,
+    "ui_ready": true,
+    "awaiting_action": false,
+    "message_handler": "BattleMessageUiHandler",
+    "ui_handler": "CommandUiHandler",
+    "ui_handler_blocked": false,
+    "ui_handler_tutorial_active": false,
+    "message_text": "What will\nBulbasaur do?",
+    "message_timer": {
+      "delay": 7,
+      "elapsed": 7,
+      "repeat": 14,
+      "repeat_count": 0,
+      "paused": false,
+      "progress": 1
+    },
+    "message_pending_prompt": false,
+    "message_action_callback": false,
+    "message_callback_timer": null,
+    "clock": {
+      "paused": false,
+      "time_scale": 8
+    },
+    "ui_handler_cursor": 0,
+    "starter_count": 1,
+    "starter_ui": {
+      "grid": true
+    },
+    "wave": 1,
+    "biome": 0,
+    "player": {
+      "species_id": 1,
+      "level": 5,
+      "hp": 20,
+      "max_hp": 20,
+      "gender": "male",
+      "moves": [
+        "Tackle",
+        "Growl",
+        "Vine Whip"
+      ]
+    },
+    "enemy": {
+      "species_id": 819,
+      "level": 2,
+      "hp": 15,
+      "max_hp": 15,
+      "gender": "male",
+      "owned_icon": false,
+      "moves": [
+        "Tackle",
+        "Tail Whip"
+      ]
+    },
+    "canvas": {
+      "width": 1920,
+      "height": 1080,
+      "css": {
+        "x": 0,
+        "y": 0,
+        "width": 960,
+        "height": 540,
+        "top": 0,
+        "right": 960,
+        "bottom": 540,
+        "left": 0
+      }
+    },
+    "loader": {
+      "is_loading": false,
+      "progress": 1,
+      "total": 1,
+      "complete": 1
+    }
+  }
+}

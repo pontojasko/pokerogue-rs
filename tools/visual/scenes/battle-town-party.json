@@ -1,0 +1,29 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 0,
+  "player": {
+    "species": 1,
+    "gender": "male",
+    "level": 5,
+    "hp": 12,
+    "max_hp": 20
+  },
+  "enemy": {
+    "species": 4,
+    "gender": "male",
+    "owned_icon": true,
+    "level": 5,
+    "hp": 19,
+    "max_hp": 19
+  },
+  "phase": "settled",
+  "scope": "battle",
+  "ui_state": "party",
+  "player_moves": ["VineWhip", "Tackle"],
+  "enemy_moves": ["Tackle"],
+  "party": [
+    {"hp": 12, "max_hp": 20},
+    {"hp": 19, "max_hp": 19}
+  ]
+}

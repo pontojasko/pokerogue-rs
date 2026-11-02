@@ -30,7 +30,7 @@ export function uiSource() {
  class UiHandler {}
  const settings={isLegacyTheme:false,display:{uiWindowStyle:1}};
  const i18next={resolvedLanguage:'en',t:key=>key};
- const getLocalizedSpriteKey=key=>key; const PokemonType={UNKNOWN:-1};const StatusEffect={NONE:0};
+ const getLocalizedSpriteKey=key=>key; const PokemonType={UNKNOWN:-1,GRASS:12,POISON:3,FIRE:9,12:'GRASS',3:'POISON',9:'FIRE'};const StatusEffect={NONE:0};
  const Gender={GENDERLESS:0};const Stat={HP:0,ATK:1,DEF:2,SPATK:3,SPDEF:4,ACC:5,EVA:6,SPD:7};
  class BattleFlyout extends Phaser.GameObjects.Container {constructor(){super(globalScene,0,0);this.setVisible(false);}}
  `;
@@ -41,7 +41,6 @@ export function uiSource() {
    this.statsContainer=globalScene.add.container(0,0).setVisible(false);this.add(this.statsContainer);
    this.statValuesContainer=globalScene.add.container(0,0);this.statsContainer.add(this.statValuesContainer);
  };
- for(const cls of [PlayerBattleInfo,EnemyBattleInfo]) cls.prototype.constructTypeIcons=function(){this.type1Icon=globalScene.add.container(0,0).setVisible(false);this.add(this.type1Icon);};
  window.SourceUI={PlayerBattleInfo,EnemyBattleInfo,FightUiHandler,addTextObject,TextStyle,addWindow};
  FightUiHandler.prototype.getMoveColor=()=>undefined;
  `;

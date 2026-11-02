@@ -1,0 +1,49 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 6000,
+  "wave": 1,
+  "wave_limit": 10,
+  "money": 1000,
+  "experience": 0,
+  "player": {
+    "species": 1,
+    "gender": "male",
+    "level": 5,
+    "hp": 10,
+    "max_hp": 19
+  },
+  "enemy": {
+    "species": 4,
+    "gender": "male",
+    "level": 5,
+    "hp": 0,
+    "max_hp": 19
+  },
+  "phase": "settled",
+  "scope": "reward",
+  "reward": {
+    "selected": 1,
+    "party_slot": 1,
+    "options": [
+      {
+        "name": "Soothe Bell",
+        "icon": "soothe_bell",
+        "description": "Increases friendship gain by 50%.",
+        "tier": 1
+      },
+      {
+        "name": "PP Up",
+        "icon": "pp_up",
+        "description": "Permanently increases PP for one Pokémon move by 1 for every 5 maximum PP (maximum 3).",
+        "tier": 1
+      },
+      {
+        "name": "TM091 - Sunny Day",
+        "icon": "tm_fire",
+        "description": "Teach Sunny Day to a Pokémon.",
+        "tier": 0
+      }
+    ]
+  }
+}

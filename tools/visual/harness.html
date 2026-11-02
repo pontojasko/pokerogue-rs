@@ -18,6 +18,8 @@ try {
     for(const key of ['pbinfo_player','pbinfo_enemy_mini','pbinfo_enemy_boss','overlay_exp'])this.load.image(key,assets+'ui/'+key+'.png');
     for(const key of ['overlay_hp','overlay_hp_boss','numbers'])this.load.multiatlas(key,assets+'ui/'+key+'.json',assets+'ui/');
     for(const key of ['overlay_lv','overlay_hp_label','overlay_exp_label'])this.load.image(key,assets+'ui/text_images/en/battle_ui/'+key+'.png');
+    for(const key of ['pbinfo_player_type','pbinfo_player_type1','pbinfo_player_type2','pbinfo_enemy_type','pbinfo_enemy_type1','pbinfo_enemy_type2'])this.load.multiatlas(key,assets+'ui/'+key+'.json',assets+'ui/');
+    for(const key of ['types','categories'])this.load.multiatlas(key,assets+key+'.json',assets);
     this.load.image('window_1',assets+'ui/windows/window_1.png');
    }
    if(f.scope==='attack') this.load.spritesheet('anim-strike','/original/assets/images/battle_anims/PRAS- Strike.png',{frameWidth:96,frameHeight:96});
@@ -29,6 +31,7 @@ try {
    this.load.multiatlas('enemy', assets+`pokemon/${f.enemy.species}.json`,assets+'pokemon/');
   }
   create(){
+   const battleInfos={};
    this.add.image(0,0,'town_bg').setOrigin(0).setScale(3);
    window.visualScene=this;
    this.addFieldSprite=(x,y,key,frame)=>this.add.sprite(x,y,key,frame);
@@ -71,8 +74,10 @@ try {
       const ui=window.SourceUI;
       for(const [key,Class,dx] of [['player',ui.PlayerBattleInfo,300*(1-p)],['enemy',ui.EnemyBattleInfo,-300*(1-p)]]){
        const info=new Class();this.add.existing(info);
+       battleInfos[key]=info;
        const state=f[key];const name=key==='player'?'Bulbasaur':'Charmander';
        info.updateNameText({getNameToRender:()=>name,summonData:{},gender:0,isShiny:()=>false,level:state.level});
+       info.setTypes(key==='player'?[12,3]:[9]);
        info.setLevelDisplay(state.level);
        info.hpBar.setFrame(state.hp/state.max_hp>.5?'high':state.hp/state.max_hp>.25?'medium':'low').setScale(state.hp/state.max_hp,1);
        if(key==='player')info.setHpNumbers(state.hp,state.max_hp);
@@ -94,7 +99,7 @@ try {
       }
      }
      // Full BattleScene/PhaseManager is not bootstrapped; these are isolated UI classes.
-     this.game.events.once('postrender',()=>{window.visualReady={fixture:f,mode:'source-harness',sourceExecuted:['ArenaBase.constructor','ArenaBase.setBiome',...(f.scope!=='field'?['BattleInfo.constructor','PlayerBattleInfo.constructor','EnemyBattleInfo.constructor','BattleInfo.updateNameText','BattleInfo.setLevelDisplay','PlayerBattleInfo.setHpNumbers',...(f.scope==='moves'?['FightUiHandler.displayMoves']:[]),...(f.scope==='attack'?['BattleAnim.getGraphicFrameData']:[]),...(f.scope==='capture'?['AttemptCapturePhase.start']:[])]:[])],limitations:['No full BattleScene/Pokemon/PhaseManager; attack uses original Tackle JSON, 50ms frame timing and original BattleAnim coordinate projector but does not execute MovePhase/MoveEffectPhase; capture executes only original AttemptCapturePhase.start with deterministic collaborators and stops before delayed callbacks or capture resolution; hidden HUD overlays and identity/type icons stubbed; no audio or official services']};});
+     this.game.events.once('postrender',()=>{window.visualReady={fixture:f,mode:'source-harness',type_icons:Object.fromEntries(Object.entries(battleInfos).map(([key,info])=>[key,{visible:info.type1Icon.visible,position:[info.type1Icon.x,info.type1Icon.y],texture:info.type1Icon.texture?.key,frame:info.type1Icon.frame?.name}])),sourceExecuted:['ArenaBase.constructor','ArenaBase.setBiome',...(f.scope!=='field'?['BattleInfo.constructor','PlayerBattleInfo.constructor','EnemyBattleInfo.constructor','BattleInfo.updateNameText','BattleInfo.setTypes','BattleInfo.setLevelDisplay','PlayerBattleInfo.setHpNumbers',...(f.scope==='moves'?['FightUiHandler.displayMoves']:[]),...(f.scope==='attack'?['BattleAnim.getGraphicFrameData']:[]),...(f.scope==='capture'?['AttemptCapturePhase.start']:[])]:[])],limitations:['No full BattleScene/Pokemon/PhaseManager; attack uses original Tackle JSON, 50ms frame timing and original BattleAnim coordinate projector but does not execute MovePhase/MoveEffectPhase; capture executes only original AttemptCapturePhase.start with deterministic collaborators and stops before delayed callbacks or capture resolution; hidden HUD overlays and identity/stat/tooltip collaborators stubbed; no audio or official services']};});
     }catch(e){window.visualError=e.stack;}
    };
    document.head.append(script);

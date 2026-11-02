@@ -1,0 +1,13 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 1500,
+  "player": { "species": 1, "gender": "male", "level": 5, "hp": 15, "max_hp": 19 },
+  "enemy": { "species": 4, "gender": "female", "level": 5, "hp": 12, "max_hp": 19 },
+  "phase": "settled",
+  "scope": "hit",
+  "attacks": [
+    { "move": "Tackle", "actor": "player", "damage": { "amount": 7, "effectiveness": "normal" } },
+    { "move": "Tackle", "actor": "enemy", "damage": { "amount": 4, "effectiveness": "normal" } }
+  ]
+}

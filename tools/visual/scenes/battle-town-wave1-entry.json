@@ -1,0 +1,11 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 1000,
+  "seed": "MiniRunSeed0001",
+  "time_of_day": "DAY",
+  "wave_limit": 10,
+  "phase": "entry",
+  "scope": "wave1-entry",
+  "show_entry_message": true
+}

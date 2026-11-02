@@ -1,0 +1,6992 @@
+{
+  "schema": "pokerust-source-replay/v1",
+  "provenance": {
+    "source_revision": "7c0881255af5cd51992e513ff93c2f71adbe40e0",
+    "asset_revision": "fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba",
+    "phaser_version": "4.2.1",
+    "source_hashes": {
+      "src/battle-scene.ts": "de2809a073c0108b15826727e6ff575a449046a33fe9965bdde0b8a49ce2f1d6",
+      "src/phase-manager.ts": "d6cb5ee4332551272a5de29bf019f9aa689b0fe0cd30d1adeeec18fb09a90f9c",
+      "src/phases/select-starter-phase.ts": "476722c6f99f46c0b55c28b4cba93bcdf10476bb21d752fa3828a2d4eccf5bef",
+      "src/phases/encounter-phase.ts": "c4ae95102d57a039eae46a82f7cfebeb4e20120158424f4f1e87b06dd2aa13e8",
+      "src/ui/handlers/battle-message-ui-handler.ts": "5bcb41e257b818d9acd8bf504666a8172ae5d46b71e82eef68b97da053444bc7",
+      "src/ui/handlers/command-ui-handler.ts": "b6875ca8e1ca0b7d08d9aa4d40cf86779aa2ee37743cac674618a536ecbb20da",
+      "src/ui/handlers/fight-ui-handler.ts": "6f78f2df547fd8b2a0fa9e31b40eb4e7cc7f6e9176efe67fdb88079ad5e71051"
+    }
+  },
+  "scenario": {
+    "seed": "M12Speed0016",
+    "game_mode": "CLASSIC",
+    "biome": "TOWN",
+    "time_of_day": "DAY",
+    "wave": 1,
+    "starter_input": "Starter(s) via original starter grid and save-slot UI",
+    "starter_count": 2,
+    "action": "move-sequence",
+    "stop_after_replacement": true
+  },
+  "controlled_collaborators": [
+    "Tutorials suppressed in the isolated browser",
+    "Persistence calls replaced with in-memory success",
+    "One save slot confirmed through original UI"
+  ],
+  "observations": [
+    {
+      "kind": "newBattle.begin",
+      "before": {
+        "seed": "M12Speed0016",
+        "wave_seed": "M12Speed0016",
+        "wave_index": 0,
+        "starter_input": [
+          {
+            "speciesId": 387,
+            "abilityIndex": 0,
+            "formIndex": 0,
+            "female": false,
+            "shiny": false,
+            "variant": 0,
+            "ivs": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "nature": 18,
+            "moveset": [
+              33,
+              71,
+              110
+            ],
+            "passive": false,
+            "pokerus": false,
+            "teraType": 11
+          },
+          {
+            "speciesId": 1,
+            "abilityIndex": 0,
+            "formIndex": 0,
+            "female": false,
+            "shiny": false,
+            "variant": 0,
+            "ivs": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "nature": 6,
+            "moveset": [
+              33,
+              45,
+              22
+            ],
+            "passive": false,
+            "pokerus": false,
+            "teraType": 11
+          }
+        ],
+        "rng_state": "!rnd,1746066,0.21467788773588836,0.8431819612160325,0.3856837598141283",
+        "current_phase": "SelectStarterPhase",
+        "biome": 0,
+        "time_of_day": 1
+      }
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6810483407432523
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 5.448386725946018
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        7
+      ],
+      "value": 5
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 8,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.065047380697426
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 4.032937603240412
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 4
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8314747101716229
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 51.55143203064062
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 51
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.62042336047892
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 38.46624834969304
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 38
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7260363201371268
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 45.014251848501864
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 45
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9792508289410568
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 60.713551394345515
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 60
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7394970651307388
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 45.848818038105804
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 45
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.17995676093318813
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 11.157319177857664
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 11
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5485694956917202
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 34.011308732886654
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 34
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7102062952126275
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 44.0327903031829
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 44
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9254847681581095
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 57.38005562580279
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 57
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.13051455864567918
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 8.09190263603211
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 8
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8245784398962287
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 51.12386327356618
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 51
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.38421273613891027
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 23.821189640612438
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 23
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.717012270899295
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 44.454760795756286
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 44
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7586889101260645
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 47.038712427816
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 47
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.832637217201537
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 51.6235074664953
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 51
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.13246674404400438
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.4464651310369292
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5631328182947246
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9951664313126337
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.294057518457849
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.23977188607064936
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6836158149476097
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5336042043053392
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.952333230610042
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9826952401376808
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 8,
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "newBattle.end",
+      "battle": {
+        "seed": "Ezmt8tLis5IzXsvz",
+        "wave_index": 1,
+        "battle_type": 0,
+        "double": false,
+        "turn": 1
+      },
+      "rng_state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458",
+      "current_phase": "SelectStarterPhase",
+      "queued_phases": [
+        "EncounterPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1,
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1,
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "SelectStarterPhase",
+      "queue": [
+        "EncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,1055405,0.593437431845814,0.6810483406297863,0.4873332411516458"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8767542772159063
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        512
+      ],
+      "value": 448.898189934544
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        511
+      ],
+      "value": 448
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.213520856210903
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 5.124500549061672
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 5
+    },
+    {
+      "kind": "rng",
+      "method": "pick",
+      "args": [
+        [
+          16,
+          19,
+          21,
+          263,
+          265,
+          276,
+          399,
+          504,
+          506,
+          661,
+          831,
+          915,
+          10,
+          161,
+          165,
+          187,
+          191,
+          266,
+          396,
+          519,
+          546,
+          664,
+          734,
+          819
+        ]
+      ],
+      "value": 276
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4,
+      "seed_override": null,
+      "state": "!rnd,1833853,0.2704355479218066,0.21352085610851645,0.43974722968414426"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4,
+      "state": "!rnd,1833853,0.2704355479218066,0.21352085610851645,0.43974722968414426"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5394465968827906
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        256
+      ],
+      "value": 138.0983288019944
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        255
+      ],
+      "value": 138
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.4558532979666263
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        4294967296
+      ],
+      "value": 1957875006.5404034
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        4294967295
+      ],
+      "value": 1957875006
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.2589435094353534
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.22641748826558084
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        25
+      ],
+      "value": 5.6604372066395205
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 5
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.601552636048019
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.203105272096038
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "rng",
+      "method": "pick",
+      "args": [
+        [
+          0,
+          2
+        ]
+      ],
+      "value": 2
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.1357338724085041
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        10539
+      ],
+      "value": 1430.4992813132246
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        10538
+      ],
+      "value": 1430
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "stab",
+      "species_id": 276,
+      "level": 2,
+      "candidates": [
+        [
+          64,
+          10539
+        ]
+      ],
+      "total_weight": 10539,
+      "rand": 1430,
+      "selected_id": 64
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.16886948846769556
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        13049
+      ],
+      "value": 2203.5779550149596
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        13048
+      ],
+      "value": 2203
+    },
+    {
+      "kind": "moveset.selection",
+      "stage": "fill",
+      "species_id": 276,
+      "level": 2,
+      "candidates": [
+        [
+          45,
+          13049
+        ]
+      ],
+      "total_weight": 13049,
+      "rand": 2203,
+      "selected_id": 45
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SelectStarterPhase",
+      "current": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05676019657597098
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        12
+      ],
+      "value": 0.6811223589116517
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        11
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.07476387960857911
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        6
+      ],
+      "value": 0.44858327765147465
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        5
+      ],
+      "value": 0
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.14164301451434724
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        18
+      ],
+      "value": 2.5495742612582504
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        17
+      ],
+      "value": 2
+    },
+    {
+      "kind": "phase.end",
+      "phase": "EncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "SummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "SummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "ToggleDoublePositionPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "ToggleDoublePositionPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckSwitchPhase",
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckSwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "SummonPhase",
+      "queue": [
+        "ToggleDoublePositionPhase",
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "EncounterPhase",
+      "current": "SummonPhase",
+      "queue": [
+        "ToggleDoublePositionPhase",
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "SummonPhase",
+      "queue": [
+        "ToggleDoublePositionPhase",
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "ToggleDoublePositionPhase",
+      "queue": [
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SummonPhase",
+      "current": "ToggleDoublePositionPhase",
+      "queue": [
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "ToggleDoublePositionPhase",
+      "queue": [
+        "CheckSwitchPhase",
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckSwitchPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.transition",
+      "before": "ToggleDoublePositionPhase",
+      "current": "CheckSwitchPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "select-no-initial-switch",
+      "button": 1,
+      "phase": "CheckSwitchPhase",
+      "handler": "ConfirmUiHandler",
+      "cursor": 0,
+      "accepted": true
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckSwitchPhase",
+      "queue": [
+        "InitEncounterPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "InitEncounterPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnInitPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnInitPhase",
+      "queue": [
+        "CommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.command-boundary",
+      "player_party": [
+        {
+          "species_id": 387,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 18,
+          "ability_id": 65,
+          "stats": [
+            21,
+            12,
+            12,
+            10,
+            11,
+            8
+          ],
+          "hp": 21,
+          "max_hp": 21,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 71,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            },
+            {
+              "id": 110,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        },
+        {
+          "species_id": 1,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 6,
+          "ability_id": 65,
+          "stats": [
+            20,
+            10,
+            10,
+            12,
+            12,
+            10
+          ],
+          "hp": 20,
+          "max_hp": 20,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            },
+            {
+              "id": 22,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            }
+          ]
+        }
+      ],
+      "enemy_party": [
+        {
+          "species_id": 276,
+          "level": 2,
+          "ivs": [
+            26,
+            11,
+            5,
+            19,
+            9,
+            30
+          ],
+          "nature": 5,
+          "ability_id": 62,
+          "stats": [
+            14,
+            6,
+            7,
+            6,
+            6,
+            9
+          ],
+          "hp": 14,
+          "max_hp": 14,
+          "moves": [
+            {
+              "id": 64,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnInitPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "InitEncounterPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckSwitchPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "confirm-no-initial-switch",
+      "button": 5,
+      "phase": "CheckSwitchPhase",
+      "handler": "ConfirmUiHandler",
+      "cursor": 1,
+      "accepted": true
+    },
+    {
+      "kind": "harness.input",
+      "command": "Fight",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "CommandUiHandler"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "move-sequence-0",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "FightUiHandler",
+      "move_index": 0,
+      "move_id": 33,
+      "accepted": true
+    },
+    {
+      "kind": "phase.start",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.37262349390382665
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        9
+      ],
+      "value": 3.35361144513444
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 3
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.38822974237434427
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 3.105837938994754
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        7
+      ],
+      "value": 3
+    },
+    {
+      "kind": "phase.end",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnStartPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnStartPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ],
+      "actor_species_id": 276,
+      "actor_is_player": false,
+      "actor_is_active": true,
+      "move_id": 64,
+      "targets": [
+        0
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEffectPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MessagePhase",
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnStartPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "EnemyCommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.43926756886526086
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        100
+      ],
+      "value": 43.926756886526086
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        99
+      ],
+      "value": 43
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.43384076426239915
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 10.41217834229758
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 10
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7725587657798227
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        16
+      ],
+      "value": 12.360940252477164
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        85,
+        100
+      ],
+      "value": 97
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 16,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 16,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "DamageAnimPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEffectPhase",
+      "current": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "DamageAnimPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ],
+      "actor_species_id": 387,
+      "actor_is_player": true,
+      "actor_is_active": true,
+      "move_id": 33,
+      "targets": [
+        2
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEffectPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MessagePhase",
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.032004185729719636
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        100
+      ],
+      "value": 3.2004185729719636
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        99
+      ],
+      "value": 3
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.41263163397161795
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 9.90315921531883
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 9
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.8397218991113293
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        16
+      ],
+      "value": 13.43555038578127
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        85,
+        100
+      ],
+      "value": 98
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEffectPhase",
+      "current": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PositionalTagPhase",
+      "queue": [
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.21429159165500578
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.42858318331001155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 1001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 1001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnEndPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnEndPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnInitPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnInitPhase",
+      "queue": [
+        "CommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.command-boundary",
+      "player_party": [
+        {
+          "species_id": 387,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 18,
+          "ability_id": 65,
+          "stats": [
+            21,
+            12,
+            12,
+            10,
+            11,
+            8
+          ],
+          "hp": 13,
+          "max_hp": 21,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 34,
+              "pp_used": 1,
+              "max_pp": 35
+            },
+            {
+              "id": 71,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            },
+            {
+              "id": 110,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        },
+        {
+          "species_id": 1,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 6,
+          "ability_id": 65,
+          "stats": [
+            20,
+            10,
+            10,
+            12,
+            12,
+            10
+          ],
+          "hp": 20,
+          "max_hp": 20,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            },
+            {
+              "id": 22,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            }
+          ]
+        }
+      ],
+      "enemy_party": [
+        {
+          "species_id": 276,
+          "level": 2,
+          "ivs": [
+            26,
+            11,
+            5,
+            19,
+            9,
+            30
+          ],
+          "nature": 5,
+          "ability_id": 62,
+          "stats": [
+            14,
+            6,
+            7,
+            6,
+            6,
+            9
+          ],
+          "hp": 7,
+          "max_hp": 14,
+          "moves": [
+            {
+              "id": 64,
+              "pp": 34,
+              "pp_used": 1,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnInitPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnEndPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckStatusEffectPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "BerryPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PositionalTagPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "WeatherEffectPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckInterludePhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "DamageAnimPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "Fight",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "CommandUiHandler"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "move-sequence-1",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "FightUiHandler",
+      "move_index": 0,
+      "move_id": 33,
+      "accepted": true
+    },
+    {
+      "kind": "phase.start",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.19303736226900448
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        9
+      ],
+      "value": 1.7373362604210403
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 1
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.2631606884475626
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 2.1052855075805006
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        7
+      ],
+      "value": 2
+    },
+    {
+      "kind": "phase.end",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnStartPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnStartPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ],
+      "actor_species_id": 276,
+      "actor_is_player": false,
+      "actor_is_active": true,
+      "move_id": 64,
+      "targets": [
+        0
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEffectPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MessagePhase",
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnStartPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "EnemyCommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.5243273866734017
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        100
+      ],
+      "value": 52.432738667340175
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        99
+      ],
+      "value": 52
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.9937823006442952
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 23.850775215463084
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 23
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.011431860694968377
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        16
+      ],
+      "value": 0.18290977111949402
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        85,
+        100
+      ],
+      "value": 85
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 32,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 32,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "DamageAnimPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEffectPhase",
+      "current": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "DamageAnimPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ],
+      "actor_species_id": 387,
+      "actor_is_player": true,
+      "actor_is_active": true,
+      "move_id": 33,
+      "targets": [
+        2
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEffectPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MessagePhase",
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.002519077464372743
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        100
+      ],
+      "value": 0.2519077464372743
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        99
+      ],
+      "value": 0
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.0809805302417157
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 1.9435327258011768
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.32378668594999516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        16
+      ],
+      "value": 5.1805869751999225
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        85,
+        100
+      ],
+      "value": 90
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEffectPhase",
+      "current": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PositionalTagPhase",
+      "queue": [
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.46354617845037516
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.9270923569007503
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 2001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 2001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnEndPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05804592798222574
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.11609185596445148
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnEndPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnInitPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnInitPhase",
+      "queue": [
+        "CommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.command-boundary",
+      "player_party": [
+        {
+          "species_id": 387,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 18,
+          "ability_id": 65,
+          "stats": [
+            21,
+            12,
+            12,
+            10,
+            11,
+            8
+          ],
+          "hp": 6,
+          "max_hp": 21,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 33,
+              "pp_used": 2,
+              "max_pp": 35
+            },
+            {
+              "id": 71,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            },
+            {
+              "id": 110,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        },
+        {
+          "species_id": 1,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 6,
+          "ability_id": 65,
+          "stats": [
+            20,
+            10,
+            10,
+            12,
+            12,
+            10
+          ],
+          "hp": 20,
+          "max_hp": 20,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            },
+            {
+              "id": 22,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            }
+          ]
+        }
+      ],
+      "enemy_party": [
+        {
+          "species_id": 276,
+          "level": 2,
+          "ivs": [
+            26,
+            11,
+            5,
+            19,
+            9,
+            30
+          ],
+          "nature": 5,
+          "ability_id": 62,
+          "stats": [
+            14,
+            6,
+            7,
+            6,
+            6,
+            9
+          ],
+          "hp": 1,
+          "max_hp": 14,
+          "moves": [
+            {
+              "id": 64,
+              "pp": 33,
+              "pp_used": 2,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnInitPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnEndPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckStatusEffectPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "BerryPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PositionalTagPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "WeatherEffectPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckInterludePhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "DamageAnimPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "Fight",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "CommandUiHandler"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "move-sequence-2",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "FightUiHandler",
+      "move_index": 0,
+      "move_id": 33,
+      "accepted": true
+    },
+    {
+      "kind": "phase.start",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.6731506268013163
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        9
+      ],
+      "value": 6.058355641211847
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 6
+    },
+    {
+      "kind": "phase.end",
+      "phase": "EnemyCommandPhase",
+      "queue": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnStartPhase",
+      "queue": []
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05804592798222574
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.11609185596445148
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05804592798222574
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.11609185596445148
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "MovePhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "MovePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckInterludePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "WeatherEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "PositionalTagPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "BerryPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CheckStatusEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnStartPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05804592798222574
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.11609185596445148
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase"
+      ],
+      "actor_species_id": 276,
+      "actor_is_player": false,
+      "actor_is_active": true,
+      "move_id": 64,
+      "targets": [
+        0
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.05804592798222574
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 0.11609185596445148
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEffectPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MessagePhase",
+        "MoveEffectPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnStartPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "EnemyCommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CommandPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEffectPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.7592070000488277
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        100
+      ],
+      "value": 75.92070000488278
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        99
+      ],
+      "value": 75
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.35671152290201646
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        24
+      ],
+      "value": 8.561076549648394
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        23
+      ],
+      "value": 8
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.3726818044047404
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        16
+      ],
+      "value": 5.962908870475847
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        85,
+        100
+      ],
+      "value": 90
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "DamageAnimPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 48,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 48,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEffectPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase",
+        "DamageAnimPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEffectPhase",
+      "current": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "DamageAnimPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "DamageAnimPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase",
+        "FaintPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "FaintPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "MoveEndPhase"
+      ],
+      "fainted_species_id": 387,
+      "fainted_is_player": true,
+      "fainted_hp": 0
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "SwitchPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "FaintPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "FaintPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase",
+        "MoveEndPhase",
+        "MessagePhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "FaintPhase",
+      "current": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MessagePhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase",
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "DynamicPhaseMarker",
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ],
+      "actor_species_id": 387,
+      "actor_is_player": true,
+      "actor_is_active": false,
+      "move_id": 33,
+      "targets": [
+        2
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MovePhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "MoveEndPhase",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "MoveEndPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "MoveEndPhase",
+      "queue": [
+        "CheckInterludePhase",
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckInterludePhase",
+      "queue": [
+        "WeatherEffectPhase",
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "WeatherEffectPhase",
+      "queue": [
+        "PositionalTagPhase",
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PositionalTagPhase",
+      "queue": [
+        "BerryPhase",
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "BerryPhase",
+      "queue": [
+        "CheckStatusEffectPhase",
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 3001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 3001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "CheckStatusEffectPhase",
+      "queue": [
+        "TurnEndPhase",
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnEndPhase",
+      "queue": [
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnEndPhase",
+      "queue": [
+        "SwitchPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnEndPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckStatusEffectPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "BerryPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PositionalTagPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "WeatherEffectPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "CheckInterludePhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MovePhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MoveEndPhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.transition",
+      "before": "MessagePhase",
+      "current": "SwitchPhase",
+      "queue": []
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "MessagePhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "select-reserve",
+      "button": 1,
+      "phase": "SwitchPhase",
+      "handler": "PartyUiHandler",
+      "party_mode": 1,
+      "cursor": 0,
+      "option_cursor": 0,
+      "accepted": true
+    },
+    {
+      "kind": "harness.input",
+      "command": "open-replacement-options",
+      "button": 5,
+      "phase": "SwitchPhase",
+      "handler": "PartyUiHandler",
+      "party_mode": 1,
+      "cursor": 1,
+      "option_cursor": 0,
+      "accepted": true
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "SwitchSummonPhase",
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "SwitchSummonPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "confirm-replacement",
+      "button": 5,
+      "phase": "SwitchPhase",
+      "handler": "PartyUiHandler",
+      "party_mode": 1,
+      "cursor": 1,
+      "option_cursor": 0,
+      "accepted": true
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "SwitchSummonPhase",
+      "queue": [],
+      "field_index": 0,
+      "slot_index": 1
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SwitchPhase",
+      "current": "SwitchSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchSummonPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchSummonPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchSummonPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchSummonPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "SwitchSummonPhase",
+      "handler": "BattleMessageUiHandler"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "SwitchSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftNew",
+      "args": [
+        "PostSummonPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "unshiftPhase",
+      "args": [
+        "PostSummonPhase"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4002,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "rng",
+      "method": "frac",
+      "args": [],
+      "value": 0.899129222320977
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        2
+      ],
+      "value": 1.798258444641954
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        1
+      ],
+      "value": 1
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4002,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": [
+        "DynamicPhaseMarker"
+      ]
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 4001,
+      "seed_override": "N23Tqffe1127",
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 4001,
+      "state": "!rnd,1,0.019558193860575557,0.5045830027665943,0.593437431845814"
+    },
+    {
+      "kind": "phase.start",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.end",
+      "phase": "PostSummonPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.start",
+      "phase": "TurnInitPhase",
+      "queue": []
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "CommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "CommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "EnemyCommandPhase",
+        null
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "EnemyCommandPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushNew",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.enqueue",
+      "operation": "pushPhase",
+      "args": [
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.end",
+      "phase": "TurnInitPhase",
+      "queue": [
+        "CommandPhase",
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.start",
+      "phase": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.command-boundary",
+      "player_party": [
+        {
+          "species_id": 1,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 6,
+          "ability_id": 65,
+          "stats": [
+            20,
+            10,
+            10,
+            12,
+            12,
+            10
+          ],
+          "hp": 20,
+          "max_hp": 20,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 35,
+              "pp_used": 0,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            },
+            {
+              "id": 22,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            }
+          ]
+        },
+        {
+          "species_id": 387,
+          "level": 5,
+          "ivs": [
+            15,
+            15,
+            15,
+            15,
+            15,
+            15
+          ],
+          "nature": 18,
+          "ability_id": 65,
+          "stats": [
+            21,
+            12,
+            12,
+            10,
+            11,
+            8
+          ],
+          "hp": 0,
+          "max_hp": 21,
+          "moves": [
+            {
+              "id": 33,
+              "pp": 33,
+              "pp_used": 2,
+              "max_pp": 35
+            },
+            {
+              "id": 71,
+              "pp": 25,
+              "pp_used": 0,
+              "max_pp": 25
+            },
+            {
+              "id": 110,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "enemy_party": [
+        {
+          "species_id": 276,
+          "level": 2,
+          "ivs": [
+            26,
+            11,
+            5,
+            19,
+            9,
+            30
+          ],
+          "nature": 5,
+          "ability_id": 62,
+          "stats": [
+            14,
+            6,
+            7,
+            6,
+            6,
+            9
+          ],
+          "hp": 1,
+          "max_hp": 14,
+          "moves": [
+            {
+              "id": 64,
+              "pp": 32,
+              "pp_used": 3,
+              "max_pp": 35
+            },
+            {
+              "id": 45,
+              "pp": 40,
+              "pp_used": 0,
+              "max_pp": 40
+            }
+          ]
+        }
+      ],
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "TurnInitPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "PostSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "phase.transition",
+      "before": "SwitchSummonPhase",
+      "current": "CommandPhase",
+      "queue": [
+        "EnemyCommandPhase",
+        "TurnStartPhase"
+      ]
+    },
+    {
+      "kind": "harness.input",
+      "command": "continue-message",
+      "button": 5,
+      "phase": "CommandPhase",
+      "handler": "CommandUiHandler"
+    }
+  ],
+  "command_boundary_state": {
+    "phase": "CommandPhase",
+    "phase_queue": [
+      "EnemyCommandPhase",
+      "TurnStartPhase"
+    ],
+    "wave": 1,
+    "biome": 0,
+    "player": {
+      "species_id": 1,
+      "level": 5,
+      "hp": 20,
+      "max_hp": 20,
+      "gender": "male",
+      "moves": [
+        "Tackle",
+        "Growl",
+        "Vine Whip"
+      ]
+    },
+    "enemy": {
+      "species_id": 276,
+      "level": 2,
+      "hp": 1,
+      "max_hp": 14,
+      "gender": "male",
+      "owned_icon": false,
+      "moves": [
+        "Peck",
+        "Growl"
+      ]
+    }
+  }
+}

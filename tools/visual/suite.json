@@ -22,8 +22,8 @@
     },
     {
       "scene": "battle-town-moves",
-      "max_parity_ratio": 0.02,
-      "coverage": "shared Vine Whip/Tackle fixture; actual original FightUiHandler.displayMoves and Rust move-name layout"
+      "reference_backend": "full-game",
+      "coverage": "actual pinned Phaser BattleScene command-to-fight flow, source FightUiHandler, and Rust move-selection UI; whole-screen diff is diagnostic, Rust regression is gated separately"
     },
     {
       "scene": "battle-town-attack",
@@ -37,6 +37,7 @@
     },
     {
       "scene": "battle-town-ui",
+      "reference_backend": "full-game",
       "coverage": "diagnostic: full Rust UI; original menus still pending"
     }
   ]

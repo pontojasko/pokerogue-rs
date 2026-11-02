@@ -10,3 +10,7 @@ pokerogue-data = { path = "../pokerogue-data" }
 
 [lib]
 path = "src/lib.rs"
+
+[[bin]]
+name = "replay_town_entry"
+path = "src/bin/replay_town_entry.rs"

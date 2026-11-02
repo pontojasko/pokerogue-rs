@@ -5,34 +5,87 @@ use std::collections::BTreeMap;
 
 pub struct Atlas {
     pub texture: Texture2D,
-    frames: BTreeMap<String, Rect>,
+    frames: BTreeMap<String, AtlasFrame>,
+}
+#[derive(Clone, Copy)]
+struct AtlasFrame {
+    rect: Rect,
+    source_size: Vec2,
+    sprite_offset: Vec2,
 }
 impl Atlas {
     pub async fn load(images: &Path, name: &str) -> Option<Self> {
-        let data: Value =
-            serde_json::from_slice(&std::fs::read(images.join(format!("ui/{name}.json"))).ok()?)
-                .ok()?;
-        let texture = load_texture(&images.join(format!("ui/{name}.png")).to_string_lossy())
-            .await
-            .ok()?;
+        Self::load_at(
+            &images.join(format!("ui/{name}.png")),
+            &images.join(format!("ui/{name}.json")),
+        )
+        .await
+    }
+    pub async fn load_at(image_path: &Path, metadata_path: &Path) -> Option<Self> {
+        let data: Value = serde_json::from_slice(&std::fs::read(metadata_path).ok()?).ok()?;
+        let texture = load_texture(&image_path.to_string_lossy()).await.ok()?;
         texture.set_filter(FilterMode::Nearest);
         let mut frames = BTreeMap::new();
         for frame in data["textures"][0]["frames"].as_array()? {
             let rect = &frame["frame"];
+            let source = &frame["sourceSize"];
+            let offset = &frame["spriteSourceSize"];
             frames.insert(
                 frame["filename"].as_str()?.to_owned(),
-                Rect::new(
-                    rect["x"].as_f64()? as f32,
-                    rect["y"].as_f64()? as f32,
-                    rect["w"].as_f64()? as f32,
-                    rect["h"].as_f64()? as f32,
-                ),
+                AtlasFrame {
+                    rect: Rect::new(
+                        rect["x"].as_f64()? as f32,
+                        rect["y"].as_f64()? as f32,
+                        rect["w"].as_f64()? as f32,
+                        rect["h"].as_f64()? as f32,
+                    ),
+                    source_size: vec2(source["w"].as_f64()? as f32, source["h"].as_f64()? as f32),
+                    sprite_offset: vec2(offset["x"].as_f64()? as f32, offset["y"].as_f64()? as f32),
+                },
             );
         }
         Some(Self { texture, frames })
     }
     pub fn frame(&self, key: &str) -> Option<Rect> {
-        self.frames.get(key).copied()
+        self.frames.get(key).map(|frame| frame.rect)
+    }
+    pub fn draw_centered(&self, key: &str, x: f32, y: f32, scale: f32) {
+        self.draw_centered_rotated(key, x, y, scale, 0.0);
+    }
+    pub fn draw_centered_rotated(&self, key: &str, x: f32, y: f32, scale: f32, rotation: f32) {
+        let Some(frame) = self.frames.get(key) else {
+            return;
+        };
+        let top_left = vec2(x, y) - frame.source_size * (scale / 2.0) + frame.sprite_offset * scale;
+        draw_texture_ex(
+            &self.texture,
+            top_left.x.round(),
+            top_left.y.round(),
+            WHITE,
+            DrawTextureParams {
+                source: Some(frame.rect),
+                dest_size: Some(frame.rect.size() * scale),
+                rotation,
+                pivot: (rotation != 0.0).then_some(vec2(x, y)),
+                ..Default::default()
+            },
+        );
+    }
+    pub fn draw_at(&self, key: &str, x: f32, y: f32, scale: f32) {
+        let Some(frame) = self.frames.get(key) else {
+            return;
+        };
+        draw_texture_ex(
+            &self.texture,
+            (x + frame.sprite_offset.x * scale).round(),
+            (y + frame.sprite_offset.y * scale).round(),
+            WHITE,
+            DrawTextureParams {
+                source: Some(frame.rect),
+                dest_size: Some(frame.rect.size() * scale),
+                ..Default::default()
+            },
+        );
     }
     pub fn centered(&self, key: &str, x: f32, y: f32) {
         if let Some(rect) = self.frame(key) {
@@ -58,6 +111,7 @@ pub struct Hud {
     pub level: Option<Texture2D>,
     pub hp_label: Option<Texture2D>,
     pub exp_label: Option<Texture2D>,
+    pub exp_bar: Option<Texture2D>,
     pub font: Option<Font>,
 }
 impl Hud {
@@ -66,7 +120,7 @@ impl Hud {
             load_texture(&path.to_string_lossy())
                 .await
                 .ok()
-                .inspect(|t| t.set_filter(FilterMode::Nearest))
+                .inspect(|texture| texture.set_filter(FilterMode::Nearest))
         }
         let mut font = load_ttf_font(
             &images
@@ -88,6 +142,7 @@ impl Hud {
             hp_label: image(images.join("ui/text_images/en/battle_ui/overlay_hp_label.png")).await,
             exp_label: image(images.join("ui/text_images/en/battle_ui/overlay_exp_label.png"))
                 .await,
+            exp_bar: image(images.join("ui/overlay_exp.png")).await,
             font,
         }
     }
@@ -114,13 +169,57 @@ impl Hud {
             draw_text(text, x, y + 25.0, 25.0, WHITE);
         }
     }
+    pub fn gender(&self, name: &str, gender: &str, x: f32, y: f32) {
+        let (symbol, color, shadow) = match gender {
+            "male" => (
+                "♂",
+                Color::from_rgba(64, 200, 248, 255),
+                Color::from_rgba(0, 96, 144, 255),
+            ),
+            "female" => (
+                "♀",
+                Color::from_rgba(248, 152, 144, 255),
+                Color::from_rgba(152, 64, 56, 255),
+            ),
+            _ => return,
+        };
+        let width = self.font.as_ref().map_or_else(
+            || measure_text(name, None, 25, 1.0).width,
+            |font| measure_text(name, Some(font), 72, 0.5).width,
+        );
+        let position_x = x + width;
+        if let Some(font) = &self.font {
+            let params = TextParams {
+                font: Some(font),
+                font_size: 72,
+                font_scale: 0.5,
+                color,
+                ..Default::default()
+            };
+            draw_text_ex(
+                symbol,
+                position_x + 1.75,
+                y + 28.75,
+                TextParams {
+                    color: shadow,
+                    ..params
+                },
+            );
+            draw_text_ex(symbol, position_x, y + 27.0, params);
+        } else {
+            draw_text(symbol, position_x, y + 25.0, 25.0, color);
+        }
+    }
     pub fn window_text(&self, text: &str, x: f32, y: f32) {
+        self.window_text_color(text, x, y, Color::from_rgba(248, 248, 248, 255));
+    }
+    pub fn window_text_color(&self, text: &str, x: f32, y: f32, color: Color) {
         if let Some(font) = &self.font {
             let params = TextParams {
                 font: Some(font),
                 font_size: 96,
                 font_scale: 0.5,
-                color: Color::from_rgba(248, 248, 248, 255),
+                color,
                 ..Default::default()
             };
             draw_text_ex(
@@ -135,6 +234,43 @@ impl Hud {
             draw_text_ex(text, x, y + 36.0, params);
         } else {
             draw_text(text, x, y + 36.0, 48.0, WHITE);
+        }
+    }
+    pub fn detail_text(&self, text: &str, x: f32, center_y: f32, right_aligned: bool) {
+        if let Some(font) = &self.font {
+            let dimensions = measure_text(text, Some(font), 56, 0.5);
+            let text_x = if right_aligned {
+                x - dimensions.width
+            } else {
+                x
+            };
+            let baseline = center_y - dimensions.height / 2.0 + dimensions.offset_y;
+            let params = TextParams {
+                font: Some(font),
+                font_size: 56,
+                font_scale: 0.5,
+                color: Color::from_rgba(248, 248, 248, 255),
+                ..Default::default()
+            };
+            draw_text_ex(
+                text,
+                text_x + 1.5,
+                baseline + 1.5,
+                TextParams {
+                    color: Color::from_rgba(107, 90, 115, 255),
+                    ..params
+                },
+            );
+            draw_text_ex(text, text_x, baseline, params);
+        } else {
+            let width = measure_text(text, None, 28, 1.0).width;
+            draw_text(
+                text,
+                if right_aligned { x - width } else { x },
+                center_y + 10.0,
+                28.0,
+                WHITE,
+            );
         }
     }
     pub fn image(texture: Option<&Texture2D>, x: f32, y: f32, origin: Vec2) {
@@ -158,8 +294,10 @@ impl Hud {
             (-50.0, -5.0)
         };
         let digits = level.to_string();
-        let x = anchor_x + lx * 3.0 - 8.0 * digits.len().saturating_sub(3) as f32 * 3.0;
-        let y = anchor_y + ly * 3.0;
+        // The source full-game capture places these atlas pixels one output
+        // pixel up/left from Macroquad's initial 3× projected anchor.
+        let x = anchor_x + lx * 3.0 - 8.0 * digits.len().saturating_sub(3) as f32 * 3.0 - 1.0;
+        let y = anchor_y + ly * 3.0 - 1.0;
         Self::image(self.level.as_ref(), x + 5.5 * 3.0, y, vec2(1.0, 0.5));
         if let Some(numbers) = &self.numbers {
             for (i, c) in digits.chars().enumerate() {

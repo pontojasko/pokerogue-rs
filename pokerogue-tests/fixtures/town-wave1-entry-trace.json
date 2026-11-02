@@ -1,0 +1,376 @@
+{
+  "schema": "pokerust-source-replay/v1",
+  "provenance": {
+    "source_revision": "7c0881255af5cd51992e513ff93c2f71adbe40e0",
+    "asset_revision": "fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba",
+    "phaser_version": "4.2.1",
+    "source_hashes": {
+      "src/battle-scene.ts": "de2809a073c0108b15826727e6ff575a449046a33fe9965bdde0b8a49ce2f1d6",
+      "src/phase-manager.ts": "d6cb5ee4332551272a5de29bf019f9aa689b0fe0cd30d1adeeec18fb09a90f9c",
+      "src/phases/select-starter-phase.ts": "476722c6f99f46c0b55c28b4cba93bcdf10476bb21d752fa3828a2d4eccf5bef",
+      "src/phases/encounter-phase.ts": "c4ae95102d57a039eae46a82f7cfebeb4e20120158424f4f1e87b06dd2aa13e8",
+      "src/ui/handlers/battle-message-ui-handler.ts": "5bcb41e257b818d9acd8bf504666a8172ae5d46b71e82eef68b97da053444bc7",
+      "src/ui/handlers/command-ui-handler.ts": "b6875ca8e1ca0b7d08d9aa4d40cf86779aa2ee37743cac674618a536ecbb20da",
+      "src/ui/handlers/fight-ui-handler.ts": "6f78f2df547fd8b2a0fa9e31b40eb4e7cc7f6e9176efe67fdb88079ad5e71051"
+    }
+  },
+  "scenario": {
+    "seed": "M12TownWave1Replay6",
+    "game_mode": "CLASSIC",
+    "biome": "TOWN",
+    "time_of_day": "DAY",
+    "wave": 1,
+    "starter_input": "Bulbasaur via original starter grid and save-slot UI"
+  },
+  "controlled_collaborators": [
+    "Tutorials suppressed in the isolated browser",
+    "Persistence calls replaced with in-memory success",
+    "One save slot confirmed through original UI"
+  ],
+  "observations": [
+    {
+      "kind": "newBattle.begin",
+      "before": {
+        "seed": "M12TownWave1Replay6",
+        "wave_seed": "M12TownWave1Replay6",
+        "wave_index": 0,
+        "rng_state": "!rnd,82544,0.14903539675287902,0.03862294345162809,0.5300372370984405",
+        "current_phase": "SelectStarterPhase",
+        "biome": 0,
+        "time_of_day": 1
+      }
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        8
+      ],
+      "value": 0.6160427743348214
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        7
+      ],
+      "value": 0
+    },
+    {
+      "kind": "seed-offset.begin",
+      "offset": 8,
+      "seed_override": "N23UpxoXbwf2Sfqmbz7",
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 14.514697676875222
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 14
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 25.223632077620678
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 25
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 17.021805778282634
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 17
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 60.79428674439473
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 60
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 51.06440778847873
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 51
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 52.70663165460141
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 52
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 47.12084456215061
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 47
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 20.490311957940357
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 20
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 49.27386622355223
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 49
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 6.913133257130049
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 6
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 58.784371502028236
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 58
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 9.329849059702433
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 9
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 54.007115710563696
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 54
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 9.493375354790638
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 9
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 13.538703447709441
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 13
+    },
+    {
+      "kind": "rng",
+      "method": "realInRange",
+      "args": [
+        0,
+        62
+      ],
+      "value": 16.017535555206155
+    },
+    {
+      "kind": "rng",
+      "method": "integerInRange",
+      "args": [
+        0,
+        61
+      ],
+      "value": 16
+    },
+    {
+      "kind": "seed-offset.end",
+      "offset": 8,
+      "state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993"
+    },
+    {
+      "kind": "newBattle.end",
+      "battle": {
+        "seed": "OZR8z0vUxG6J2JNQ",
+        "wave_index": 1,
+        "battle_type": 0,
+        "double": true,
+        "turn": 1
+      },
+      "rng_state": "!rnd,2000571,0.6647134439554065,0.07700534677132964,0.08814618550240993",
+      "current_phase": "SelectStarterPhase",
+      "queued_phases": [
+        "EncounterPhase"
+      ]
+    }
+  ]
+}

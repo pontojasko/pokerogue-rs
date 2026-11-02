@@ -104,6 +104,8 @@ def native_display(env, backend):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--scene', choices=sorted(p.stem for p in SCENES.glob('*.json')), default='battle-town')
+    parser.add_argument('--reference-backend', choices=['source-harness', 'full-game'], default='source-harness',
+                        help='Use the original isolated class harness or execute the full local Phaser game')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--compare-only', action='store_true', help='Compare existing original.png/rust.png in output')
     parser.add_argument('--baseline', type=Path, help='Explicit local Rust baseline PNG; never created/updated implicitly')
@@ -121,7 +123,7 @@ def main():
     if args.baseline and args.baseline.resolve() in {output/'rust.png', output/'original.png', output/'diff.png', output/'side-by-side.png', output/'regression-diff.png'}:
         parser.error('Baseline must be a separate reviewed file, not an output artifact')
     output.mkdir(parents=True, exist_ok=True)
-    report = {'scene':args.scene, 'status':'incomplete', 'reference_mode':'source-harness',
+    report = {'scene':args.scene, 'status':'incomplete', 'reference_mode':args.reference_backend,
               'complete_visual_parity':False, 'capture_origin':'external-unverified' if args.compare_only else 'automated', 'limitations':[
                   'Executes original ArenaBase and, in HUD/UI cases, BattleInfo/PlayerBattleInfo/EnemyBattleInfo classes.',
                   'Full original BattleScene/Pokemon/PhaseManager is not executed; hidden HUD collaborators are stubbed.',
@@ -159,7 +161,22 @@ def main():
             if args.display:
                 env['DISPLAY'] = args.display
             # Users can run the whole command under xvfb-run; no focus/window automation.
-            capture(['node',ROOT/'tools/visual/capture.mjs',args.scene,output],cwd=ROOT,env=env)
+            if args.reference_backend == 'full-game':
+                ui_state = report['fixture'].get('ui_state')
+                if ui_state not in ('command', 'moves'):
+                    raise RuntimeError('Full game references currently support only command and moves fixtures')
+                full_game_output = output/'full-game'
+                capture(['node',ROOT/'tools/visual/capture-original-game.mjs',full_game_output],cwd=ROOT,env=env,timeout=300)
+                source_name = 'A-command.png' if ui_state == 'command' else 'B-moves.png'
+                shutil.copy2(full_game_output/source_name, original)
+                shutil.copy2(full_game_output/'reference.json', output/'reference.json')
+                report['limitations'] = [
+                    'Reference is captured from the real local Phaser application and its BattleScene/UI handlers.',
+                    'The isolated driver skips first-run gender/onboarding and injects a deterministic starter through the original phase API.',
+                    'Only the command and moves screens are currently captured from the full game.'
+                ]
+            else:
+                capture(['node',ROOT/'tools/visual/capture.mjs',args.scene,output],cwd=ROOT,env=env)
             capture(['cargo','build','--offline','-p','pokerogue-client'],cwd=ROOT,timeout=300)
             with native_display(env, args.native_backend) as (capture_env, backend):
                 report['native_backend'] = backend

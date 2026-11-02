@@ -33,13 +33,23 @@ export function localFile(url) {
 		return { contentType: "text/javascript", body: captureSource() };
 	if (pathname === "/arena-source.js")
 		return { contentType: "text/javascript", body: arenaSource() };
-	const file = path.resolve(
+	let file = path.resolve(
 		root,
 		"." +
 			decodeURIComponent(
 				pathname === "/" ? "/tools/visual/harness.html" : pathname,
 			),
 	);
+	// The pinned asset checkout omits some atlas files from the repository tree.
+	// Resolve only those known local source paths from the matching asset cache.
+	const sourceImages = path.resolve(root, "original/assets/images");
+	if (file.startsWith(sourceImages + path.sep) && !fs.existsSync(file)) {
+		const cacheImages = path.resolve(
+			root,
+			"visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/images",
+		);
+		file = path.resolve(cacheImages, path.relative(sourceImages, file));
+	}
 	const real = fs.realpathSync(file);
 	// Whitelist public test content; never serve saves, secrets or arbitrary workspace files.
 	const allowed = [
@@ -47,6 +57,7 @@ export function localFile(url) {
 		"original/assets/images/",
 		"original/assets/battle-anims/",
 		"original/assets/fonts/",
+		"visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/images/",
 		"original/node_modules/phaser/dist/",
 	];
 	const permitted = allowed.find((prefix) =>

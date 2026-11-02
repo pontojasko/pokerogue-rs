@@ -1,86 +1,149 @@
 <div align="center">
-  <picture>
-    <img src="docs/logo.png" width="560" alt="PokéRogue Rust Edition">
-  </picture>
+  <img src="docs/logo.png" width="560" alt="PokéRogue Rust Edition">
 
   <p>
     <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-edition_2024-orange?style=flat&logo=rust&logoColor=white" alt="Rust 2024"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0--only-blue.svg" alt="AGPL-3.0-only license"></a>
-    <a href="tools/visual/README.md"><img src="https://img.shields.io/badge/Visual_scenes-9-22c55e?style=flat" alt="Nine declared visual scenes"></a>
+    <a href="ROADMAP.md"><img src="https://img.shields.io/badge/Project_status-experimental-orange" alt="Experimental project"></a>
+    <a href="tools/visual/README.md"><img src="https://img.shields.io/badge/Visual_cases-9-22c55e?style=flat" alt="Nine visual regression cases"></a>
   </p>
 </div>
 
-PokéRogue Rust is an experimental **reimplementation in Rust** of selected gameplay and presentation slices from PokéRogue. It is an offline-first Rust workspace with a Macroquad client and a local TypeScript reference checkout.
+# PokéRogue Rust
+
+PokéRogue Rust is an **experimental, offline-first reimplementation of a limited part of PokéRogue** in Rust. It is a research and prototyping project, not a complete port or a replacement for the original game. Battle rules and progression run in a Rust core; the Macroquad client handles drawing, audio and input. A pinned TypeScript checkout is used only by local development tools to collect comparison evidence.
 
 <p align="center">
   <img src="docs/roadmap-progress.svg" alt="Roadmap checklist progress" width="100%">
 </p>
 
-> **Progress note:** The chart counts roadmap checkboxes equally. It is not a measure of the percentage of the original game that has been ported. The work items vary in size, and substantial gameplay and visual gaps remain.
+> The chart counts roadmap checkboxes equally. It is a planning aid, not a percentage of the original game implemented. A checked item covers only the explicitly described slice and evidence beside it.
 
-## What is implemented
+## Current status — 2 November 2026
 
-- A Rust workspace split into battle rules, imported data, a Macroquad client, and differential tests.
-- An offline Town mini-run with bounded battle, EXP, capture, reward, and save behavior.
-- Source-backed fixtures for selected RNG, battle, and progression behavior.
-- A local visual comparison harness for Helium/Playwright, Phaser, and the Macroquad framebuffer.
-- Nine declared 960×540 visual scenes covering field layout, HUD, entry, move names, a Tackle animation frame, and the initial Poké Ball throw.
+| Area | Status | Evidence and limits |
+|---|---|---|
+| Playable client | A local Town mini-run with a title screen, battle UI, move selection, capture/reward slices, and local checkpoint support | See [what works](#what-works-today) and [known gaps](#what-is-not-implemented) |
+| Battle and progression rules | Implemented in `pokerogue-core`; imported constants/content live in `pokerogue-data` | Runtime does not need Node.js, a server, or network access |
+| Original-source comparison | M12 R1–R5 complete for their bounded scenarios; R6 faint/replacement replay is in progress; R7–R8 are not complete | [Roadmap](ROADMAP.md#next-replay-tasks-bounded-execution-plan) and [evidence log](PORTING_PROGRESS.md#m12-replay-update--r1r5-complete-r6-is-next) |
+| Tests | Focused Rust, data-generator, replay-trace, and visual checks exist | The full workspace suite currently has the recorded 20-wave run failure at wave 12; this project does not hide it or treat it as parity evidence |
+| Visual comparisons | Local source-backed scene fixtures and replay captures are available | Scene screenshots and asset caches are development-only and are not shipped in the client |
 
-This is not a complete PokéRogue port. The visual harness does not run the full original `BattleScene` and `PhaseManager`; the attack and capture scenes cover specific animation stages only. See the [roadmap](ROADMAP.md), [porting progress](PORTING_PROGRESS.md), and [parity plan](PARITY_PLAN.md) for current scope and gaps.
+The screenshot below is the latest local gameplay reference capture from the **original PokéRogue**. It illustrates the source UI used for comparison; it is not a claim that the Rust client already reproduces this complete screen.
 
-## Build and play
+<p align="center">
+  <img src="docs/latest-gameplay-reference.png" alt="Original PokéRogue Town battle screenshot used as a visual reference" width="960">
+</p>
 
-Requirements: stable Rust with Rust 2024 edition support. Clone the repository and its pinned upstream source submodule:
+Pokémon and game artwork visible in the reference image belong to their respective rights holders. The project does not bundle or claim ownership of the original game's art; see [asset credits and limits](ASSET_CREDITS.md).
+
+## What works today
+
+- Rust workspace split into `pokerogue-core`, `pokerogue-data`, `pokerogue-client`, and `pokerogue-tests`.
+- Local Town mini-runs with supported wild battles, turns, selected status/move effects, experience, capture, rewards, and local save/resume slices.
+- A Macroquad client with a title/menu screen, Town battle field, HUD, command/move/party/ball selection, basic move presentation, local audio, and a wave-1 entry animation/message.
+- Source-backed data and deterministic fixtures for selected encounter, RNG, battle, and progression behaviors.
+- A development-only visual harness for comparing bounded scenes against the pinned TypeScript project.
+- Source-executed replay traces through a bounded ordinary wave-1 entry and one non-fainting action, with first-divergence reporting.
+
+Each bullet is bounded. It does not imply support for every Pokémon, item, biome, battle mode, move effect, or original-game screen.
+
+## What is not implemented
+
+- The complete PokéRogue ruleset, content database, UI, and run flow.
+- Full PhaseManager parity in Rust. The replay comparator maps some source-only phases to semantic Rust action boundaries and reports the missing phase observations.
+- Faint/replacement, victory-to-next-wave, and a complete bounded replay gate. These remain open M12 tasks until their original and Rust observations are compared and validated.
+- Full 10/20-wave balance parity. The known deterministic twenty-wave test currently loses at wave 12.
+- R36S/ArkOS support; it is future-only and has not been validated on that hardware.
+
+See [ROADMAP.md](ROADMAP.md) for milestone order, task acceptance criteria, and current checkboxes. [PORTING_PROGRESS.md](PORTING_PROGRESS.md) records recent validation and known failures. [PARITY_PLAN.md](PARITY_PLAN.md) records which behavior was executed against the pinned original, which is inferred, and what remains unobserved.
+
+## Download, build, and play
+
+### Linux, macOS, and Windows
+
+Install a current stable Rust toolchain with Rust 2024 edition support, then clone the project **with its submodules**:
 
 ```sh
 git clone --recurse-submodules https://github.com/pontojasko/pokerogue-rs.git
 cd pokerogue-rs
-cargo build -p pokerogue-client
-cargo run --offline -p pokerogue-client
+cargo run -p pokerogue-client
 ```
 
-The first build downloads Cargo dependencies if they are not cached. After that, the game client runs without contacting PokéRogue servers. The upstream source and asset submodules are checked out separately and remain subject to their own licenses and terms.
-
-On Linux, the client uses Wayland when `WAYLAND_DISPLAY` is set (including Hyprland) and X11 otherwise. To explicitly use X11 from a Wayland session, set `POKEROGUE_FORCE_X11=1`. The client resolves its default local asset path from the project checkout, so it can also be launched through Cargo from another working directory. If sprites or arena artwork are missing, initialize the pinned submodules with `git submodule update --init --recursive`.
-
-Controls: press Enter to start, `1`–`4` to choose a move, Enter to confirm/restart, and Escape to quit. `F5` saves supported checkpoints; see [Contributing](CONTRIBUTING.md) for focused development checks.
-
-## Tests
+The recursive clone checks out the pinned original source and its nested [`pokerogue-assets`](https://github.com/pagefaultgames/pokerogue-assets) repository at `original/assets` (the game source pins the asset revision used by this project). That is the easiest way to install the art locally: the client looks there automatically when it starts. If you already cloned without submodules, run this from the project root:
 
 ```sh
-cargo check --workspace --offline
-cargo test -p pokerogue-client --offline
-python3 -m unittest discover -s scripts -p test_visual_parity.py
-node tools/visual/harness.test.mjs
+git submodule update --init --recursive
 ```
 
-In the published snapshot, workspace compilation and all 13 client tests pass. The full workspace test command currently has one known failure: `deterministic_twenty_wave_run_clears_bosses_and_saves` loses at wave 12; the other workspace tests pass. This is documented in [PORTING_PROGRESS.md](PORTING_PROGRESS.md).
+To fetch just the nested art checkout after initializing `original`, run:
 
-## Visual comparison
+```sh
+git -C original submodule update --init assets
+```
 
-The visual harness runs locally and writes captures, diffs, reports, and regression results to the ignored `visual-artifacts/` directory. It does not use official game servers. Required development tools include Node.js, ImageMagick, Helium or a Playwright-compatible Chromium, and Xvfb for headless native captures.
+You should then have paths such as `original/assets/images/arenas/` and `original/assets/images/pokemon/`. Keep the asset checkout at the pinned revision for reproducible presentation. The client also works without it using fallback graphics. `pokerogue-assets` has separate licensing and third-party art restrictions; downloading it for local play does not grant redistribution rights. See [ASSET_CREDITS.md](ASSET_CREDITS.md) before sharing asset files or builds that include them.
+
+Cargo downloads Rust dependencies on the first build. After dependencies are present, the game client runs locally without contacting PokéRogue servers. The client can still open without art assets, but it will use fallback presentation. Do not distribute builds containing original-game assets unless their separate rights are clear; read [ASSET_CREDITS.md](ASSET_CREDITS.md).
+
+On Linux, the client selects Wayland when `WAYLAND_DISPLAY` is set and X11 otherwise. Set `POKEROGUE_FORCE_X11=1` to choose X11 explicitly from a Wayland session. The project resolves assets relative to its checkout, so it can be launched with Cargo from another working directory.
+
+**Controls:** Enter starts/confirms/restarts; `1`–`4` selects a move; Escape quits. `F5` saves supported local checkpoints. The current run and save scope is intentionally limited; see the roadmap before relying on long runs.
+
+## Project structure
+
+```text
+pokerogue-core/       rules, battle state, RNG, progression, saves
+pokerogue-data/       generated source-backed data; no runtime importer
+pokerogue-client/     Macroquad rendering, UI, audio, and input
+pokerogue-tests/      focused integration/parity tests and fixtures
+original/             pinned TypeScript reference submodule
+tools/visual/         local visual harness and replay capture tooling
+scripts/              data generation, comparison, and validation tools
+```
+
+The dependency direction is deliberate:
+
+```text
+pokerogue-client ──uses──▶ pokerogue-core ──uses──▶ pokerogue-data
+       ▲                         ▲
+       └── presentation/input    └── rules, RNG, progression, persistence
+```
+
+Rendering and input belong in the client. Rules, randomness, progression and persistence belong in the core. Node/TypeScript is a development-time reference and generator only; it is not a runtime requirement.
+
+## Checks for contributors
+
+```sh
+cargo fmt --all -- --check
+cargo check --workspace --offline
+cargo test --workspace --offline
+cargo parity
+node scripts/import_demo_data.mjs --check
+node tools/visual/replay-trace.test.mjs
+node tools/visual/replay-compare.test.mjs
+```
+
+Some checks require the submodules and local visual tools. `cargo parity` currently includes the known failing 20-wave policy test. Do not update fixtures to make a failed comparison green without first verifying the behavior against the pinned source. See [CONTRIBUTING.md](CONTRIBUTING.md) for focused checks and evidence expectations.
+
+## Visual comparison tooling
+
+The visual harness writes captures, diffs, and reports under the ignored `visual-artifacts/` directory. It does not connect to official game servers. To install its development-only Node dependencies and run a scene:
 
 ```sh
 npm ci --prefix tools/visual --ignore-scripts
-python3 tools/visual/bootstrap.py --xvfb
-python3 scripts/visual_parity.py --scene battle-town-capture --native-backend xvfb
+python3 tools/visual/bootstrap.py
+python3 scripts/visual_parity.py --scene battle-town-capture
 ```
 
-To establish local regression baselines, inspect the captured images first, then explicitly record them:
+Native screenshots can require a display server; Xvfb setup and Playwright/Helium prerequisites are documented in [tools/visual/README.md](tools/visual/README.md). Visual fixture output is not an automatic parity claim, and local original-game captures/assets are not part of the normal runtime.
 
-```sh
-python3 scripts/visual_suite.py --record-baselines --native-backend xvfb
-python3 scripts/visual_suite.py --native-backend xvfb
-```
+### Game Boy CSS reference
 
-Screenshots, baselines, downloaded runtimes, and game assets are not committed. See [visual tooling documentation](tools/visual/README.md) and [asset credits and restrictions](ASSET_CREDITS.md).
+The retro UI reference [Pokémon GameBoy CSS](https://github.com/luttje/css-pokemon-gameboy) is a standalone MIT-licensed CSS project. GitHub does not apply arbitrary project CSS to repository READMEs, so the library cannot style this page directly. Its upstream README also describes it as a joke framework and says its images and visual style are Nintendo's property. We link it as a design reference without importing its CSS, images, or another runtime dependency.
 
-## Contributing
+## Contributing and project transparency
 
-Start with the concise [contribution guide](CONTRIBUTING.md). It covers local setup, focused validation, pull requests, and AI-assisted contributions.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). Before changing rules, read [ARCHITECTURE.md](ARCHITECTURE.md), the relevant [PARITY_PLAN.md](PARITY_PLAN.md) section, and the task dependencies in [ROADMAP.md](ROADMAP.md). Every completion claim should point to a reproducible command or checked-in evidence; a passing narrow test must not be presented as full-game parity.
 
-## License and attribution
-
-This Rust workspace is licensed under **AGPL-3.0-only**; see [LICENSE](LICENSE). The TypeScript reference is a pinned upstream submodule and retains its own license and credits. Game assets are not bundled in this repository. Their redistribution rights are unresolved; review [ASSET_CREDITS.md](ASSET_CREDITS.md) before using or sharing them.
-
-PokéRogue Rust is an unofficial fan project and is not affiliated with the original PokéRogue authors or Pokémon rights holders.
+This is an unofficial fan project and is not affiliated with PokéRogue's authors or Pokémon rights holders. The Rust workspace uses **AGPL-3.0-only**; see [LICENSE](LICENSE). The original source and assets are separate submodules with their own licenses, notices, and restrictions.

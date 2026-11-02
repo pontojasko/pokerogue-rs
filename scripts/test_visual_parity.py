@@ -64,6 +64,18 @@ class ComparatorTests(unittest.TestCase):
             self.assertEqual(result.returncode,2)
             self.assertIn(b'must not overlap',result.stderr)
 
+    def test_battle_menu_cases_use_real_phaser_backend_without_false_parity_gate(self):
+        cases=json.loads((visual.ROOT/'tools/visual/suite.json').read_text())['cases']
+        for name in ('battle-town-moves','battle-town-ui'):
+            case=next(item for item in cases if item['scene']==name)
+            self.assertEqual(case.get('reference_backend'),'full-game')
+            self.assertNotIn('max_parity_ratio',case)
+
+    def test_suite_records_browser_version_from_both_reference_formats(self):
+        import visual_suite
+        self.assertEqual(visual_suite.browser_version({'reference':{'browser':'Helium 1'}}),'Helium 1')
+        self.assertEqual(visual_suite.browser_version({'reference':{'browser_version':'Helium 2'}}),'Helium 2')
+
 
 if __name__ == '__main__':
     unittest.main()

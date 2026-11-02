@@ -66,6 +66,9 @@ test("file routing forbids workspace secrets and traversal", () => {
 		localFile("http://localhost/original/node_modules/phaser/dist/phaser.js")
 			.body.length > 100000,
 	);
+	const typeAtlas = localFile("http://localhost/original/assets/images/ui/pbinfo_player_type1.json");
+	assert.equal(typeAtlas.contentType, "application/json");
+	assert.ok(typeAtlas.body.includes('"filename": "grass"'));
 });
 
 // Compile the real UI source to catch dependency/parse regressions before browser capture.

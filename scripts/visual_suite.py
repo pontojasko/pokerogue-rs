@@ -9,11 +9,15 @@ import sys
 import time
 from visual_parity import ROOT, fingerprint
 
+def browser_version(report):
+    reference=report.get('reference',{})
+    return reference.get('browser') or reference.get('browser_version') or 'unknown'
+
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--record-baselines',action='store_true',help='Explicitly snapshot current captures; review reports first. Existing baselines are never overwritten.')
-    parser.add_argument('--baseline-dir',type=Path,default=ROOT/'visual-artifacts/baselines')
+    parser.add_argument('--baseline-dir',type=Path,default=ROOT/'visual-artifacts/reviewed-baselines-v2')
     parser.add_argument('--output',type=Path,default=ROOT/'visual-artifacts/suite')
     parser.add_argument('--native-backend',choices=['auto','xvfb','display'],default='auto')
     parser.add_argument('--scene', help='Run only one declared scene (also useful for reviewing a new baseline)')
@@ -31,6 +35,8 @@ def main():
     for case in cases:
         scene=case['scene'];folder=output/scene;baseline=baseline_dir/scene
         command=[sys.executable,str(ROOT/'scripts/visual_parity.py'),'--scene',scene,'--output',str(folder),'--native-backend',args.native_backend]
+        if 'reference_backend' in case:
+            command+=['--reference-backend',case['reference_backend']]
         if 'max_parity_ratio' in case:
             command+=['--max-parity-ratio',str(case['max_parity_ratio'])]
         if not args.record_baselines:
@@ -54,7 +60,7 @@ def main():
             baseline.mkdir(parents=True)
             shutil.copy2(folder/'rust.png',baseline/'rust.png')
             shutil.copy2(folder/'report.json',baseline/'review-report.json')
-            meta={'fixture_sha256':report['fixture_sha256'],'rust_sha256':fingerprint(baseline/'rust.png'),'source_pins':report['source_pins'],'browser':report['reference']['browser'],'native_backend':report['native_backend']}
+            meta={'fixture_sha256':report['fixture_sha256'],'rust_sha256':fingerprint(baseline/'rust.png'),'source_pins':report['source_pins'],'browser':browser_version(report),'native_backend':report['native_backend']}
             (baseline/'metadata.json').write_text(json.dumps(meta,indent=2)+'\n')
             record['status']='baseline-recorded'
         records.append(record)

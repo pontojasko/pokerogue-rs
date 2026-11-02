@@ -11,6 +11,17 @@ ROOT=Path(__file__).resolve().parents[2]
 ASSET_PIN='fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba'
 # These bytes stay only in the original local checkout (never committed/bundled).
 HUD_FILES=['fonts/pokemon-emerald-pro.ttf','images/ui/overlay_hp.json','images/ui/overlay_hp_boss.json','images/ui/numbers.json','images/ui/numbers.png','images/ui/overlay_exp.png']+[f'images/ui/text_images/en/battle_ui/{name}.png' for name in ['overlay_lv','overlay_hp_label','overlay_exp_label']]
+PARTY_FILES=[
+    'images/ui/party_bg.png',
+    'images/ui/party_slot_main.png','images/ui/party_slot_main.json',
+    'images/ui/party_slot.png','images/ui/party_slot.json',
+    'images/ui/party_pb.png','images/ui/party_pb.json',
+    'images/ui/party_slot_hp_bar.png',
+    'images/ui/party_slot_hp_overlay.png','images/ui/party_slot_hp_overlay.json',
+    'images/ui/party_cancel.png','images/ui/party_cancel.json',
+    'images/ui/text_images/en/party_ui/party_slot_overlay_hp.png',
+    'images/ui/text_images/en/party_ui/party_slot_overlay_lv.png',
+]+[f'images/pokemon_icons_{generation}.{extension}' for generation in range(10) for extension in ('png','json')]
 XVFB_URL='https://stable-mirror.omarchy.org/extra/os/x86_64/xorg-server-xvfb-21.1.25-2-x86_64.pkg.tar.zst'
 XVFB_SHA256='52c6d0394109b0bdfd0e4d00dd8d89d7e38bfe7576d96145179f216480eb7564'
 
@@ -21,7 +32,7 @@ def main():
     actual=subprocess.check_output(['git','-C',str(ROOT/'original/assets'),'rev-parse','HEAD'],text=True).strip()
     if actual!=ASSET_PIN:
         raise SystemExit('Asset checkout pin mismatch; not modifying it')
-    for name in HUD_FILES:
+    for name in [*HUD_FILES,*PARTY_FILES]:
         target=ROOT/'original/assets'/name
         if target.exists():
             continue

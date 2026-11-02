@@ -1,0 +1,30 @@
+{
+  "width": 960,
+  "height": 540,
+  "time_ms": 0,
+  "player": {
+    "species": 1,
+    "gender": "male",
+    "level": 5,
+    "hp": 19,
+    "max_hp": 19
+  },
+  "enemy": {
+    "species": 19,
+    "gender": "female",
+    "owned_icon": false,
+    "level": 2,
+    "hp": 15,
+    "max_hp": 15
+  },
+  "phase": "settled",
+  "scope": "battle",
+  "ui_state": "balls",
+  "command_cursor": 1,
+  "ball_cursor": 0,
+  "ball_wiggle_ms": 100,
+  "ball_counts": [5, 3, 0, 0, 0],
+  "player_moves": ["VineWhip", "Tackle"],
+  "enemy_moves": ["Tackle"],
+  "wave": 2
+}

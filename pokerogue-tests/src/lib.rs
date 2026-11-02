@@ -2,7 +2,7 @@
 mod equivalence_smoke {
     use pokerogue_core::{
         Battle, BattleActor, BattleEvent, BattleRng, Battler, FieldExitKind, HitResult, Outcome,
-        PlayerAction, SwitchError, SwitchEvent, TurnActionError, calculate_damage,
+        PlayerAction, SwitchError, SwitchEvent, Team, TurnActionError, calculate_damage,
         calculate_damage_for_types, calculate_damage_with_boosters, check_move_accuracy,
     };
     use pokerogue_data::{
@@ -1545,6 +1545,7 @@ mod equivalence_smoke {
             .unwrap();
         let fields: Vec<_> = row.split(',').collect();
         let mut run = MiniRun::new_with_wave_limit(fields[0], "DAY", 20).unwrap();
+        run.money = 0;
         run.wave = fields[1].parse().unwrap();
         run.stage = MiniRunStage::Reward;
         run.battle.player.member_mut(0).unwrap().max_hp = 160;
@@ -1613,6 +1614,7 @@ mod equivalence_smoke {
             .unwrap();
         let fields: Vec<_> = row.split(',').collect();
         let mut run = MiniRun::new_with_wave_limit(fields[0], "DAY", 20).unwrap();
+        run.money = 0;
         run.wave = fields[1].parse().unwrap();
         run.stage = MiniRunStage::Reward;
         run.battle.player.member_mut(0).unwrap().max_hp = 160;
@@ -2411,6 +2413,7 @@ mod equivalence_smoke {
             .unwrap();
         let fields: Vec<_> = row.split(',').collect();
         let mut run = MiniRun::new_with_wave_limit(fields[0], "DAY", 20).unwrap();
+        run.money = 0;
         run.wave = fields[1].parse().unwrap();
         run.stage = MiniRunStage::Reward;
         run.battle.player.member_mut(0).unwrap().max_hp = 160;
@@ -2516,6 +2519,7 @@ mod equivalence_smoke {
             .split(',')
             .collect();
         let mut run = MiniRun::new_with_wave_limit(fields[0], "DAY", 20).unwrap();
+        run.money = 0;
         run.wave = fields[1].parse().unwrap();
         run.stage = MiniRunStage::Reward;
         run.battle.player.member_mut(0).unwrap().max_hp = 160;
@@ -3333,7 +3337,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace("lure_battles_remaining\t0\n", "")
             .replace("accuracy_booster_battles_remaining\t0\n", "")
             .replace("speed_booster_battles_remaining\t0\n", "")
@@ -3366,7 +3370,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace("lure_battles_remaining\t0\n", "")
             .replace("accuracy_booster_battles_remaining\t0\n", "")
             .replace("speed_booster_battles_remaining\t0\n", "")
@@ -3395,7 +3399,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace("lure_battles_remaining\t0\n", "")
             .replace("accuracy_booster_battles_remaining\t0\n", "")
             .replace("speed_booster_battles_remaining\t0\n", "")
@@ -3423,7 +3427,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace("lure_battles_remaining\t0\n", "")
             .replace("accuracy_booster_battles_remaining\t0\n", "")
             .replace("speed_booster_battles_remaining\t0\n", "")
@@ -3485,7 +3489,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace(
                 "temp_stat_booster_battles_remaining\t0,0,0,0,0,5\n",
                 "accuracy_booster_battles_remaining\t5\nspeed_booster_battles_remaining\t0\n",
@@ -3575,7 +3579,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "");
+            .replace("money\t1000\n", "");
         let migrated_v13 = MiniRun::from_checkpoint(&old_v13).unwrap();
         assert_eq!(migrated_v13.wave_limit, 20);
         assert!(migrated_v13.battle.player.has_sitrus_berry);
@@ -3586,7 +3590,7 @@ mod equivalence_smoke {
             .replace("greatballs\t0\n", "")
             .replace("ultraballs\t0\n", "")
             .replace("exp_share_stacks\t0\n", "")
-            .replace("money\t0\n", "")
+            .replace("money\t1000\n", "")
             .replace("pokemon\t", "pokemon\t");
         // v12 predates held Sitrus state and must not infer the berry.
         let legacy = legacy
@@ -4067,6 +4071,10 @@ mod equivalence_smoke {
                 stages: 1,
             })
         );
+        let withdraw = Move::Imported(110);
+        assert_eq!(withdraw.id(), "WITHDRAW");
+        assert_eq!(withdraw.target(), pokerogue_data::MoveTarget::Attacker);
+        assert_eq!(withdraw.effect(), harden.effect());
     }
 
     #[test]
@@ -4662,6 +4670,19 @@ mod equivalence_smoke {
                     assert_eq!(growth_name, fields[13], "{row}");
                     assert_eq!(data.catch_rate.to_string(), fields[14], "{row}");
                     assert_eq!(data.base_friendship.to_string(), fields[15], "{row}");
+                    assert_eq!(data.ability1, fields[16], "{row}");
+                    assert_eq!(data.ability2, fields[17], "{row}");
+                    assert_eq!(data.ability_hidden, fields[18], "{row}");
+                    assert_eq!(
+                        data.male_percent
+                            .map(|value| value.to_string())
+                            .unwrap_or_default(),
+                        fields[19],
+                        "{row}"
+                    );
+                    assert_eq!(data.ability1_id.to_string(), fields[20], "{row}");
+                    assert_eq!(data.ability2_id.to_string(), fields[21], "{row}");
+                    assert_eq!(data.ability_hidden_id.to_string(), fields[22], "{row}");
                 }
                 "move" => {
                     move_count += 1;
@@ -6570,6 +6591,109 @@ mod equivalence_smoke {
     }
 
     #[test]
+    fn town_wave1_enemy_first_faint_cancels_player_move_and_replaces_from_party() {
+        let mut turtwig = Battler::demo(
+            Species::from_numeric_id(387).unwrap(),
+            5,
+            [Move::Imported(33), Move::Imported(71), Move::Imported(110)],
+        );
+        turtwig.hp = 21;
+        turtwig.max_hp = 21;
+        turtwig.attack = 12;
+        turtwig.defense = 12;
+        turtwig.special_attack = 10;
+        turtwig.special_defense = 11;
+        turtwig.speed = 8;
+        let mut bulbasaur = Battler::demo(
+            Species::Bulbasaur,
+            5,
+            [Move::Imported(33), Move::Imported(45), Move::Imported(22)],
+        );
+        bulbasaur.hp = 20;
+        bulbasaur.max_hp = 20;
+        bulbasaur.attack = 10;
+        bulbasaur.defense = 10;
+        bulbasaur.special_attack = 12;
+        bulbasaur.special_defense = 12;
+        bulbasaur.speed = 10;
+
+        let team = Team::new(turtwig, bulbasaur);
+        let (mut battle, encounter) =
+            Battle::town_classic_entry_for_wave_with_team("M12Speed0016", "DAY", 1, team).unwrap();
+        assert_eq!(encounter.battler.species.numeric_id(), 276);
+        assert_eq!(encounter.battler.hp, 14);
+        assert_eq!(encounter.battler.speed, 9);
+        assert_eq!(
+            battle.player.member(0).unwrap().moves[2],
+            Move::Imported(110)
+        );
+
+        battle.take_turn(PlayerAction::UseMove(0)).unwrap();
+        assert_eq!(
+            battle.last_action_order,
+            [BattleActor::Enemy, BattleActor::Player]
+        );
+        assert_eq!(
+            battle.player.member(0).unwrap().hp,
+            13,
+            "first-turn events: {:?}; draws: {:?}",
+            battle.last_events,
+            battle.rng_draws()
+        );
+        assert_eq!(battle.enemy.hp, 7);
+        assert_eq!(battle.player.member(0).unwrap().move_pp_used[0], 1);
+
+        battle.take_turn(PlayerAction::UseMove(0)).unwrap();
+        assert_eq!(
+            battle.last_action_order,
+            [BattleActor::Enemy, BattleActor::Player]
+        );
+        assert_eq!(battle.player.member(0).unwrap().hp, 6);
+        assert_eq!(battle.enemy.hp, 1);
+        assert_eq!(battle.player.member(0).unwrap().move_pp_used[0], 2);
+
+        battle.take_turn(PlayerAction::UseMove(0)).unwrap();
+        assert!(battle.needs_replacement());
+        assert_eq!(battle.pending_replacement_slot(), Some(0));
+        assert_eq!(battle.player.active_slot(), 0);
+        assert_eq!(battle.player.member(0).unwrap().hp, 0);
+        assert_eq!(battle.enemy.hp, 1);
+        assert_eq!(battle.player.member(0).unwrap().move_pp_used[0], 2);
+        assert_eq!(battle.turn, 3);
+        assert!(battle.last_events.iter().any(|event| matches!(
+            event,
+            BattleEvent::MoveExecuted {
+                actor: BattleActor::Enemy,
+                move_: Move::Imported(64)
+            }
+        )));
+        assert!(
+            !battle.last_events.iter().any(|event| matches!(
+                event,
+                BattleEvent::MoveExecuted {
+                    actor: BattleActor::Player,
+                    ..
+                }
+            )),
+            "the source-queued player MovePhase is canceled while its actor is fainted"
+        );
+        assert!(
+            battle
+                .last_events
+                .iter()
+                .any(|event| matches!(event, BattleEvent::ReplacementRequired { fainted_slot: 0 }))
+        );
+
+        let rng_at_replacement = battle.rng_draws().len();
+        battle.replace_fainted_player(1).unwrap();
+        assert_eq!(battle.player.active_slot(), 1);
+        assert_eq!(battle.player.hp, 20);
+        assert_eq!(battle.turn, 4);
+        assert_eq!(battle.rng_draws().len(), rng_at_replacement);
+        assert!(!battle.needs_replacement());
+    }
+
+    #[test]
     fn faint_phase_guards_and_turn_end_match_executed_source_methods() {
         let rows: Vec<Vec<_>> = include_str!("../fixtures/faint-phase-guards.csv")
             .lines()
@@ -6792,7 +6916,7 @@ mod equivalence_smoke {
 
     #[test]
     fn first_wave_battle_entry_matches_source_level_species_stats_and_learnset() {
-        use pokerogue_core::{Battle, generate_town_wild_encounter};
+        use pokerogue_core::{Battle, generate_town_wild_encounter_for_wave_isolated};
 
         let row = include_str!("../fixtures/town-encounter.csv")
             .lines()
@@ -6800,7 +6924,8 @@ mod equivalence_smoke {
             .unwrap();
         let fields: Vec<_> = row.split(',').collect();
         assert_eq!(fields[1], "7c0881255af5cd51992e513ff93c2f71adbe40e0");
-        let encounter = generate_town_wild_encounter(fields[2], fields[6]).unwrap();
+        let encounter =
+            generate_town_wild_encounter_for_wave_isolated(fields[2], fields[6], 1).unwrap();
         assert_eq!(encounter.level.to_string(), fields[4]);
         assert_eq!(encounter.selection.tier_roll.to_string(), fields[7]);
         assert_eq!(encounter.selection.tier, fields[8]);
@@ -7144,7 +7269,7 @@ mod equivalence_smoke {
 
     #[test]
     fn town_encounters_through_wave_twenty_match_source_executed_typescript_fixtures() {
-        use pokerogue_core::generate_town_wild_encounter_for_wave;
+        use pokerogue_core::generate_town_wild_encounter_for_wave_isolated;
 
         for row in include_str!("../fixtures/town-encounter.csv")
             .lines()
@@ -7154,7 +7279,7 @@ mod equivalence_smoke {
             assert_eq!(fields[1], "7c0881255af5cd51992e513ff93c2f71adbe40e0");
             let wave: u32 = fields[3].parse().unwrap();
             let encounter =
-                generate_town_wild_encounter_for_wave(fields[2], fields[5], wave).unwrap();
+                generate_town_wild_encounter_for_wave_isolated(fields[2], fields[5], wave).unwrap();
             assert_eq!(encounter.battle_seed, fields[16], "wave {wave}");
             if wave % 10 == 0 {
                 assert!(encounter.boss_segments >= 2);
@@ -7262,6 +7387,173 @@ mod equivalence_smoke {
                 "wave {wave}"
             );
         }
+    }
+
+    #[test]
+    fn normal_town_entry_consumes_double_check_before_encounter_rng() {
+        let (battle, encounter) =
+            pokerogue_core::Battle::town_classic_entry_for_wave("M12TownWave1Replay6", "DAY", 1)
+                .unwrap();
+        // The executed Phaser trace consumes integerInRange(0, 7) in
+        // BattleScene.checkIsDouble before EncounterPhase calls randomSpecies.
+        assert_eq!(encounter.selection.tier_roll, 288);
+        assert_eq!(encounter.selection.species.0, 819);
+        assert_eq!(
+            encounter
+                .construction_rng_draws
+                .iter()
+                .map(|draw| (draw.range, draw.min, draw.value))
+                .collect::<Vec<_>>(),
+            vec![
+                (256, 0, 218),
+                (4_294_967_296, 0, 693_933_964),
+                (25, 0, 1),
+                (13_049, 0, 4_721),
+                (13_049, 0, 6_106),
+            ]
+        );
+        assert_eq!(encounter.generated_ivs, [20, 21, 25, 5, 28, 12]);
+        assert_eq!(encounter.generated_id, 693_933_964);
+        assert_eq!(encounter.generated_nature, 1);
+        assert_eq!(encounter.generated_ability_index, 0);
+        assert_eq!(encounter.generated_ability_id, 167);
+        assert_eq!(encounter.generated_moves, [33, 39]);
+        assert_eq!(
+            [
+                encounter.battler.max_hp,
+                encounter.battler.attack,
+                encounter.battler.defense,
+                encounter.battler.special_attack,
+                encounter.battler.special_defense,
+                encounter.battler.speed,
+            ],
+            [15, 8, 6, 6, 6, 6]
+        );
+        assert_eq!(encounter.additional_opponents.len(), 1);
+        let second = &encounter.additional_opponents[0];
+        assert_eq!(second.species_id, 396);
+        assert_eq!(second.generated_ivs, [5, 29, 28, 13, 19, 17]);
+        assert_eq!(second.generated_nature, 9);
+        assert_eq!(second.generated_ability_id, 120);
+        assert_eq!(second.generated_moves, [33, 45]);
+        assert_eq!(
+            [
+                second.battler.max_hp,
+                second.battler.attack,
+                second.battler.defense,
+                second.battler.special_attack,
+                second.battler.special_defense,
+                second.battler.speed,
+            ],
+            [13, 7, 7, 6, 5, 7]
+        );
+        assert_eq!(
+            encounter
+                .encounter_rng_trace
+                .iter()
+                .map(|draw| (draw.range, draw.min, draw.value))
+                .collect::<Vec<_>>(),
+            vec![
+                (512, 0, 288),
+                (24, 0, 23),
+                (256, 0, 218),
+                (4_294_967_296, 0, 693_933_964),
+                (25, 0, 1),
+                (13_049, 0, 4_721),
+                (13_049, 0, 6_106),
+                (512, 0, 203),
+                (24, 0, 18),
+                (256, 0, 0),
+                (4_294_967_296, 0, 1_272_854_129),
+                (25, 0, 9),
+                (2, 0, 0),
+                (13_049, 0, 10_078),
+                (13_049, 0, 11_880),
+                (12, 0, 5),
+                (6, 0, 4),
+                (2, 0, 1),
+                (18, 0, 12),
+                (18, 0, 17),
+                (3, 0, 0),
+                (2, 0, 0),
+                (3, 0, 0),
+                (2, 0, 0),
+                (2, 0, 1),
+                (2, 0, 1),
+                (2, 0, 1),
+                (2, 0, 1),
+            ]
+        );
+        assert_eq!(battle.player.len(), 1);
+        let player = battle.player.member(0).unwrap();
+        assert_eq!(player.species.numeric_id(), 1);
+        assert_eq!(player.level, 5);
+        assert_eq!(player.hp, 20);
+        assert_eq!(player.max_hp, 20);
+        assert_eq!(
+            [
+                player.max_hp,
+                player.attack,
+                player.defense,
+                player.special_attack,
+                player.special_defense,
+                player.speed
+            ],
+            [20, 10, 10, 12, 12, 10]
+        );
+        assert_eq!(
+            player.moves[..usize::from(player.move_count)]
+                .iter()
+                .map(|move_| move_.numeric_id())
+                .collect::<Vec<_>>(),
+            vec![33, 45, 22]
+        );
+    }
+
+    #[test]
+    fn town_wave1_first_move_matches_source_rng_and_next_command_state() {
+        let (mut battle, _) =
+            pokerogue_core::Battle::town_classic_entry_for_wave("M12TownWave1Action0", "DAY", 1)
+                .unwrap();
+        battle
+            .take_turn(PlayerAction::UseMove(0))
+            .expect("the source-supported first move should resolve");
+
+        assert_eq!(
+            battle
+                .rng_draws()
+                .iter()
+                .map(|draw| (draw.range, draw.min, draw.value))
+                .collect::<Vec<_>>(),
+            vec![
+                (8, 0, 5),   // source EnemyPokemon.getNextTargets for Tackle
+                (100, 0, 9), // player accuracy
+                (24, 0, 12), // player critical check
+                (16, 85, 90),
+                (100, 0, 24), // enemy accuracy
+                (24, 0, 9),   // enemy critical check
+                (16, 85, 88),
+            ]
+        );
+        assert_eq!(battle.turn, 2);
+        assert_eq!((battle.player.hp, battle.enemy.hp), (15, 8));
+        assert_eq!(battle.player.move_pp_used[0], 1);
+        assert_eq!(battle.enemy.move_pp_used[0], 1);
+        assert_eq!(
+            battle
+                .last_enemy_decision
+                .as_ref()
+                .unwrap()
+                .selected_move
+                .numeric_id(),
+            33
+        );
+        assert!(
+            !battle
+                .last_events
+                .iter()
+                .any(|event| matches!(event, BattleEvent::CriticalHit { .. }))
+        );
     }
 
     #[test]
@@ -7725,7 +8017,7 @@ mod equivalence_smoke {
         assert_eq!(fields[7], "0");
         assert_eq!(fields[8], "battle:noPokeballStrong");
         assert!(fields[9].is_empty(), "source gate must not draw RNG");
-        let encounter = pokerogue_core::generate_town_wild_encounter_for_wave(
+        let (_battle, encounter) = pokerogue_core::Battle::town_classic_entry_for_wave(
             "BossCatchRestrictionSeed",
             "DAY",
             10,

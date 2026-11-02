@@ -7,8 +7,8 @@ import { dirname, resolve } from 'node:path';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sourceRoot = resolve(root, 'original/src');
 const pin = '7c0881255af5cd51992e513ff93c2f71adbe40e0';
-const wantedSpecies = ['BULBASAUR', 'CHARMANDER'];
-const wantedMoves = ['VINE_WHIP', 'TACKLE', 'EMBER', 'SAND_ATTACK', 'COUNTER', 'QUICK_ATTACK', 'STRUGGLE'];
+const wantedSpecies = ['BULBASAUR', 'CHARMANDER', 'TURTWIG'];
+const wantedMoves = ['VINE_WHIP', 'TACKLE', 'EMBER', 'SAND_ATTACK', 'COUNTER', 'QUICK_ATTACK', 'WITHDRAW', 'STRUGGLE'];
 const speciesDir = resolve(sourceRoot, 'data/balance/species');
 const speciesSources = readdirSync(speciesDir)
   .filter((file) => /^generation-\d+\.ts$/.test(file))
@@ -17,6 +17,7 @@ const speciesSources = readdirSync(speciesDir)
 const moveSource = readFileSync(resolve(sourceRoot, 'data/moves/move.ts'), 'utf8');
 const townSource = readFileSync(resolve(sourceRoot, 'data/balance/biomes/town.ts'), 'utf8');
 const speciesEnumSource = readFileSync(resolve(sourceRoot, 'enums/species-id.ts'), 'utf8');
+const abilityEnumSource = readFileSync(resolve(sourceRoot, 'enums/ability-id.ts'), 'utf8');
 const moveEnumSource = readFileSync(resolve(sourceRoot, 'enums/move-id.ts'), 'utf8');
 const modifierTierEnumSource = readFileSync(resolve(sourceRoot, 'enums/modifier-tier.ts'), 'utf8');
 const tmPoolTierSource = readFileSync(resolve(sourceRoot, 'data/balance/tm-pool-tiers.ts'), 'utf8');
@@ -46,6 +47,7 @@ function enumIds(source, enumName) {
 }
 
 const speciesNumericIds = enumIds(speciesEnumSource, 'SpeciesId');
+const abilityNumericIds = enumIds(abilityEnumSource, 'AbilityId');
 const moveNumericIds = enumIds(moveEnumSource, 'MoveId');
 const modifierTierIds = enumIds(modifierTierEnumSource, 'ModifierTier');
 const poolTierIds = enumIds(poolTierEnumSource, 'BiomePoolTier');
@@ -230,6 +232,13 @@ function speciesRecord(id) {
     special_defense: Number(get('baseSpdef')), speed: Number(get('baseSpd')),
     base_exp: Number(get('baseExp')), growth_rate: get('growthRate').replace('GrowthRate.', ''),
     catch_rate: Number(get('catchRate')), base_friendship: Number(get('baseFriendship')),
+    ability1: get('ability1').replace('AbilityId.', ''),
+    ability2: get('ability2').replace('AbilityId.', ''),
+    ability_hidden: get('abilityHidden').replace('AbilityId.', ''),
+    ability1_id: requiredId(abilityNumericIds, get('ability1').replace('AbilityId.', ''), 'AbilityId'),
+    ability2_id: requiredId(abilityNumericIds, get('ability2').replace('AbilityId.', ''), 'AbilityId'),
+    ability_hidden_id: requiredId(abilityNumericIds, get('abilityHidden').replace('AbilityId.', ''), 'AbilityId'),
+    male_percent: get('malePercent') === 'null' ? null : Number(get('malePercent')),
     levelMoves: levelMoves.map((move) => ({ ...move, numeric_id: requiredId(moveNumericIds, move.move_id, 'MoveId') })),
     tmMoves: [...new Set(tmMoves)],
     evolutions,
@@ -355,7 +364,7 @@ const lines = [
   '};',
   '#[rustfmt::skip]',
   'pub const IMPORTED_SPECIES: &[ImportedSpecies] = &[',
-  ...species.map((s) => `    ImportedSpecies { id: "${s.id}", numeric_id: ${s.numeric_id}, name: "${s.name}", type1: Element::${toPascal(s.type1)}, type2: ${rustType(s.type2)}, base_hp: ${s.hp}, base_attack: ${s.attack}, base_defense: ${s.defense}, base_special_attack: ${s.special_attack}, base_special_defense: ${s.special_defense}, base_speed: ${s.speed}, base_exp: ${s.base_exp}, growth_rate: GrowthRate::${toPascal(s.growth_rate)}, catch_rate: ${s.catch_rate}, base_friendship: ${s.base_friendship} },`),
+  ...species.map((s) => `    ImportedSpecies { id: "${s.id}", numeric_id: ${s.numeric_id}, name: "${s.name}", type1: Element::${toPascal(s.type1)}, type2: ${rustType(s.type2)}, base_hp: ${s.hp}, base_attack: ${s.attack}, base_defense: ${s.defense}, base_special_attack: ${s.special_attack}, base_special_defense: ${s.special_defense}, base_speed: ${s.speed}, base_exp: ${s.base_exp}, growth_rate: GrowthRate::${toPascal(s.growth_rate)}, catch_rate: ${s.catch_rate}, base_friendship: ${s.base_friendship}, ability1: "${s.ability1}", ability2: "${s.ability2}", ability_hidden: "${s.ability_hidden}", ability1_id: ${s.ability1_id}, ability2_id: ${s.ability2_id}, ability_hidden_id: ${s.ability_hidden_id}, male_percent: ${s.male_percent === null ? 'None' : `Some(${Number.isInteger(s.male_percent) ? `${s.male_percent}.0` : s.male_percent})`} },`),
   '];',
   '#[rustfmt::skip]',
   'pub const IMPORTED_SPECIES_TMS: &[ImportedSpeciesTm] = &[',
@@ -400,8 +409,8 @@ const lines = [
   '',
 ];
 const csv = [
-  '# Source fields: species(kind,id,numeric_id,name,type1,type2,hp,attack,defense,sp_attack,sp_defense,speed,base_exp,growth_rate,catch_rate,base_friendship); move(kind,id,numeric_id,name,type,category,power,accuracy,pp,priority,unimplemented); level_move(kind,species_id,species_numeric_id,level,move_id,move_numeric_id); pool_bucket(biome,tier,tier_id,time,time_id,count,id:numeric_id|...); tier_weight(table,tier,tier_id,roll_max,min,max,weight); condition(key,value)',
-  ...species.map((s) => `species,${s.id},${s.numeric_id},${s.name},${s.type1},${s.type2 ?? ''},${s.hp},${s.attack},${s.defense},${s.special_attack},${s.special_defense},${s.speed},${s.base_exp},${s.growth_rate},${s.catch_rate},${s.base_friendship}`),
+  '# Source fields: species(kind,id,numeric_id,name,type1,type2,hp,attack,defense,sp_attack,sp_defense,speed,base_exp,growth_rate,catch_rate,base_friendship,ability1,ability2,ability_hidden,male_percent); move(kind,id,numeric_id,name,type,category,power,accuracy,pp,priority,unimplemented); level_move(kind,species_id,species_numeric_id,level,move_id,move_numeric_id); pool_bucket(biome,tier,tier_id,time,time_id,count,id:numeric_id|...); tier_weight(table,tier,tier_id,roll_max,min,max,weight); condition(key,value)',
+  ...species.map((s) => `species,${s.id},${s.numeric_id},${s.name},${s.type1},${s.type2 ?? ''},${s.hp},${s.attack},${s.defense},${s.special_attack},${s.special_defense},${s.speed},${s.base_exp},${s.growth_rate},${s.catch_rate},${s.base_friendship},${s.ability1},${s.ability2},${s.ability_hidden},${s.male_percent ?? ''},${s.ability1_id},${s.ability2_id},${s.ability_hidden_id}`),
   ...species.flatMap((s) => s.levelMoves.map((m) => `level_move,${s.id},${s.numeric_id},${m.level},${m.move_id},${m.numeric_id}`)),
   ...species.flatMap((s) => s.tmMoves.map((id, index) => `species_tm,${s.id},${s.numeric_id},${index},${id},${requiredId(moveNumericIds, id, 'MoveId')}`)),
   ...prevolutionRows.map((row) => `prevolution,${row.species_numeric_id},${row.prevolution_numeric_id}`),

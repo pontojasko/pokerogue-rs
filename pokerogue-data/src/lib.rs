@@ -32,7 +32,7 @@ pub enum GrowthRate {
     Fluctuating,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ImportedSpecies {
     pub id: &'static str,
     pub numeric_id: u16,
@@ -49,6 +49,13 @@ pub struct ImportedSpecies {
     pub growth_rate: GrowthRate,
     pub catch_rate: u8,
     pub base_friendship: u8,
+    pub ability1: &'static str,
+    pub ability2: &'static str,
+    pub ability_hidden: &'static str,
+    pub ability1_id: u16,
+    pub ability2_id: u16,
+    pub ability_hidden_id: u16,
+    pub male_percent: Option<f64>,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -519,7 +526,10 @@ impl Move {
                 stages: -1,
                 chance: -1,
             }),
-            Self::Imported(id) if move_by_numeric_id(id).is_some_and(|m| m.id == "HARDEN") => {
+            Self::Imported(id)
+                if move_by_numeric_id(id)
+                    .is_some_and(|m| matches!(m.id, "HARDEN" | "WITHDRAW")) =>
+            {
                 Some(MoveEffect::SelfStatStageChange {
                     stat: BattleStat::Defense,
                     stages: 1,
@@ -553,7 +563,10 @@ impl Move {
     pub fn target(self) -> MoveTarget {
         match self {
             Self::Counter => MoveTarget::Attacker,
-            Self::Imported(id) if move_by_numeric_id(id).is_some_and(|m| m.id == "HARDEN") => {
+            Self::Imported(id)
+                if move_by_numeric_id(id)
+                    .is_some_and(|m| matches!(m.id, "HARDEN" | "WITHDRAW")) =>
+            {
                 MoveTarget::Attacker
             }
             Self::VineWhip
