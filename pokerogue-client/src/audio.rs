@@ -50,8 +50,9 @@ impl Cue {
             Self::HealthUp95 | Self::HealthUp110 | Self::HealthUp125 => {
                 "battle_anims/PRSFX- Health Up.wav"
             }
-            // The pinned MP3 is converted once to a local Ogg cache because
-            // Macroquad/quad-snd decodes WAV and Ogg on native targets.
+            #[cfg(target_arch = "wasm32")]
+            Self::TownBgm => "bgm/town.mp3",
+            #[cfg(not(target_arch = "wasm32"))]
             Self::TownBgm => "bgm/town.ogg",
         }
     }
@@ -87,20 +88,33 @@ pub fn audio_asset_directory(
     manifest_dir: &Path,
     configured_pokemon_dir: Option<&Path>,
 ) -> PathBuf {
-    let assets_root = configured_pokemon_dir
-        .and_then(|path| path.parent()?.parent())
-        .map(Path::to_path_buf)
-        .unwrap_or_else(|| manifest_dir.join("../original/assets"));
-    let primary = assets_root.join("audio");
-    if primary.is_dir() {
-        return primary;
+    #[cfg(target_arch = "wasm32")]
+    {
+        let _ = (manifest_dir, configured_pokemon_dir);
+        return PathBuf::from(
+            "https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/audio",
+        );
     }
-    manifest_dir
-        .join("../visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/audio")
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let assets_root = configured_pokemon_dir
+            .and_then(|path| path.parent()?.parent())
+            .map(Path::to_path_buf)
+            .unwrap_or_else(|| manifest_dir.join("../original/assets"));
+        let primary = assets_root.join("audio");
+        if primary.is_dir() {
+            return primary;
+        }
+        manifest_dir
+            .join("../visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/audio")
+    }
 }
 
 pub fn available_asset(directory: &Path, cue: Cue) -> Option<PathBuf> {
     let path = directory.join(cue.relative_path());
+    #[cfg(target_arch = "wasm32")]
+    return Some(path);
+    #[cfg(not(target_arch = "wasm32"))]
     path.is_file().then_some(path)
 }
 
@@ -176,7 +190,10 @@ pub struct AudioManager {
 
 impl AudioManager {
     pub fn new() -> Self {
+        #[cfg(not(target_arch = "wasm32"))]
         let configured = std::env::var_os("POKEROGUE_ASSETS_DIR").map(PathBuf::from);
+        #[cfg(target_arch = "wasm32")]
+        let configured: Option<PathBuf> = None;
         let directory =
             audio_asset_directory(Path::new(env!("CARGO_MANIFEST_DIR")), configured.as_deref());
         let cues = [
@@ -223,7 +240,7 @@ impl AudioManager {
             return;
         };
         let sound = if let Some(pitch) = cue.health_up_pitch() {
-            let Ok(bytes) = std::fs::read(&path) else {
+            let Ok(bytes) = macroquad::file::load_file(&path.to_string_lossy()).await else {
                 return;
             };
             let Some(bytes) = retune_pcm_wav_header(&bytes, pitch) else {

@@ -1,2 +1,5 @@
 [alias]
 parity = "test -p pokerogue-tests"
+
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "link-arg=--allow-undefined"]

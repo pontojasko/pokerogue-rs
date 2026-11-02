@@ -89,8 +89,14 @@ fn show_first_entry_message(kind: EncounterEntranceKind, elapsed: f64) -> bool {
 }
 
 fn window_conf() -> Conf {
+    #[cfg(not(target_arch = "wasm32"))]
     let visual_battle = std::env::var_os("POKEROGUE_VISUAL_BATTLE").is_some();
+    #[cfg(target_arch = "wasm32")]
+    let visual_battle = false;
+    #[cfg(not(target_arch = "wasm32"))]
     let visual_fixture = std::env::args().any(|s| s == "--visual-fixture");
+    #[cfg(target_arch = "wasm32")]
+    let visual_fixture = false;
     #[cfg(target_os = "linux")]
     let linux_backend = if std::env::var_os("POKEROGUE_FORCE_WAYLAND").is_some() {
         miniquad::conf::LinuxBackend::WaylandOnly
@@ -106,7 +112,7 @@ fn window_conf() -> Conf {
         window_title: "PokéRogue · Rust prototype".into(),
         window_width: 960,
         window_height: 540,
-        fullscreen: visual_battle && !std::env::args().any(|s| s == "--visual-fixture"),
+        fullscreen: visual_battle && !visual_fixture,
         #[cfg(target_os = "linux")]
         platform: miniquad::conf::Platform {
             linux_backend,
@@ -240,10 +246,8 @@ async fn load_local_atlas(roots: &[PathBuf], relative: &str) -> Option<hud::Atla
     for root in roots {
         let image = root.join(format!("{relative}.png"));
         let metadata = root.join(format!("{relative}.json"));
-        if image.exists() && metadata.exists() {
-            if let Some(atlas) = hud::Atlas::load_at(&image, &metadata).await {
-                return Some(atlas);
-            }
+        if let Some(atlas) = hud::Atlas::load_at(&image, &metadata).await {
+            return Some(atlas);
         }
     }
     None
@@ -259,7 +263,7 @@ async fn load_local_texture(roots: &[PathBuf], relative: &str) -> Option<Texture
 }
 
 async fn load_phaser_scene_texture(path: &Path) -> Option<Texture2D> {
-    let bytes = std::fs::read(path).ok()?;
+    let bytes = load_file(&path.to_string_lossy()).await.ok()?;
     let mut image = Image::from_file_with_format(&bytes, None).ok()?;
     // Matching opaque pixels from the Town field and Charmander against live
     // Phaser output shows a one-code white blend: channels below 128 round up.
@@ -274,7 +278,7 @@ async fn load_phaser_scene_texture(path: &Path) -> Option<Texture2D> {
 }
 
 async fn load_pokeball_tint_texture(path: &Path) -> Option<Texture2D> {
-    let bytes = std::fs::read(path).ok()?;
+    let bytes = load_file(&path.to_string_lossy()).await.ok()?;
     let mut image = Image::from_file_with_format(&bytes, None).ok()?;
     for rgba in image.bytes.chunks_exact_mut(4) {
         if rgba[3] != 0 {
@@ -367,8 +371,8 @@ struct HealthUpGraphicFrame {
     focus: u8,
 }
 
-fn load_health_up_graphic_frames(path: &Path) -> Option<Vec<Vec<HealthUpGraphicFrame>>> {
-    let source: serde_json::Value = serde_json::from_slice(&std::fs::read(path).ok()?).ok()?;
+fn parse_health_up_graphic_frames(bytes: &[u8]) -> Option<Vec<Vec<HealthUpGraphicFrame>>> {
+    let source: serde_json::Value = serde_json::from_slice(bytes).ok()?;
     let frames = source.get("frames")?.as_array()?;
     Some(
         frames
@@ -395,6 +399,11 @@ fn load_health_up_graphic_frames(path: &Path) -> Option<Vec<Vec<HealthUpGraphicF
             })
             .collect(),
     )
+}
+
+async fn load_health_up_graphic_frames(path: &Path) -> Option<Vec<Vec<HealthUpGraphicFrame>>> {
+    let bytes = load_file(&path.to_string_lossy()).await.ok()?;
+    parse_health_up_graphic_frames(&bytes)
 }
 
 #[derive(Clone, Copy)]
@@ -1601,7 +1610,11 @@ impl AnimatedSprite {
             return;
         }
         const PIXEL_SCALE: f32 = 3.0;
-        let frame_index = if std::env::var_os("POKEROGUE_SCREENSHOT_PATH").is_some() {
+        #[cfg(not(target_arch = "wasm32"))]
+        let screenshot_mode = std::env::var_os("POKEROGUE_SCREENSHOT_PATH").is_some();
+        #[cfg(target_arch = "wasm32")]
+        let screenshot_mode = false;
+        let frame_index = if screenshot_mode {
             0
         } else {
             (visual::sprite_elapsed(animation_started_at) * 10.0) as usize % self.frames.len()
@@ -1699,6 +1712,11 @@ impl SpriteAtlas {
     async fn load() -> Self {
         // These are read from the original assets checkout and are not copied
         // into this project because their individual redistribution status is unclear.
+        #[cfg(target_arch = "wasm32")]
+        let pokemon_root = PathBuf::from(
+            "https://raw.githubusercontent.com/pagefaultgames/pokerogue-assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/images/pokemon",
+        );
+        #[cfg(not(target_arch = "wasm32"))]
         let pokemon_root = std::env::var_os("POKEROGUE_ASSETS_DIR")
             .map(PathBuf::from)
             .unwrap_or_else(|| {
@@ -1710,9 +1728,15 @@ impl SpriteAtlas {
         // Some pinned UI atlases are intentionally absent from the source
         // checkout. Use the local, commit-addressed asset cache when present;
         // never copy these restricted assets into the project.
+        #[cfg(target_arch = "wasm32")]
+        let cached_images = images_root.to_path_buf();
+        #[cfg(not(target_arch = "wasm32"))]
         let cached_images = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(
             "../visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/images",
         );
+        #[cfg(target_arch = "wasm32")]
+        let atlas_images = images_root;
+        #[cfg(not(target_arch = "wasm32"))]
         let atlas_images = if images_root.join("ui/pbinfo_player_type.json").exists() {
             images_root
         } else if cached_images.join("ui/pbinfo_player_type.json").exists() {
@@ -1794,10 +1818,13 @@ impl SpriteAtlas {
         let battle_anim_fire = load(images_root.join("battle_anims/PRAS- Fire.png")).await;
         let battle_anim_health_up =
             load_local_texture(&asset_roots, "battle_anims/PRAS- Recovery.png").await;
-        let health_up_json = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(
-            "../visual-harness/.cache/assets/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba/battle-anims/common-health-up.json",
-        );
-        let health_up_frames = load_health_up_graphic_frames(&health_up_json).unwrap_or_default();
+        let health_up_json = images_root
+            .parent()
+            .unwrap_or(images_root)
+            .join("battle-anims/common-health-up.json");
+        let health_up_frames = load_health_up_graphic_frames(&health_up_json)
+            .await
+            .unwrap_or_default();
         let pokeball_atlas = load(images_root.join("pb.png")).await;
         let ball_menu_atlas =
             hud::Atlas::load_at(&images_root.join("pb.png"), &images_root.join("pb.json")).await;
@@ -3450,6 +3477,7 @@ fn draw_battle(
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 fn save_path() -> PathBuf {
     let base = std::env::var_os("XDG_DATA_HOME")
         .map(PathBuf::from)
@@ -3479,20 +3507,38 @@ fn throw_battle_ball(current: &mut MiniRun, selected: usize) -> (Option<CaptureB
 }
 
 fn save_run(run: &MiniRun) -> Result<(), String> {
-    let path = save_path();
-    let parent = path
-        .parent()
-        .ok_or_else(|| "invalid local save path".to_owned())?;
-    std::fs::create_dir_all(parent).map_err(|error| error.to_string())?;
     let checkpoint = run
         .checkpoint()
         .map_err(|error| format!("checkpoint unavailable: {error:?}"))?;
-    let temporary = path.with_extension("sav.tmp");
-    std::fs::write(&temporary, checkpoint).map_err(|error| error.to_string())?;
-    std::fs::rename(temporary, path).map_err(|error| error.to_string())
+    #[cfg(target_arch = "wasm32")]
+    {
+        quad_storage::STORAGE
+            .lock()
+            .map_err(|error| error.to_string())?
+            .set("pokerogue-rust-mini-run", &checkpoint);
+        Ok(())
+    }
+    #[cfg(not(target_arch = "wasm32"))]
+    {
+        let path = save_path();
+        let parent = path
+            .parent()
+            .ok_or_else(|| "invalid local save path".to_owned())?;
+        std::fs::create_dir_all(parent).map_err(|error| error.to_string())?;
+        let temporary = path.with_extension("sav.tmp");
+        std::fs::write(&temporary, checkpoint).map_err(|error| error.to_string())?;
+        std::fs::rename(temporary, path).map_err(|error| error.to_string())
+    }
 }
 
 fn load_run() -> Result<MiniRun, String> {
+    #[cfg(target_arch = "wasm32")]
+    let save = quad_storage::STORAGE
+        .lock()
+        .map_err(|error| error.to_string())?
+        .get("pokerogue-rust-mini-run")
+        .ok_or_else(|| "no browser save found".to_owned())?;
+    #[cfg(not(target_arch = "wasm32"))]
     let save = std::fs::read_to_string(save_path()).map_err(|error| error.to_string())?;
     MiniRun::from_checkpoint(&save).map_err(|error| format!("invalid save: {error:?}"))
 }
@@ -3500,7 +3546,10 @@ fn load_run() -> Result<MiniRun, String> {
 #[macroquad::main(window_conf)]
 async fn main() {
     let visual_started_at = visual::time();
+    #[cfg(not(target_arch = "wasm32"))]
     let screenshot_path = std::env::var_os("POKEROGUE_SCREENSHOT_PATH").map(PathBuf::from);
+    #[cfg(target_arch = "wasm32")]
+    let screenshot_path: Option<PathBuf> = None;
     if visual::run_if_requested().await {
         return;
     }
@@ -3509,7 +3558,10 @@ async fn main() {
         .set_battlers(Species::Bulbasaur, Species::Charmander)
         .await;
     let mut audio_manager = audio::AudioManager::new();
+    #[cfg(not(target_arch = "wasm32"))]
     let visual_battle = std::env::var_os("POKEROGUE_VISUAL_BATTLE").is_some();
+    #[cfg(target_arch = "wasm32")]
+    let visual_battle = false;
     let mut run: Option<MiniRun> = visual_battle
         .then(|| MiniRun::new_with_wave_limit("MiniRunSeed0001", "DAY", 10).ok())
         .flatten();
@@ -5426,7 +5478,8 @@ mod viewport_tests {
         if !path.exists() {
             return;
         }
-        let frames = load_health_up_graphic_frames(&path).unwrap();
+        let bytes = std::fs::read(&path).unwrap();
+        let frames = parse_health_up_graphic_frames(&bytes).unwrap();
         assert_eq!(frames.len(), 9);
         assert_eq!(frames[0].len(), 2);
         assert_eq!(frames[6][0].focus, 3); // AnimFocus.USER_TARGET

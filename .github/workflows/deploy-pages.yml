@@ -23,16 +23,20 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
       - name: Build browser client
-        run: cargo build --release --target wasm32-unknown-unknown -p pokerogue-client --bin pokerogue-web
+        run: cargo build --release --target wasm32-unknown-unknown -p pokerogue-client --bin pokerogue-client
       - name: Assemble GitHub Pages site
         run: |
           mkdir -p site
           cp web/index.html site/index.html
-          cp target/wasm32-unknown-unknown/release/pokerogue-web.wasm site/pokerogue-web.wasm
+          cp target/wasm32-unknown-unknown/release/pokerogue-client.wasm site/pokerogue-client.wasm
           curl --fail --location --silent --show-error \
             https://raw.githubusercontent.com/not-fl3/miniquad-samples/e0ed275ba580202585d7feced3c4222812bcbb23/mq_js_bundle.js \
             --output site/mq_js_bundle.js
           test -s site/mq_js_bundle.js
+          curl --fail --location --silent --show-error \
+            https://raw.githubusercontent.com/optozorax/quad-storage/b3f9de8e0e8807b74fa39abe12275ee554aa46d0/js/quad-storage.js \
+            --output site/quad-storage.js
+          test -s site/quad-storage.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

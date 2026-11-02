@@ -22,7 +22,8 @@ impl Atlas {
         .await
     }
     pub async fn load_at(image_path: &Path, metadata_path: &Path) -> Option<Self> {
-        let data: Value = serde_json::from_slice(&std::fs::read(metadata_path).ok()?).ok()?;
+        let bytes = load_file(&metadata_path.to_string_lossy()).await.ok()?;
+        let data: Value = serde_json::from_slice(&bytes).ok()?;
         let texture = load_texture(&image_path.to_string_lossy()).await.ok()?;
         texture.set_filter(FilterMode::Nearest);
         let mut frames = BTreeMap::new();

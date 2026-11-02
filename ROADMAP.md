@@ -7,7 +7,7 @@ Milestones are functional slices. Close each only when its criteria pass and its
 - A checked item means the bounded slice described by that item is implemented and has the evidence noted beside it; it does not mean the complete original-game flow is ported.
 - The README pixel chart counts checklist items equally. It is a planning aid, not a percentage of PokéRogue reimplemented in Rust.
 - Every open item should be completed in a small change: identify the pinned TypeScript behavior, add or extend a deterministic source fixture, implement the Rust slice, validate it, and record uncovered cases in `PARITY_PLAN.md` and `PORTING_PROGRESS.md`.
-- Keep the native runtime offline. The separate browser demo is a static-hosted exception and fetches presentation images from the pinned upstream asset repository; it adds no gameplay server or multiplayer.
+- Keep the native runtime offline. The browser build is a static-hosted exception and fetches presentation assets from the pinned upstream asset repository; it adds no gameplay server or multiplayer.
 - Preserve unresolved asset licensing boundaries. Local visual tests may read the submodule assets; do not copy restricted assets into tracked project files.
 
 ## Current execution priority — reviewed 2026-11-01
@@ -26,13 +26,13 @@ This static status card was rendered from the [Pokémon GameBoy CSS framework](h
 
 The first bounded task is one source-executed Town wave-1 entry trace and comparison with existing Rust entry fields. Record provenance, controlled inputs/collaborators, ordered RNG draws, encounter/party state and initial queue. A repeatable first mismatch is a useful diagnostic result, not a parity pass. Do not change production rules to conceal it. The twenty-wave policy test remains a separate Rust completion test until an original replay exists.
 
-## Experimental WebAssembly demo (outside milestone parity)
+## Browser build (outside milestone parity)
 
-- [x] Add a small `pokerogue-web` target that runs the Rust core's Town battle slice in a browser; the Macroquad renderer accepts move keys `1`–`4` and restarts with `R`.
-- [x] Cross-compile the release target for `wasm32-unknown-unknown` and exercise the page in a browser; the Town scene, source sprites, one move input and restart rendered without console/network errors.
-- [x] Publish the static output on [GitHub Pages](https://pontojasko.github.io/pokerogue-rs/) and verify the live build; workflow run [41480783949](https://github.com/pontojasko/pokerogue-rs/actions/runs/41480783949) completed successfully, and the live browser smoke check passed.
-- The demo fetches only the selected images and sprite atlases directly from pinned `pokerogue-assets` at runtime. Its Pages artifact does not contain those image files. Images therefore need an internet connection; this is not a full replacement for the offline native client.
-- This UI is a compact first-wave presentation, not full client parity. It does not include native save handling, reward flow, sound, starter selection, or wave continuation. Gameplay state and actions still go through `pokerogue-core`.
+- [x] Replace the browser-only battle slice with a `wasm32-unknown-unknown` build of the same `pokerogue-client` binary used on desktop, including its existing screens and implemented game flow.
+- [x] Cross-compile the full client release target for `wasm32-unknown-unknown`.
+- [ ] Publish and smoke-check the same-client browser build on [GitHub Pages](https://pontojasko.github.io/pokerogue-rs/). The previous Pages deployment was a smaller browser-only battle slice; this replacement has not yet been exercised in a browser.
+- Browser saves use local storage. Artwork and audio load directly from pinned `pokerogue-assets` at runtime, so network access is required; the Pages artifact does not contain asset files.
+- Browser-specific validation remains open; this build uses the same source UI and implemented flow as desktop, with browser local storage and remote asset/audio loading. It does not imply full parity with the original game.
 
 ## M0 — battle foundation (complete, Stages 1–13)
 
