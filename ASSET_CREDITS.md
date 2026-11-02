@@ -9,6 +9,8 @@ Source: [pagefaultgames/pokerogue-assets](https://github.com/pagefaultgames/poke
 
 The asset repository README states that assets are CC BY-NC-SA 4.0 only to the extent they are licensable and applicable, and documents third-party exceptions. `images/REUSE.toml` does not give these species atlas PNGs a specific per-file attribution/license entry. Their exact redistribution status is therefore unresolved. The sprite files remain only in the local upstream checkout and are not copied into this Rust project or included in a Rust package. The client loads them by path. Do not redistribute these sprite files or builds containing them without clarifying the rights. `POKEROGUE_ASSETS_DIR` may point to the upstream `images/pokemon` directory if it is elsewhere.
 
+The GitHub Pages WebAssembly demo requests a small set of Town and Pokémon image files directly from the pinned upstream asset repository over HTTPS. The Pages artifact does not mirror or bundle those files. This runtime use does not resolve the upstream per-file redistribution/license gaps described here.
+
 Relevant source metadata: upstream `README.md`, `images/REUSE.toml`, `images/pokemon/1.json`, `images/pokemon/back/1.json`, and `images/pokemon/4.json`. The JSON atlas coordinates select the idle animation frames 0001 and 0003. Texture sampling uses nearest-neighbor filtering to preserve pixel edges and alpha transparency.
 
 ## Additional local Town battle presentation assets
@@ -53,3 +55,5 @@ The Rust title screen optionally reads `images/logo.png`, `images/arenas/plains_
 ## README gameplay reference screenshot
 
 `docs/latest-gameplay-reference.png` is the latest user-provided local screenshot (captured 2026-11-02) included in the public README at the project owner's request. It shows the original PokéRogue UI and Pokémon artwork; it is explicitly labeled as an original-game reference, not a Rust-client capture. The screenshot does not include a separate license grant for the underlying artwork. Rights remain unresolved; its presence in this repository is a deliberate documentation exception requested by the project owner and must not be read as permission to extract, reuse, or redistribute the depicted assets separately.
+
+`docs/roadmap-m12-gameboy.png` is a rendered status-card image made with the upstream [Pokémon GameBoy CSS](https://github.com/luttje/css-pokemon-gameboy) framework's hosted stylesheet at the owner's request. The framework repository is MIT-licensed; its README identifies the embedded pixel art and visual style as Nintendo's property. This is a documentation visual only and adds no browser/runtime dependency. See the framework's [third-party license notes](https://github.com/luttje/css-pokemon-gameboy#third-party-licenses).

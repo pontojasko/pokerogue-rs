@@ -7,7 +7,7 @@ Milestones are functional slices. Close each only when its criteria pass and its
 - A checked item means the bounded slice described by that item is implemented and has the evidence noted beside it; it does not mean the complete original-game flow is ported.
 - The README pixel chart counts checklist items equally. It is a planning aid, not a percentage of PokéRogue reimplemented in Rust.
 - Every open item should be completed in a small change: identify the pinned TypeScript behavior, add or extend a deterministic source fixture, implement the Rust slice, validate it, and record uncovered cases in `PARITY_PLAN.md` and `PORTING_PROGRESS.md`.
-- Keep runtime offline. Development tools may execute the pinned local TypeScript checkout, but the Rust game must not require Node.js, a server, or network access.
+- Keep the native runtime offline. The separate browser demo is a static-hosted exception and fetches presentation images from the pinned upstream asset repository; it adds no gameplay server or multiplayer.
 - Preserve unresolved asset licensing boundaries. Local visual tests may read the submodule assets; do not copy restricted assets into tracked project files.
 
 ## Current execution priority — reviewed 2026-11-01
@@ -18,7 +18,21 @@ Dependency order: real ordinary wave entry and initial queue → entry RNG/state
 
 Current M12 execution snapshot (2026-11-02): R1–R5 have bounded checked evidence; R6 is in progress and has not met its paired-trace/Rust-comparison criterion; R7 and R8 are not started. This ordering is a dependency plan, not an estimate of completion percentage. Each task below remains open until its listed acceptance and validation evidence is recorded.
 
+<p align="center">
+  <img src="docs/roadmap-m12-gameboy.png" alt="Game Boy style M12 status card: R1–R5 checked, R6 in progress, R7–R8 queued" width="960">
+</p>
+
+This static status card was rendered from the [Pokémon GameBoy CSS framework](https://github.com/luttje/css-pokemon-gameboy) so the visual appears in GitHub Markdown, which does not apply external stylesheets. Its 5/8 count refers only to checked M12 tasks; it is not an estimate of overall game parity.
+
 The first bounded task is one source-executed Town wave-1 entry trace and comparison with existing Rust entry fields. Record provenance, controlled inputs/collaborators, ordered RNG draws, encounter/party state and initial queue. A repeatable first mismatch is a useful diagnostic result, not a parity pass. Do not change production rules to conceal it. The twenty-wave policy test remains a separate Rust completion test until an original replay exists.
+
+## Experimental WebAssembly demo (outside milestone parity)
+
+- [x] Add a small `pokerogue-web` target that runs the Rust core's Town battle slice in a browser; the Macroquad renderer accepts move keys `1`–`4` and restarts with `R`.
+- [x] Cross-compile the release target for `wasm32-unknown-unknown` and exercise the page in a browser; the Town scene, source sprites, one move input and restart rendered without console/network errors.
+- [ ] Publish the static output on GitHub Pages and verify the live page after deployment.
+- The demo fetches only the selected images and sprite atlases directly from pinned `pokerogue-assets` at runtime. Its Pages artifact does not contain those image files. Images therefore need an internet connection; this is not a full replacement for the offline native client.
+- This UI is a compact first-wave presentation, not full client parity. It does not include native save handling, reward flow, sound, starter selection, or wave continuation. Gameplay state and actions still go through `pokerogue-core`.
 
 ## M0 — battle foundation (complete, Stages 1–13)
 

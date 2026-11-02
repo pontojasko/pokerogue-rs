@@ -90,6 +90,10 @@ On Linux, the client selects Wayland when `WAYLAND_DISPLAY` is set and X11 other
 
 **Controls:** Enter starts/confirms/restarts; `1`–`4` selects a move; Escape quits. `F5` saves supported local checkpoints. The current run and save scope is intentionally limited; see the roadmap before relying on long runs.
 
+### Play in a browser
+
+The experimental [WebAssembly demo](https://pontojasko.github.io/pokerogue-rs/) runs the Rust core in a browser on GitHub Pages. It covers the current Town battle slice and uses keys `1`–`4` for moves and `R` to restart. The browser fetches the selected art files directly from the pinned [`pokerogue-assets`](https://github.com/pagefaultgames/pokerogue-assets/tree/fb8ccb6d0703ffe48cdf80a8102d5ed943c82dba) revision; they are not copied into this repository or the Pages build. That demo needs an internet connection to load those images. The page uses Macroquad's pinned WebAssembly loader from the upstream [`miniquad-samples`](https://github.com/not-fl3/miniquad-samples) project. The full desktop client remains the recommended way to explore the current project.
+
 ## Project structure
 
 ```text
@@ -140,7 +144,7 @@ Native screenshots can require a display server; Xvfb setup and Playwright/Heliu
 
 ### Game Boy CSS reference
 
-The retro UI reference [Pokémon GameBoy CSS](https://github.com/luttje/css-pokemon-gameboy) is a standalone MIT-licensed CSS project. GitHub does not apply arbitrary project CSS to repository READMEs, so the library cannot style this page directly. Its upstream README also describes it as a joke framework and says its images and visual style are Nintendo's property. We link it as a design reference without importing its CSS, images, or another runtime dependency.
+The [M12 status card in the roadmap](ROADMAP.md) is a static PNG rendered from the standalone [Pokémon GameBoy CSS](https://github.com/luttje/css-pokemon-gameboy) framework. GitHub does not apply arbitrary CSS to repository Markdown, so the rendered image is how that styling appears here. The upstream project is MIT-licensed, but says its imagery and visual style are Nintendo's property; see its [README](https://github.com/luttje/css-pokemon-gameboy#third-party-licenses). We do not add the library as a runtime dependency.
 
 ## Contributing and project transparency
 
