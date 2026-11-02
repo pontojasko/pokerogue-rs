@@ -37,6 +37,10 @@ jobs:
             https://raw.githubusercontent.com/optozorax/quad-storage/b3f9de8e0e8807b74fa39abe12275ee554aa46d0/js/quad-storage.js \
             --output site/quad-storage.js
           test -s site/quad-storage.js
+          # quad-storage-sys exports its packed 0.1.0 version (65536). The
+          # upstream JS writes a string version, so normalize it to that ABI value.
+          sed -i 's/version: "0.1.4"/version: 65536/' site/quad-storage.js
+          grep -q 'version: 65536' site/quad-storage.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

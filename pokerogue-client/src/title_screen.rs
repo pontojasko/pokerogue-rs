@@ -43,9 +43,7 @@ pub fn halloween_2026_active(unix_seconds: u64) -> bool {
 }
 
 pub fn current_halloween_2026_active() -> bool {
-    SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .is_ok_and(|now| halloween_2026_active(now.as_secs()))
+    halloween_2026_active(macroquad::miniquad::date::now().max(0.0) as u64)
 }
 
 #[cfg(test)]
@@ -84,5 +82,3 @@ mod tests {
         assert!(!halloween_2026_active(1_794_182_400));
     }
 }
-
-use std::time::{SystemTime, UNIX_EPOCH};

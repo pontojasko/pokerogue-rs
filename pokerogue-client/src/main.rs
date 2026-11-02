@@ -3093,11 +3093,8 @@ fn draw_title_screen(
                     ..Default::default()
                 },
             );
-            let seconds_remaining = 1_794_182_400u64.saturating_sub(
-                std::time::SystemTime::now()
-                    .duration_since(std::time::UNIX_EPOCH)
-                    .map_or(0, |duration| duration.as_secs()),
-            );
+            let now = macroquad::miniquad::date::now().max(0.0) as u64;
+            let seconds_remaining = 1_794_182_400u64.saturating_sub(now);
             let days = seconds_remaining / 86_400;
             let hours = seconds_remaining % 86_400 / 3_600;
             let minutes = seconds_remaining % 3_600 / 60;
