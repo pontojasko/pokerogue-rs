@@ -30,7 +30,8 @@ The first bounded task is one source-executed Town wave-1 entry trace and compar
 
 - [x] Replace the browser-only battle slice with a `wasm32-unknown-unknown` build of the same `pokerogue-client` binary used on desktop, including its existing screens and implemented game flow.
 - [x] Cross-compile the full client release target for `wasm32-unknown-unknown`.
-- [ ] Publish and smoke-check the same-client browser build on [GitHub Pages](https://pontojasko.github.io/pokerogue-rs/). The previous Pages deployment was a smaller browser-only battle slice; this replacement has not yet been exercised in a browser.
+- [x] Publish the same-client browser build on [GitHub Pages](https://pontojasko.github.io/pokerogue-rs/); Actions run [41482422147](https://github.com/pontojasko/pokerogue-rs/actions/runs/41482422147) built and deployed it, and page/WASM/loader URLs returned HTTP 200.
+- [ ] Exercise rendering, remote asset loading, and input in a real browser. The available Playwright service could not start because Chrome is missing in this environment; HTTP checks do not establish successful rendering.
 - Browser saves use local storage. Artwork and audio load directly from pinned `pokerogue-assets` at runtime, so network access is required; the Pages artifact does not contain asset files.
 - Browser-specific validation remains open; this build uses the same source UI and implemented flow as desktop, with browser local storage and remote asset/audio loading. It does not imply full parity with the original game.
 
