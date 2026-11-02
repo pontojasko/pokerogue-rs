@@ -1,6 +1,6 @@
 # Current porting status
 
-Updated 2026-11-01 against the existing working tree, including pre-existing uncommitted changes. Reference HEAD confirmed: `original/` at `7c0881255af5cd51992e513ff93c2f71adbe40e0`. The latest reward-screen UI increment is recorded below; it does not certify full-game parity.
+Updated 2026-11-02 against the current working tree. Reference HEAD confirmed: `original/` at `7c0881255af5cd51992e513ff93c2f71adbe40e0`. The latest reward-screen UI increment is recorded below; it does not certify full-game parity.
 
 [ROADMAP.md](ROADMAP.md) defines priorities; [ARCHITECTURE.md](ARCHITECTURE.md) maps ownership; [PARITY_PLAN.md](PARITY_PLAN.md) retains detailed evidence and limitations. The complete previous progress document is preserved in [PORTING_HISTORY.md](PORTING_HISTORY.md). Historical entries do not override this snapshot.
 
@@ -14,6 +14,10 @@ Updated 2026-11-01 against the existing working tree, including pre-existing unc
 | Progression | EXP/level caps, participant sharing, move learning/replacement, friendship, selected natural rewards and fixed boss rewards | Supported COMMON/GREAT and selected ULTRA effects only; fallback test rewards remain; complete modifier/phase interactions are open |
 | Persistence | `MiniRun::checkpoint` emits v27; readers retain v4–v26 migration; saves at MoveLearning, Reward or Complete | Mid-battle saves rejected; original save compatibility and v1–v3 migration are not implemented |
 | Presentation | Town field/HUD, command and move navigation, source-styled reward selection with local item icons and animated cursor/cards, bounded Tackle/Ember and capture/faint animations, optional audio | Nine configured visual cases plus a reward fixture compared with the user-supplied original screenshot; full visual/audio parity is open |
+
+The experimental `pokerogue-web` target now runs the bounded wave-1 Town battle in a browser. It is built as `wasm32-unknown-unknown` and published at [GitHub Pages](https://pontojasko.github.io/pokerogue-rs/). The page loads the pinned Macroquad WebAssembly loader and fetches selected image/sprite files from the pinned `pokerogue-assets` repository at runtime; it does not bundle them. The live browser run accepted a move and restart without page, console, or HTTP errors. It is a small presentation client, not full native-client or battle-phase parity; it needs network access for assets and does not include save/reward/wave continuation.
+
+R6 remains open. The first source capture is tracked as `town-wave1-faint-replacement-trace.json` and reaches replacement/next command, but a fresh capture with `--through-command --check` timed out in `MoveEffectPhase` after the enemy's first Peck. `town_wave1_enemy_first_faint_cancels_player_move_and_replaces_from_party` fails on the first enemy Tackle damage: source HP is 13; Rust HP is 14. The fresh pair and Rust/source event/RNG comparison are therefore incomplete; see the R6 section in [ROADMAP.md](ROADMAP.md). No fixture was changed to suppress the divergence.
 
 Current code anchors: `pokerogue-core/src/lib.rs` (Battle, BattleRng, MiniRun, checkpoint), `pokerogue-core/src/rewards.rs`, `pokerogue-tests/src/lib.rs`, `pokerogue-client/src/{main,hud,battle_ui,visual,audio}.rs`, and `tools/visual/suite.json`.
 
